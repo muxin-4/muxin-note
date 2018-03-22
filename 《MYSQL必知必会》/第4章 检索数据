@@ -1,0 +1,65 @@
+# 第4章 检索数据
+
+> 本章将介绍如何使用SELECT语句从表中检索一个或多个数据列。
+
+## 4.1 SELECT语句
+
+ SQL 语句是由简单的英语单词构成的。这些单词称为关键字，每个SQL 语句都是由一个或多个关键字构成的。大概，最经常使用的SQL 语句就是**SELECT 语句**了。它的用途是从一个或多个表中检索信息。
+
+为了使用SELECT 检索表数据，必须至少给出两条信息——想选择什么，以及从什么地方选择。
+
+## 4.2 检索单个列
+
+我们将从简单的SQL SELECT 语句开始介绍，此语句如下所示：
+
+```
+SELECT prod_name;
+FROM products;
+```
+ 上述语句利用SELECT  语句从products  表中检索一个名为prod_name 的列。所需的列名在SELECT 关键字之后给出，FROM 关键字指出从其中检索数据的表名。
+
+## 4.3 检索多个列
+
+```
+SELECT prod_id, prod_name, prod_price
+
+FROM products;
+```
+
+## 4.4 检索所有列
+
+```
+SELECT *
+FROM products
+```
+
+## 4.5 检索不同的行
+
+```
+SELECT DISTINCT vend_id
+FROM products;
+```
+
+products 表中列出了14 个产品。那么，如何检索出有不同值的列表呢？
+
+解决办法是使用DISTINCT 关键字，顾名思义，此关键字指示MySQL只返回不同的值。
+
+## 4.6 限制结果
+
+SELECT语句返回所有匹配的行，它们可能是指定表中的每个行。
+
+```
+SELECT prod_name
+FROM products
+LIMIT 5;
+```
+
+## 4.7 使用完全限时的表名
+
+```
+SELECT products.prod_name
+FROM products
+```
+
+ 这条SQL 语句在功能上等于本章4.2使用的那一条语句，但这里指定了一个完全限定的列名。
+
