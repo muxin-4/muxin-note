@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* MDN https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition */
+    /* 阮一峰 http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html */
+    /* 定制 cubic-bezier http://cubic-bezier.com/#.17,.67,.83,.67 */
+
+
+    /* CSS transform 属性 , 只对 block 级元素生效！ */
+    /* transition-timing-function */
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function */
+    /* https://idiotwu.me/understanding-css3-timing-function-steps/ */
+
+    /* （1）linear：匀速
+       （2）ease: 规定慢速开始，然后变快，然后慢速
+       （3）ease-in：以慢速开始
+       （4）ease-out：以慢速结束
+       （5）ease-in-out： 以慢速开始和结束的过渡效果
+       （6）cubic-bezier函数：自定义速度模式 */
+    .container {
+      width: 100px;
+      height: 100px;
+      background: red;
+      /* transition: 1s width 1s; */
+ transition: width 1s, background 3s cubic-bezier(0.345, -0.600, 0.505, 1.650);
+
+
+
+    }
+    .container:hover {
+      width: 800px;
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+
+</body>
+</html>
