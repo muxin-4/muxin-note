@@ -2,7 +2,7 @@
 
 > 给大家推荐好用的极简风Markdown编辑器 **[Typora](https://typora.io/)**
 
-   tags: 
+   tags:
    - Markdown
    - 语言
       categories:
@@ -126,7 +126,7 @@ Tags： 数学 英语 Markdown
 
 ### 5. LaTeX 公式
 
-$ 表示行内公式： 
+$ 表示行内公式：
 
 质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。
 
@@ -270,7 +270,7 @@ document.write(fib(10));
         - [x] 购买蓝宝石公主号七月一日的船票
 
 对应显示如下待办事宜 Todo 列表：
-        
+
 - [ ] **Cmd Markdown 开发**
     - [x] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率
     - [ ] 支持以 PDF 格式导出文稿
@@ -316,4 +316,4 @@ document.write(fib(10));
 
 
 
-[zhihu]: 
+[zhihu]:
