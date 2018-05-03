@@ -1,0 +1,2 @@
+const mod = require('./chalk');
+
