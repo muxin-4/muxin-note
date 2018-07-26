@@ -1,0 +1,14 @@
+*{ padding:0px; margin:0px; }
+body{ 
+    background:#D5DEE7; 
+}
+.boxgrid{ 
+	width: 720px; 
+	height: 701px; 
+	border: solid 2px #8399AF; 
+}
+.boxgrid img.car{ 
+	position: absolute;/*设置绝对定位*/  
+	top: 0; 
+	left:720px;
+}

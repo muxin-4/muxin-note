@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第六回：深入理解vertical-align上标下标类</h1>
+        <h2>——vertical-align:sub/super</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<h1 class="mt-20 center">HTML中的上标和下标</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20 pb30 f32">
+            	<li>HTML中的上标：&lt;sup&gt;</li>
+                <li>HTML中的下标：&lt;sub&gt;</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main center">
+       		<p class="f32 mt-20">xinxuzhang<sup>[1]</sup></p>
+            <p class="gray">[1]. 帅哥一枚</p>
+            <pre class="fade out">xinxuzhang<span class="red">&lt;sup></span>[1]<span class="red">&lt;/sup></span></pre>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main center">
+       		<p class="f32 mt-20">NH<sub>4</sub>HCO<sub>3</sub></p>
+            <p class="gray">碳酸氢铵</p>
+            <pre class="fade out">NH<span class="red">&lt;sub></span>4<span class="red">&lt;/sub></span>HCO<span class="red">&lt;sub></span>3<span class="red">&lt;/sub></span></pre>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20 pb30 f32">
+            	<li>&lt;sup&gt; <span class="g6" style="vertical-align:-3px;">→</span> vertical-align:super</li>
+                <li>&lt;sub&gt; <span class="g6" style="vertical-align:-3px;">→</span> vertical-align:sub</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="center nowrap mt-20">
+            <h1 class="mt-20">定义</h1>
+            <div class="main">
+                <ol class="f32">
+                    <li><strong>vertical-align:super</strong><p>提高盒子的基线到父级合适的上标基线位置。</p></li>
+                    <li><strong>vertical-align:sub</strong><p>降低盒子的基线到到父级合适的下标基线位置。</p></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main center">
+       		<p class="f32 bge0 pl10"><img src="img/mm1.jpg" width="250">NH<span id="testSub1">4</span>HCO<span id="testSub2">3</span><span id="testSup">[1]</span></p>
+            <p class="gray">[1]. 碳酸氢铵，化肥，会挥发</p>
+            <p>
+            	<a href="javascript:" id="btnSub" class="btn btn-blue">出现吧，下标</a>
+            	<a href="javascript:" id="btnSup" class="btn btn-blue ml20">出现吧，上标</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<h1 class="center mt-20 pb30"><img src="img/ask.gif" width="100" class="abs mt-20" style="margin-left:-120px;">实际应用？</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<h1 class="center mt-20 pb30"><img src="img/han.gif" width="100" class="abs mt-20" style="margin-left:-120px;">So, ...</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：vertical-align前后不一的作用机制</h1>
+        <h2>——相邻前后元素的vertical-align值不一样，该如何表现呢？</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+var D = document;
+var btnSub = $("#btnSub")[0], btnSup = $("#btnSup")[0];
+var testSub1 = $("#testSub1")[0], testSub2 = $("#testSub2")[0], testSup = D.querySelector("#testSup");
+
+btnSub.onclick = function() {
+	if (/blue/.test(this.className)) {
+		testSub1.style.verticalAlign = 'sub';	
+		testSub2.style.verticalAlign = 'sub';
+		//testSub1.style.fontSize = '75%';
+		//testSub2.style.fontSize = '75%';
+		this.className = this.className.replace('blue', 'green');
+		this.innerHTML = '隐藏吧，下标';
+	} else {
+		testSub1.style.verticalAlign = '';	
+		testSub2.style.verticalAlign = '';
+		this.className = this.className.replace('green', 'blue');
+		this.innerHTML = '出现吧，下标';
+	}
+};
+btnSup.onclick = function() {
+	if (/blue/.test(this.className)) {
+		testSup.style.verticalAlign = 'super';
+		//testSup.style.fontSize = '75%';
+		this.className = this.className.replace('blue', 'green');
+		this.innerHTML = '隐藏吧，上标';
+	} else {
+		testSup.style.verticalAlign = '';
+		this.className = this.className.replace('green', 'blue');	
+		this.innerHTML = '出现吧，上标';
+	}
+};
+</script>
+</body>
+</html>

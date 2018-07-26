@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>felx骰子</title>
+    <style type="text/css">
+        .box {
+            padding: 12px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+
+        .item {
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 15px;
+        }
+
+        .box1 {
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .box2 {
+            justify-content:space-between;
+        }
+        .box2 .item2 {
+            align-self:flex-end;
+        }
+
+        .box3 {
+            justify-content: space-between;
+        }
+
+        .box3 .item2 {
+            align-self: center;
+        }
+
+        .box3 .item3 {
+            align-self: flex-end;
+        }
+
+        .box4 {
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box4 div {
+            display: flex;
+            justify-content:space-between;
+        }
+
+        .box5 {
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .box5 div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box5 .column {
+            justify-content:center;
+        }
+
+        .box6 {
+            justify-content:space-between;
+        }
+        .box6 div {
+            display: flex;
+            flex-direction: column;
+            justify-content:space-between;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box box1">
+        <span class="item item1"></span>
+    </div>
+
+    <div class="box box2">
+        <span class="item"></span>
+        <span class="item item2"></span>
+    </div>
+
+    <div class="box box3">
+        <span class="item item1"></span>
+        <span class="item item2"></span>
+        <span class="item item3"></span>
+    </div>
+
+    <div class="box box4">
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <div class="box box5">
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div class="column">
+            <span class="item"></span>
+        </div>
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+    <div class="box box6">
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+        <div>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

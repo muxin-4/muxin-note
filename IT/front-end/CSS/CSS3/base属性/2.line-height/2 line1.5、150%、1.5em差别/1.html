@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<head>
+    <title></title>
+    <style type="text/css">
+        .father {
+            width: 400px;
+            border: 1px solid pink;
+            display: inline-block;
+        }
+        .son {
+            width: 350px;
+            border: 1px solid green;
+        }
+        .father1 {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .son1 {
+            font-size: 26px;
+        }
+        .father2 {
+            margin-top: 100px;
+            font-size: 14px;
+            line-height: 150%;
+        }
+        .son2 {
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+<div class="father father1">
+    父元素font-size:14px;line-height:1.5;计算值是21px
+    <div class="son son1">
+        子元素font-size:26px;line-height会继承父元素的1.5，计算值是39px
+    </div>
+</div>
+
+<div class="father father2">
+    父元素font-size:14px;line-height:150%;计算值是21px
+    <div class="son son2">
+        子元素font-size:26px;line-height=父元素的line-height=21px
+    </div>
+</div>
+</body>
+</html>

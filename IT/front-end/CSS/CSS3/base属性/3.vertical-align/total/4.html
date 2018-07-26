@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第四回：vertical-align线类属性值深入理解</h1>
+        <h2>——深入理解vertical-align底线、顶线、中线的行为表现</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center nowrap mt-20"><h1>vertical-align:bottom</h1></div>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center nowrap mt-20">
+            <h1 class="mt-20">定义</h1>
+            <div class="main">
+                <ol>
+                    <li>inline/inline-block元素： 元素底部和整行的底部对齐。</li>
+                    <li>table-cell元素： 单元格底padding边缘和表格行的底部对齐。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1>inline元素</h1>
+        <div class="main">
+        	<p class="bge0 mt-20">图文就是这么回事<img src="img/mm1.jpg" width="250">
+            	<a href="#" class="btn btn-blue vb fade out">bottom对齐</a>
+            </p>
+       		<p class="bge0 fade out border"><span class="dib-bottom fade out">bottom</span><span class="dib-baseline"></span><span class="dib-baseline">x-baseline</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1>table-cell元素</h1>
+        <div class="main">
+       		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bge0 mt-20">
+  <tr>
+    <td class="vb">一行文字</td>
+    <td class="vb"><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></td>
+    <td class="vb"><img src="img/mm1.jpg" width="256"></td>
+    <td class="vb"><span class="dib vt">inline-block水平</span></td>
+  </tr>
+</table>
+			<div class="bge0 mt20 pct100" style="display:table;">
+                <div class="vb" style="display:table-row;">
+                    <div class="td">一行文字</div>
+                    <div class="td"><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></div>
+                    <div class="td"><img src="img/mm1.jpg" width="256"><span class="dib bg-white fade out" data-display="inline-block">x</span></div>
+                    <div class="td"><span class="dib vt">inline-block水平</span></div>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center nowrap mt-20"><h1>vertical-align:top</h1></div>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center nowrap mt-20">
+            <h1 class="mt-20">定义</h1>
+            <div class="main">
+                <ol>
+                    <li>inline/inline-block元素： 元素顶部和整行的顶部对齐。</li>
+                    <li>table-cell元素： 单元格顶padding边缘和表格行的顶部对齐。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1>inline元素</h1>
+        <div class="main">
+        	<p class="bge0 mt-20">图文就是这么回事<img src="img/mm1.jpg" width="250">
+            	<a href="#" class="btn btn-blue vt fade out">top对齐</a>
+            </p>
+       		<p class="bge0 fade out border"><span class="dib-baseline"></span><span class="dib-baseline">x-baseline</span><span class="dib-top fade out">top</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1>table-cell元素</h1>
+        <div class="main">
+       		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bge0 mt-20">
+  <tr>
+    <td class="vt">一行文字</td>
+    <td class="vt"><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></td>
+    <td class="vt"><img src="img/mm1.jpg" width="256"></td>
+    <td class="vt"><span class="dib vb">inline-block水平</span></td>
+  </tr>
+</table>
+			<div class="bge0 mt20 pct100" style="display:table;">
+                <div class="vt" style="display:table-row;">
+                    <div class="td">一行文字</div>
+                    <div class="td"><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></div>
+                    <div class="td"><img src="img/mm1.jpg" width="256"><span class="dib bg-white fade out" data-display="inline-block">x</span></div>
+                    <div class="td"><span class="dib vb">inline-block水平</span></div>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center nowrap mt-20"><h1>vertical-align:middle</h1></div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center nowrap mt-20">
+            <h1 class="mt-20">定义</h1>
+            <div class="main">
+                <ol>
+                    <li>inline/inline-block元素： 元素的垂直中心点和父元素基线上1/2 x-height处对齐。</li>
+                    <li>table-cell元素： 单元格填充盒子相对于外面的表格行居中对齐。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center nowrap mt-20"><h1>从某简单现象说开去...</h1></div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header tc">
+        <h1 class="mt10">(近似)垂直居中</h1>
+        <div class="main">
+        	<pre class="mt10">p { line-height: 250px; }
+img { vertical-align: middle; }</pre>
+       		<p class="bge0 mt20 mb20" style="line-height:250px;">
+            	<img src="img/mm1.jpg" width="256" class="vm"><span class="showline">x</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center nowrap mt-20"><h1><img src="img/ask.gif" width="100" class="abs" style="margin-left:-120px;">为何是<span class="red">近似</span>垂直居中？</h1></div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header tc">
+        <h1 class="mt10">(近似)垂直居中</h1>
+        <div class="main">
+        	<p class="mt-20">根据定义：元素垂直中心点和父级基线上1/2 x-height对齐</p>
+       		<p id="fontSize" class="bge0 mt20 mb20 rel" style="line-height:250px;">            	
+            	<span class="dib rel lh14"><i class="abs" style="top:50%; border-top: 1px solid red; width:100%;"></i><img src="img/mm1.jpg" width="256" class="vm"></span><span class="showline rel">x</span>
+                <i class="abs" style="top:50%; left: 0; border-top: 1px solid yellow; width:100%;"></i>
+            </p>
+            <p>黄线：容器中心；红线：图片中心</p>
+            <p>font-size(24-120): <input type="range" id="rangeFt" min="24" max="120" value="24" class="pct33"></p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header tc">
+        <h1 class="mt10">(完全)垂直居中</h1>
+        <div class="main">
+        	<p class="mt-20">根据定义：元素垂直中心点和父级基线上1/2 x-height对齐</p>
+            <a href="javascript:" class="btn btn-blue" onClick="this.nextElementSibling.style.fontSize=0;this.className='btn btn-green'">设置font-size:0</a>
+       		<p class="bge0 mt20 mb20 rel" style="line-height:250px;">            	
+            	<span class="dib rel lh14"><i class="abs" style="top:50%; border-top: 1px solid red; width:100%;"></i><img src="img/mm1.jpg" width="256" class="vm"></span><span class="showline rel">x</span>
+                <i class="abs" style="top:50%; left: 0; border-top: 1px solid yellow; width:100%;"></i>
+            </p>
+            <p>黄线：容器中心；红线：图片中心</p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1>table-cell元素</h1>
+        <div class="main">
+       		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bge0 mt-20">
+  <tr>
+    <td>一行文字</td>
+    <td><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></td>
+    <td><img src="img/mm1.jpg" width="256"><span class="dib bg-white fade out" data-display="inline-block">x</span></td>
+    <td><span class="dib vb">inline-block水平</span></td>
+  </tr>
+</table>
+			<div class="bge0 mt20 pct100" style="display:table;" onClick="this.style.display='none';this.nextElementSibling.classList.remove('dn')">
+                <div class="vm" style="display:table-row;">
+                    <div class="td">一行文字</div>
+                    <div class="td"><p>&lt;p&gt;block水平元素<br>两行元素&lt;/p&gt;</p></div>
+                    <div class="td"><img src="img/mm1.jpg" width="256"></div>
+                    <div class="td"><span class="dib vb">inline-block水平</span></div>
+                </div>
+			</div>
+            <p class="dn tc"><img src="img/ask.gif" width="100" class="vm">为何块状文字居中了而内联的图片不是垂直居中？</p>
+            <p class="fade out tc">td单元格不足高度会用padding填补</p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：vertical-align文本类属性值</h1>
+        <h2>——说说vertical-align:text-top/text-bottom</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+var eleFt = $("#fontSize")[0];
+$("#rangeFt")[0].onchange = function() {
+	eleFt.style.fontSize = this.value + "px";	
+};
+</script>
+</body>
+</html>

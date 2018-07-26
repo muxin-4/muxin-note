@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1,maximum-scale=1.0,user-scalable=no" />
+    <title>飞翔的小球</title>
+    <style type="text/css">
+        *{padding: 0; margin: 0; list-style: none; text-decoration: none;}
+        body,
+        html{height: 100%}
+        header{position: fixed; top: 0; left: 0; z-index: 1; width: 100%; height: 50px; line-height: 50px; background: #eee; color: #000; font-size: 24px; text-align: center}
+        header .ball{display: none; position: absolute; width: 20px; height: 20px; border-radius: 50%; background-color: red; animation: clockwise .4s linear}
+        nav,
+        section{box-sizing: border-box; position: relative; height: 100%; padding: 50px 0; overflow: auto;}
+        nav{float: left; width: 100px; background: #a9a9a9}
+        nav li{height: 50px; line-height: 50px; text-align: center; border-bottom: 1px #eee solid}
+        nav li a{display: inline-block; width: 100%; height: 100%; color: #000}
+        nav li.active{background: #fff}
+        section ul li{height: 50px; margin-bottom: 2px; background: rgba(222, 222, 222, .6)}
+        section ul li>span{display: block}
+        section ul .dish-img{float: left; width: 50px; height: 100%; line-height: 50px; text-align: center; color: #fff; background: #FF6F00}
+        section ul .dish-name{box-sizing: border-box; width: 100%; height: 50px; padding: 0 80px 0 50px; background-color: #e8e8e8; background-clip: content-box}
+        section ul .handle-botton{display: flex; flex-flow: row nowrap; justify-content: space-around; align-items: center; float: right; width: 80px; height: 100%; text-align: center; background-color: #eee}
+        section ul .handle-botton>span{flex: 0 1 20px}
+        section ul .handle-botton span:not(:nth-child(2)){height: 20px;line-height: 20px;border-radius: 50%; color: #fff; background-color: #fa0; font-size: 16px}
+        footer{position: absolute; bottom: 0; left: 0; z-index: 1; height: 50px; width: 100%; background: #f0dac2}
+        footer .cart{position: relative; left: 15px; bottom: 10px; width: 50px; height: 50px; line-height: 50px; font-size: 13px; text-align: center; border-radius: 50%; color: #fff; background-color: #f55454;}
+        footer .cart .goods-num{position: absolute; top: 0; right: 0; display: inline-block; width: 20px; height: 20px; line-height: 20px; border-radius: 50%; background-color: #FF9000}
+        .cart-animation{animation: heartBeat .2s linear}
+        @keyframes heartBeat{0%{transform:scale(1)}50%{transform: scale(1.4)}100%{transform:scale(1)}}
+        ::-webkit-scrollbar{width: 4px; background-color: #ccc}
+        ::-webkit-scrollbar-track{box-shadow: 0 0 3px rgba(0, 0, 0, .1); border-radius: 10px; background-color: #ddd}
+        ::-webkit-scrollbar-thumb{border-radius: 10px; box-shadow: 0 0 6px rgba(0, 0, 0, .5); background-color: #666}
+    </style>
+</head>
+
+<body>
+<header>公告栏
+    <span class="ball" id="ball"></span>
+</header>
+<nav>
+    <ul></ul>
+</nav>
+<section>
+</section>
+<footer>
+    <div class="cart"id="cart">
+        <span>购物车</span>
+        <span id='goodsNum' class="goods-num">0</span>
+    </div>
+    <span id="totalCost" class="total-cost"></span>
+</footer>
+<script type="text/template" id='sectionTemp'>
+    <ul>
+        $
+        <li>
+            <span class="dish-img">图片</span>
+            <span class="handle-botton">
+					<span>-</span>
+					<span>0</span>
+					<span>+</span>
+				</span>
+            <span class="dish-name"></span>
+        </li>
+        $
+    </ul>
+</script>
+<script type="text/template" id='navTemp'>
+    <li onclick="changeNavActive(this)" index="&">
+        <a href="javascript:void(0)">{i}</a>
+    </li>
+</script>
+<script>
+    var navTemp = document.querySelector("#navTemp")
+    var sectionTemp = document.querySelector("#sectionTemp")
+    var navUl = document.querySelector("nav ul")
+    var sectionUl = document.querySelector("section")
+    var ball = document.querySelector("#ball")
+    var cart = document.querySelector("#cart")
+    var activeIndex = 1
+    var category = 15
+    var everyCategoryNum = 6
+    var resultData = []
+    var ballCoords = {
+        pageX: 0,
+        pageY: 0
+    }
+    var init = (function () {
+        // 初始化左边的导航栏
+        for (var i = category; i > 0; i--) {
+            navUl.innerHTML += navTemp.innerHTML.replace(/\{(.*)\}/g, function (match, c) {
+                return '分组' + (category - i + 1)
+            }).replace(/\&/g, function (match) {
+                return (category - i + 1)
+            })
+        }
+        navUl.firstElementChild.className = 'active'
+        // 初始化右边的分组内容
+        for (var i = category; i > 0; i--) {
+            sectionUl.innerHTML += sectionTemp.innerHTML.replace(/\s+(?!\w+)/g, '').replace(/(.*)\$(.*)\$(.*)/g, function (
+                match, a, b, c) {
+                var tempUl = ""
+                var a = a.replace(/>$/g, ' id=' + '\'' + 'category' + (category - i + 1) + '\'' + '>')
+                for (var j = everyCategoryNum; j > 0; j--) {
+                    tempUl += b.replace(/<li>/g, function (match) {
+                        return '<li' + ' id=' + '\'' + 'category' + (category - i + 1) + '_child' + (everyCategoryNum - j + 1) +
+                            '\'' + '>'
+                    })
+                }
+                return a + tempUl + c
+            })
+        }
+        // 初始化“图片”颜色
+        var allDishImg = document.querySelectorAll(".dish-img");
+        [].slice.call(allDishImg).forEach(function (item) {
+            item.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
+        });
+        // 为“加”与“减”绑定事件
+        [].slice.call(document.querySelectorAll(".handle-botton :first-child")).forEach(item => {
+            item.addEventListener('click', reduce, false)
+    });
+        [].slice.call(document.querySelectorAll(".handle-botton :last-child")).forEach(item => {
+            item.addEventListener('click', add, false)
+    })
+    })()
+    var total = {
+        totalNum: function () {
+            var num = 0
+            resultData.forEach(item => {
+                item.category.categoryChild.forEach(elem => {
+                num += elem.num
+        })
+        })
+            return num
+        }
+    }
+    var findParentNodeId = function (node, type) {
+        return !(node.nodeName.toLowerCase() === type) ? arguments.callee(node.parentNode, type) : (function () {
+            return node
+        })()
+    }
+    var findDataAdd = function (node) {
+        var categoryId, categoryChildId
+        categoryId = resultData.find(x => x.category.id === findParentNodeId(node, 'ul').id);
+        categoryId && (categoryChildId = categoryId.category.categoryChild.find(x => x.id === findParentNodeId(node, 'li').id)) &&
+        ++categoryChildId.num;
+        categoryId && !categoryChildId && categoryId.category.categoryChild.push({
+            id: findParentNodeId(node, 'li').id,
+            num: 1
+        });
+        !categoryId && resultData.push({
+            category: {
+                id: findParentNodeId(node, 'ul').id,
+                categoryChild: [{
+                    id: findParentNodeId(node, 'li').id,
+                    num: 1
+                }]
+            }
+        })
+        return +node.previousElementSibling.innerHTML + 1
+    }
+    var findDataReduce = function (node) {
+        if (node.nextElementSibling.innerHTML <= 0) {
+            return 0
+        }
+        var categoryId = {
+            index: resultData.findIndex(x => x.category.id === findParentNodeId(node, 'ul').id),
+        instance: resultData.find(x => x.category.id === findParentNodeId(node, 'ul').id)
+    }
+        var categoryChildId = {
+            index: categoryId.instance.category.categoryChild.findIndex(x => x.id === findParentNodeId(node, 'li').id),
+        instance: categoryId.instance.category.categoryChild.find(x => x.id === findParentNodeId(node, 'li').id)
+    };
+        !(--categoryChildId.instance.num) && categoryId.instance.category.categoryChild.splice(categoryChildId.index, 1);
+        !categoryId.instance.category.categoryChild.length && resultData.splice(categoryId.index, 1);
+
+        return +node.nextElementSibling.innerHTML - 1
+    }
+    var assign = {
+        totalNum: function () {
+            document.querySelector("#goodsNum").innerHTML = total.totalNum()
+        }
+    }
+    var changeNavActive = function (node) {
+        var navLi = [].slice.call(document.querySelectorAll("nav li")),
+            curIndex = node.getAttribute('index');
+        navLi[activeIndex-1].className = navLi[activeIndex-1].className.replace(/active/g, '');
+        scrollAnimation(+activeIndex, +curIndex, 1000)
+        activeIndex = curIndex
+        navLi[activeIndex-1].className += ' active'
+    }
+    var flyBall = {
+        cartCords: {
+            x: 15 + 50 / 2,
+            y: document.documentElement.clientHeight - (10 + 50 / 2)
+        },
+        ballSelfCords: {
+            x: 20,
+            y: 20
+        },
+        delta: function () {
+            return {
+                deltaX: Math.abs(ballCoords.pageX - this.cartCords.x),
+                deltaY: Math.abs(ballCoords.pageY - this.cartCords.y)
+            }
+        },
+        step: function () {
+            return {
+                x: -(Math.pow(this.delta().deltaX, 2) - Math.pow(this.delta().deltaY, 2)) / 2 / this.delta().deltaX + 'px',
+                y: this.delta().deltaY + 'px',
+                angle: -(180 - 2 * Math.atan2(this.delta().deltaY, this.delta().deltaX) / Math.PI * 180)
+            }
+        },
+        keyFrames: function () {
+            var broswerPre = ['', '-webkit-']
+            broswerPre.forEach((item, index) => {
+                var temp = `@${item}keyframes clockwise {` +
+                    `0% {transform: rotate(0deg);transform-origin: 0px 0px;}` +
+                    `100% {transform: rotate(${this.step().angle}deg);transform-origin: ${this.step().x} ${this.step().y};}`
+                broswerPre.fill(temp, index, index + 1)
+        })
+            return broswerPre.join()
+        },
+        addStyle: function (str) {
+            var head = document.getElementsByTagName('head')[0]
+            var firstStyle = head.querySelectorAll('style')[0]
+            var style = document.createElement('style')
+            style.type = 'text/css'
+            style.id = 'flyAnimation'
+            try {
+                style.appendChild(document['createTextNode'](str))
+            } catch (ex) {
+                style.styleSheet.cssText = str
+            }
+            head.insertBefore(style, firstStyle)
+        },
+        changeStyle() {
+            var flyAnimationById = document.querySelector('#flyAnimation')
+            flyAnimationById.innerHTML = this.keyFrames()
+        },
+        flyToHigh: function () {
+            var keyFrames = this.keyFrames()
+            var flyAnimationById = document.querySelector('#flyAnimation')
+            this.dispalyBall(true)
+            flyAnimationById ? this.changeStyle() : this.addStyle(keyFrames)
+        },
+        dispalyBall: function (bool) {
+            ball.style.cssText = 'top:' + ballCoords.pageY + 'px;' + 'left:' + ballCoords.pageX + 'px;' + 'display:' + (bool ?
+                    'block;' : 'none;')
+            ball.addEventListener('animationend', function () {
+                ball.style.cssText += 'display:none;'
+                cart.className += ' cart-animation'
+            })
+        }
+    }
+    function scrollAnimation(from, to, time) {
+        var fromOffsetTop = document.querySelector('#category' + from).offsetTop,
+            toOffsetTop = document.querySelector('#category' + to).offsetTop,
+            frameTime = 40,
+            speed = (toOffsetTop - fromOffsetTop) / (time / frameTime),
+            temp = fromOffsetTop;
+        var timeout = setInterval(function () {
+            sectionUl.scrollTop = temp;
+            (((temp += speed) - toOffsetTop) / speed) > 0 && clearTimeout(timeout);
+        }, frameTime)
+    }
+    function add(event) {
+        event.target.previousElementSibling.innerHTML = findDataAdd(event.target)
+        assign.totalNum()
+        ballCoords = {
+            pageX: event.pageX - flyBall.ballSelfCords.x / 2,
+            pageY: event.pageY - flyBall.ballSelfCords.x / 2
+        }
+        flyBall.flyToHigh()
+        cart.className = cart.className.replace(/cart-animation/g, '')
+    }
+
+    function reduce(event) {
+        event.target.nextElementSibling.innerHTML = findDataReduce(event.target)
+        assign.totalNum()
+    }
+</script>
+</body>
+
+</html>

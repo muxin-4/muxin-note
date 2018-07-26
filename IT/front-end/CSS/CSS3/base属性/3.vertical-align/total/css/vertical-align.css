@@ -1,0 +1,234 @@
+img {
+	vertical-align: baseline;
+}
+.center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+.slidedown-p {
+	max-height: 0;
+	margin: 0;
+	overflow: hidden;
+}
+.active .slidedown-p {
+	max-height: 40px;
+	margin: 5px 0 1em;
+}
+.max-width {
+	max-width: 0;
+}
+big, .big {
+	font-size: 150%;
+}
+
+.cell [type=range] {
+	width: 100%;
+}
+.hover-span span {
+	color: #cd0000;
+}
+.cover-border {
+	border: 2px solid red;
+	min-height: 20px;
+	position: absolute;
+	left:0; right:0;
+	top: 80px;
+}
+.rel .cover-border {
+	right: auto;
+}
+.cover-rel1 .cover-border {
+	top: -60px;
+	background-color: rgba(255,255,255,.8);
+	padding: 0 5px;
+	font-size: 80%;
+	color: #333;
+}
+.cover-rel1 .cover-border:first-child {
+	left: 120px;
+}
+.cover-rel1 .cover-border:last-child {
+	left: 50%;
+	transform: translateX(-50%);
+}
+.cover-border line {
+	border-top: 2px solid red;
+	position: absolute;
+}
+.cover-rel1 .cover-border:first-child line {
+	width: 60px;
+	right: 0;
+	transform-origin: top right;
+	transform: rotate(-235deg);
+}
+.cover-rel1 .cover-border:last-child line, .cover-rel2 .cover-border:first-child line {
+	width: 40px;
+	left: 50%; top: -2px;
+	transform-origin: left bottom;
+	transform: rotate(-90deg);
+}
+.cover-rel2 .cover-border:first-child {
+	left: 50%; top: -210px;
+	transform: translateX(-50%);
+}
+.cover-rel2 .cover-border:last-child {
+	left: 128px;
+	transform: translateX(-50%);
+}
+.test-vm {
+	height: 256px;
+	background-color: #eee;
+	text-align: center;
+}
+.test-list {
+	width: 300px;
+	margin: -1px auto 0;
+	padding: 10px;
+	border: 1px solid #ccc;
+	font-size: 14px;
+}
+style[contenteditable] {
+    display:block;
+   	padding: 10px;
+	margin: 10px auto;
+    border:1px dashed #ccc; 
+    background-color:#f5f5f5; 
+    color:#000; 
+    font-family:Monaco, monospace; 
+    white-space:pre-wrap; 
+    word-wrap:break-word;
+}
+.test-list + pre {
+	width: 300px; position: absolute;
+	left: 0; top: 0;
+	font-size: 80%;
+}
+.imgcover {
+	position: absolute; top: 50%;
+	padding: 20px 95px;
+	color: #fff;
+	background-color: rgba(0,0,0,.35);
+	transform: translateY(-50%);
+	margin: 0;
+	font-weight: 400;
+}
+.showline {
+	display: inline-block;
+	width: 0;
+	outline: 1px dashed red;
+}
+.ie-v-mark {
+	position: absolute;
+	padding: 12px 5px;
+	margin-left: -85px;
+	border: 3px solid;
+	border-radius: 50%;
+	background-color: rgba(255,255,255,.75);
+}
+.justify-fix {
+	display: inline-block;
+	width: 250px;	
+}
+.outline .justify-fix {
+	outline: 1px dashed red;
+}
+.children-vt > img,
+.children-vt > .justify-fix {
+	vertical-align: top;
+}
+
+.dib-baseline {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	outline: 1px solid #34538b;
+	background-color: #f0f3f9;
+}
+.dib-bottom, .dib-top {
+	display: inline-block;
+	background-color: #FFEDED;
+}
+.dib-bottom {
+	vertical-align: bottom;
+}
+.dib-top {
+	vertical-align: top;
+}
+.border .dib-baseline,
+.border .dib-bottom,
+.border .dib-top {
+	width: 120px;
+	height: 120px;
+	outline: none;
+	border: 1px solid #34538b;
+}
+.border .dib-bottom, .border .dib-top {
+	border-color: #cd0000;
+}
+
+.btn-lh0 {
+	position: absolute;
+	left: 35%;
+	bottom: 36px;
+}
+.what-this {
+	position: absolute;
+	padding: 0 5px;
+	border: 1px solid red;
+	background-color: #fff;
+	left: 260px; bottom: -63px;
+	line-height: 1.5;
+}
+.what-this::before {
+	content:'';
+	position: absolute;
+	width: 60px;
+	border-top: 1px solid red;
+	transform: rotate(30deg);
+	transform-origin: top left;
+	left: -52px;
+	top: -31px;
+}
+.drab {
+	cursor: -webkit-grab;
+}
+.drab:active {
+	cursor: -webkit-grabbing;
+}
+
+.last-btn > .btn {
+	height: 1.5em;
+}
+.last-btn > .btn:first-child {
+	line-height: 0;
+}
+
+.bge0 td:first-child, .bge0 .td:first-child {
+	border: 2px solid #cd0000;
+}
+
+.td {
+	display: table-cell;
+}
+.vb .td {
+	vertical-align: bottom;
+}
+.vt .td {
+	vertical-align: top;
+}
+.vm .td {
+	vertical-align: middle;
+}
+.f32 {
+	font-size: 32px;
+}
+.f40 {
+	font-size: 40px;
+}
+.abs_line {
+	position: absolute;
+	left: 0; right: 0;
+	border-top: 1px solid #f00;
+}

@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第五回：深入理解vertical-align文本类属性值</h1>
+        <h2>——说说vertical-align:text-top/text-bottom</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="center nowrap mt-20">
+            <h1 class="mt-20">定义</h1>
+            <div class="main">
+                <ol>
+                    <li><strong>vertical-align:text-top</strong><p>盒子的顶部和父级content area的顶部对齐。</p></li>
+                    <li><strong>vertical-align:text-bottom</strong><p>盒子的低部和父级content area的低部对齐。</p></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page out" data-callback="fnPosLine">
+	<div class="content only-header">
+        <div class="main">
+       		<p class="bge0 ftRadio">
+            	<i id="line1" class="abs_line"></i>
+            	<img src="img/mm1.jpg" width="256" height="190" style="vertical-align:text-top;">
+                <span class="f20">20px</span>
+                <span class="f24">24px</span>
+                <span class="f32">32px</span>
+                <span class="f40">40px</span>
+            </p>
+            <p class="bge0 ftRadio">
+            	<i id="line2" class="abs_line"></i>
+            	<img src="img/mm1.jpg" width="256" height="190" style="vertical-align:text-bottom;">
+                <span class="f20">20px</span>
+                <span class="f24">24px</span>
+                <span class="f32">32px</span>
+                <span class="f40">40px</span>
+            </p>
+            <p id="ftRadioX">
+            	父级的font-size大小： 
+            	<input type="radio" id="ft20" value="20" name="ft">
+                <label class="radio" for="ft20"></label><label for="ft20" class="mr20">20px</label>
+                <input type="radio" id="ft24" value="24" name="ft" checked>
+                <label class="radio" for="ft24"></label><label for="ft24" class="mr20">24px</label>
+                <input type="radio" id="ft32" value="32" name="ft">
+                <label class="radio" for="ft32"></label><label for="ft32" class="mr20">32px</label>
+                <input type="radio" id="ft40" value="40" name="ft">
+                <label class="radio" for="ft40"></label><label for="ft40">40px</label>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main center">
+       		<h2 class="nowrap mt-20">盒子的顶部(底部)和<span class="highlight">父级</span><span class="highlight">content area</span>的顶部(底部)对齐</h2>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20" style="right:-5%;">
+            	<li>元素vertical-align垂直对齐的位置与前后的元素都没有关系；</li>
+                <li>元素vertical-align垂直对齐的位置与行高line-height没有关系，至于字体大小font-size有关；</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div id="lhVtPage" class="page out" data-callback="fnPosLine">
+	<div class="content only-header">
+        <div class="main">
+       		<p class="bge0">
+            	<i id="line1" class="abs_line"></i>
+            	<img src="img/mm1.jpg" width="200" style="vertical-align:text-top;">
+                <span class="f20">20px</span>
+                <span class="f24">24px</span>
+                <span class="f32">32px</span>
+                <span class="f40">40px</span>
+            </p>
+            <p class="bge0">
+            	<i id="line2" class="abs_line"></i>
+            	<img src="img/mm1.jpg" width="200" style="vertical-align:text-bottom;">
+                <span class="f20">20px</span>
+                <span class="f24">24px</span>
+                <span class="f32">32px</span>
+                <span class="f40">40px</span>
+            </p>
+            <p>
+            	行高(0↔50)(<span id="nowLH">36</span>)： <input type="range" id="lhChgRange" min="0" value="36" max="50" style="width:400px;">
+            </p>
+            <p id="radioVT">
+                20px文字vertical-align: <input type="radio" id="radioBottom" value="bottom" name="radiovt">
+                <label class="radio" for="radioBottom"></label><label for="radioBottom" class="mr20">bottom</label>
+                <input type="radio" id="radioMiddle" value="middle" name="radiovt">
+                <label class="radio" for="radioMiddle"></label><label for="radioMiddle" class="mr20">middle</label>
+                <input type="radio" id="radioTop" value="top" name="radiovt">
+                <label class="radio" for="radioTop"></label><label for="radioTop">top</label>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">        
+        <div class="main">
+       		<h1 class="center" style="margin-top:-40px;">实际作用</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<h1 class="center" style="margin-top:-40px; right:-5%;">表情图片(或原始尺寸背景图标)与文字的对齐效果。</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center">
+            	<p class="f16 mt-20 pl10"><img id="faceImg" src="http://mat1.gtimg.com/www/mb/images/face/13.gif" height="24">龇牙咧嘴(vertical-align:<span id="faceVtValue">baseline</span>)<img id="helpImg" src="img/mm1.jpg" width="200" class="vt" style="display:none;"></p>
+                <ul id="chgFaceVt">
+                	<li data-vt="baseline" class="highlight">使用基线的问题在于图标偏上；</li>
+                    <li data-vt="bottom" class="highlight">使用顶线/底线的问题在于收<a href="javascript:" class="tdn otherInline">其他内联元素</a>影响，造成巨大定位偏差；</li>
+                    <li data-vt="middle" class="highlight">使用中线也是不错的选择，但需要恰好的字体大小以及兼容性要求不高；</li>
+                    <li data-vt="text-bottom" class="highlight">使用文本底部较合适，不受行高以及<a href="javascript:" class="tdn otherInline">其他内联元素</a>影响；</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：深入理解vertical-align上标下标类</h1>
+        <h2>——也就是vertical-align:sub/super;</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+var golbalPage = null;
+var fnPosLine = function(page) {
+	if (page) golbalPage = page;
+	page = page || golbalPage;
+	var line1 = page.querySelector('#line1'), line2 = page.querySelector('#line2');
+	line1.style.top = line1.nextElementSibling.offsetTop + 'px';
+	line2.style.top = line2.nextElementSibling.offsetTop + line2.nextElementSibling.clientHeight + 'px';
+};
+$('#ftRadioX input').forEach(function(radio) {
+	radio.addEventListener('click', function() {
+		var ft = this.value;
+		$('.ftRadio').forEach(function(p) {
+			p.style.fontSize = ft + 'px';	
+		});
+		fnPosLine();
+	});		
+});
+var lhVtPage = document.getElementById('lhVtPage'), f20 = lhVtPage.querySelectorAll('.f20');
+$("#radioVT input").forEach(function(radio) {
+	radio.addEventListener("click", function() {
+		f20[0].style.verticalAlign = this.value;
+		f20[1].style.verticalAlign = this.value;
+	});
+});
+var nowLH = $("#nowLH")[0];
+$("#lhChgRange")[0].onchange = function() {
+	nowLH.innerHTML = this.value;
+	var bge0 = lhVtPage.querySelectorAll('p.bge0');
+	bge0[0].style.lineHeight = this.value + "px";
+	bge0[1].style.lineHeight = this.value + "px";
+	fnPosLine();
+};
+
+var faceImg = $("#faceImg")[0], helpImg = $("#helpImg")[0], faceVtValue = $("#faceVtValue")[0];
+$("#chgFaceVt li").forEach(function(li) {
+	li.addEventListener("click", function() {
+		var vt = this.getAttribute('data-vt');	
+		if (faceImg) faceImg.style.verticalAlign = vt;
+
+		faceVtValue.innerHTML = vt;		
+	});
+});
+
+$(".otherInline").forEach(function(a) {
+	a.addEventListener("click", function() {
+		if (this.innerHTML == '行高') {
+			var lh = helpImg.parentNode.style.lineHeight;
+			if (lh == "14px") {
+				helpImg.parentNode.style.lineHeight = '';
+			} else {
+				helpImg.parentNode.style.lineHeight = '14px';
+			}
+			return;	
+		}
+		if (helpImg.style.display != 'none') {
+			helpImg.style.display = "none";	
+		} else {
+			helpImg.style.display = "inline";	
+		}
+	});	
+});
+</script>
+</body>
+</html>

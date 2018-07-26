@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第二回：vertical-align起作用的前提</h1>
+        <h2>——探讨各种display值对vertical-align的影响</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1"><img src="img/ask.gif" class="abs" width="100" height="100" style="margin-left:-120px;">为什么我设置了<br>vertical-align<br>却没作用？</h1>
+            <img src="img/2/no-effect.png" width="440">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1">因为，vertical-align起作用有前提条件。</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <img src="img/2/ask.png" width="300" class="center">
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main center">
+        	<div class="cover-border fade out"></div>
+       		<img src="img/2/name-value.png" width="640">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1 nowrap">应用于inline水平以及'table-cell'元素。</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content">
+        <div class="center nowrap">
+        	<h2 class="mt-1">inline水平</h2>
+            <ul>
+                <li>inline: &lt;img&gt;, &lt;span&gt;,  &lt;strong&gt;,  &lt;em&gt;, 未知元素, ...</li>
+                <li>inline-block: &lt;input&gt;<span class="gray">(IE8+)</span>,  &lt;button&gt;<span class="gray">(IE8+)</span>, ...</li>
+            </ul>
+            <h2>'table-cell'元素</h2>
+            <ul>
+                <li>table-cell: &lt;td&gt;</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1 nowrap"><sup class="abs gray" onMouseOver="this.classList.add('hover-span')" style="margin-top:-60px;"><span>默认状态</span>下：</sup>图片、按钮、文字和单元格。</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1 nowrap">1. display<span class="out" data-display="inline">: 更改元素的显示水平</span></h1>
+            <h1 class="mt-1 nowrap out">2. CSS声明更改元素的显示水平</span></h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <img src="img/2/example.gif" width="200" class="center">
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1 nowrap">1. 直接display属性设置</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+        	<p class="vm tc bge0" style="height:256px;"><img src="img/mm1.jpg" width="256"></p>
+        	<pre>&lt;p>&lt;img src="小公主.jpg">&lt;/p></pre>
+            <pre>p { vertical-align: middle; }</pre>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+        	<p class="tc"><span>左青虫</span> <img src="img/mm1.jpg" id="beBlock" class="vm" width="256"> 右白鼠</p>
+            <div class="rel cover-rel1 fade out"><span class="cover-border"><line></line>匿名inline元素</span> <span class="cover-border"><line></line>inline水平元素</span></div>
+            <pre>左青虫 &lt;img src="小公主.jpg"<span id="beBlockSpan" class="dn"> style="display:block;"</span>> 右白鼠</pre>
+            <pre>img { vertical-align: middle; }</pre>       		
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1 nowrap">2. CSS声明间接改变display水平</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+        	<p class="fix"><img src="img/mm1.jpg" id="beFloat" class="vm" width="256"> 你是我的小呀小公主~</p>
+            <pre>&lt;img src="小公主.jpg"<span id="beFloatSpan" class="dn"> style="float:left;"</span>> 你是我的小呀小公主~</pre>
+            <pre>img { vertical-align: middle; }</pre>
+            <p><button id="showDisplay">图片此时的display水平是：</button><span id="displayImage" class="ml20"></span></p>    		
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+        	<p style="height:200px;"><img src="img/mm1.jpg" id="beAbs" class="vm" width="256"> 你是我的小呀小公主~</p>
+            <pre>&lt;img src="小公主.jpg"<span id="beAbsSpan" class="dn"> style="position:absolute;"</span>> 你是我的小呀小公主~</pre>
+            <pre>img { vertical-align: middle; }</pre>
+            <p><button id="showDisplay2">图片此时的display水平是：</button><span id="displayImage2" class="ml20"></span></p>    		
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content center">
+    	<div class="dib tc">
+            <img src="img/2/no.png" width="200">
+            <p>我说的失效不是这一出！</p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <p class="test-vm"><img src="img/mm1.jpg" class="vm" width="256"></p>
+        <pre>img { vertical-align: middle; }</pre>
+        <p>图片明明vertical-align:middle了，为什么不垂直居中啊？ <img src="http://mat1.gtimg.com/www/mb/images/face/18.gif" class="vm" height="24"></p>
+        <p class="fade out"><button onClick="this.parentNode.parentNode.querySelector('p').style.lineHeight='256px'">行高设为容器高度值</button></p>
+        <p class="fade out">不是vertical-align:middle没起作用，而是太短，不够居中。</p>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1"><img src="img/ask.gif" class="abs" width="100" height="100" style="margin-left:-120px;">为什么<br>display:table-cell<br>却可以呢？</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center pl30">
+       		<h1 class="mt-1 pl30 ml30"><img src="img/2/it's-u.png" class="abs" width="130" style="margin-left:-170px;">告诉你，起作用的是table-cell自身！</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <p class="test-vm cell"><img src="img/mm1.jpg" class="vm" width="256"></p>
+        <pre>&lt;p>&lt;img src="小公主.jpg">&lt;/p></pre>
+        <pre>p { display: table-cell; }
+img { vertical-align: middle; }</pre>
+        <p>图片照样不局中！</p>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <p class="test-vm cell vm"><img src="img/mm1.jpg" width="256"></p>
+        <pre>&lt;p>&lt;img src="小公主.jpg">&lt;/p></pre>
+        <pre>p { display: table-cell; vertical-align: middle; }</pre>
+        <p>图片近似垂直居中！</p>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h1 class="mt-1">实战：个数不定文字内容和图片垂直居中对齐</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<img src="img/2/center.png" width="260">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main pt20">
+       		<div class="test-list">
+            	<span>文字</span>
+            	<img src="img/mm1.jpg" width="78">
+            </div>
+            <div class="test-list">
+            	<span>文字<br>文字</span>
+            	<img src="img/mm1.jpg" width="78">
+            </div>
+            <div class="test-list">
+            	<span>文字<br>文字<br>文字</span>
+            	<img src="img/mm1.jpg" width="78">
+            </div>
+            <div class="test-list">
+            	<span>文字<br>文字<br>文字<br>文字</span>
+            	<img src="img/mm1.jpg" width="78">
+            </div>
+            <pre>&lt;div class="test-list">
+    &lt;span>文字&lt;/span>
+    &lt;img src="小公主.jpg">
+&lt;/div></pre>
+            <style contenteditable="true">.test-list > span {}
+.test-list > img {}</style>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：vertical-align与line-height</h1>
+        <h2>——有点深度，有点看头</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+var coverRel = $('.cover-rel1')[0];
+$("#beBlock")[0].onclick = function() {
+	this.style.display = "block";
+	$("#beBlockSpan")[0].className = '';
+	coverRel.classList.add('cover-rel2');
+	coverRel.innerHTML = coverRel.innerHTML.replace('inline水平', 'block水平');
+};
+
+var beFloat = $("#beFloat")[0], displayImage = document.getElementById("displayImage");
+beFloat.onclick = function() {
+	this.style['float'] = "left";
+	$("#beFloatSpan")[0].className = '';
+};
+$("#showDisplay")[0].onclick = function() {
+	displayImage.innerHTML = window.getComputedStyle(beFloat).display;
+};
+
+var beAbs = $("#beAbs")[0], displayImage2 = document.getElementById("displayImage2");
+beAbs.onclick = function() {
+	this.style['position'] = "absolute";
+	$("#beAbsSpan")[0].className = '';
+};
+$("#showDisplay2")[0].onclick = function() {
+	displayImage2.innerHTML = window.getComputedStyle(beAbs).display;
+};
+$("body style")[0].addEventListener('keyup', function(event) {
+	event.stopPropagation();
+}, true);
+</script>
+</body>
+</html>

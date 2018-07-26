@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<area>
+	<area text="A">
+		<province text="安徽">
+			<city text="合肥"></city>
+			<city text="铜陵"></city>
+			<city text="黄山"></city>
+			<city text="芜湖"></city>
+		</province>
+	</area>
+	<area text="B">
+		<province text="北京"></province>
+	</area>
+	<area text="C">
+		<province text="重庆"></province>
+	</area>
+	<area text="F">
+		<province text="福建">
+			<city text="福州"></city>
+			<city text="厦门"></city>
+		</province>
+	</area>
+</area>

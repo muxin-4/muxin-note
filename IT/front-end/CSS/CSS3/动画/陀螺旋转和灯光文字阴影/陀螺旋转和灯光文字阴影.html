@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	.wrap{
+		width: 200px;
+		height: 400px;
+		margin:30px auto;
+	}
+	/*
+		transform-style: flat; //所有子元素在2d平面进行呈现；
+		transform-style: preserve-3d;
+		所有子元素在3d空间中呈现；
+	*/
+	.wrap .tuoluo{
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+	}
+	.wrap .tuoluo .tuoluo-top{
+		position: relative;
+		width: 100%;
+		height: 50%;
+	}
+	.tuoluo-top .face-top{
+		
+	}
+</style>
+<body>
+	<div class="wrap">
+		<div class="tuoluo">
+			<div class="tuoluo-top">
+				<div class="face-top"></div>
+				<div class="face-top"></div>
+				<div class="face-top"></div>
+				<div class="face-top"></div>
+				<div class="face-top"></div>
+				<div class="face-top"></div>
+			</div>
+			<div class="tuoluo-bottom">
+				<div class="face-bottom"></div>
+				<div class="face-bottom"></div>
+				<div class="face-bottom"></div>
+				<div class="face-bottom"></div>
+				<div class="face-bottom"></div>
+				<div class="face-bottom"></div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>

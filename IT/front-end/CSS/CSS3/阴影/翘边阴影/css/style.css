@@ -1,0 +1,25 @@
+.box {
+	width: 980px;
+	height: auto;
+	clear: both;
+	overflow: hidden;
+	margin: 20px auto;
+}
+
+.box li {
+	width: 300px;
+	height: 210px;
+	float: left;
+	margin: 20px 10px;
+	border: 2px solid #efefef;
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,.27), 0 0 60px rgba(0,0,0,.1) inset;
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,.27), 0 0 60px rgba(0,0,0,.1) inset;
+	box-shadow: 0 1px 4px rgba(0,0,0,.27), 0 0 60px rgba(0,0,0,.1) inset;
+}
+
+.box li img {
+	display: block;
+	width: 290px;
+	height: 200px;
+	margin: 5px;
+}

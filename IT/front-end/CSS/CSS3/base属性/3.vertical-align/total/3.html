@@ -1,0 +1,458 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+<style>
+.null.out {
+	visibility: hidden;
+}
+.null.in {
+	visibility: visible;
+}
+</style>
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第三回：vertical-align与line-height</h1>
+        <h2>——断背好基友</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">        
+        <div class="main">
+        	<p class="pt10"><img src="img/3/wengu.png" width="100"></p>
+        	<h2 class="mt-20">vertical-align百分比是相对于line-height值计算的</h2>
+            <pre>{
+  line-height: 30px;
+  vertical-align: -10%;
+}</pre>
+<pre class="fade out">{
+  line-height: 30px;
+  vertical-align: <span class="red">-3px;</span>    <span class="green">/* 30px <span class="fs">*</span> -10% */</span>  
+}</pre>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center tc">
+            <h2>通过现象看本质</h2>
+            <div class="main">
+                <p>随意一个标签，里面有个妹纸~</p>
+                <p onClick="this.className='bge0'"><img src="img/mm1.jpg" width="300"></p>
+                <p class="nowrap">vertical-align与line-height实际上已经在一起搞基了~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<div class="center">
+            	<h3 class="imgcover">对于内联元素，vertical-align与line-height虽然看不见，但实际上「到处都是」！</h3>
+            	<img src="img/3/anywhere.png" width="750">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="tc">
+            <h2>通过现象看本质</h2>
+            <div class="main">
+                <p class="nowrap">vertical-align与line-height实际上已经在一起搞基了~</p>
+                <p class="bge0"><img src="img/mm1.jpg" width="300"><span class="showline fade out" data-display="inline-block">&nbsp;</span></p>
+                <pre class="fade out">vertical-align: baseline; line-height: 1.5; font-size: 24px;</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out" data-callback="doFromNull">
+	<div class="content only-header">
+    	<div class="tc">
+            <h2>看清本质，对症下药</h2>
+            <div class="main">
+                <pre>vertical-align: baseline; line-height: 1.5; font-size: 24px;</pre>
+                <p class="bge0"><img src="img/mm1.jpg" width="300"><span class="showline">&nbsp;</span></p>
+                <p class="tc">对vertical-align或者line-height下药即可！</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out" data-form="null">
+	<div class="content only-header">
+		<div class="tc">
+            <h2>看清本质，对症下药</h2>
+            <div class="main">
+                <pre>vertical-align: baseline; line-height: 1.5; font-size: 24px;</pre>
+                <p class="bge0"><img src="img/mm1.jpg" width="300"><span class="showline">&nbsp;</span></p>
+                <p>1. 消灭vertical-align <img src="img/3/xiaomie.png" width="80" class="abs ml30 mt-20"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out" data-form="null">
+	<div class="content only-header">
+		<div class="tc">
+            <h2>看清本质，对症下药</h2>
+            <div class="main">
+                <pre>vertical-align: baseline; line-height: 1.5; font-size: 24px;</pre>
+                <p class="bge0"><img src="img/mm1.jpg" width="300" class="db auto"></p>
+                <pre>display: block; margin: auto;</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out" data-form="null">
+	<div class="content only-header">
+		<div class="tc">
+            <h2>看清本质，对症下药</h2>
+            <div class="main">
+                <pre>vertical-align: <span id="vtValue">baseline</span>; line-height: 1.5; font-size: 24px;</pre>
+                <p class="bge0"><img id="vtImage" src="img/mm1.jpg" width="300"><span class="showline">&nbsp;</span></p>
+                <p>2. 改变vertical-align</p>
+                <p id="radioVT">
+                	<input type="radio" id="radioBottom" value="bottom" name="radiovt">
+                    <label class="radio" for="radioBottom"></label><label for="radioBottom" class="mr20">bottom</label>
+                	<input type="radio" id="radioMiddle" value="middle" name="radiovt">
+                    <label class="radio" for="radioMiddle"></label><label for="radioMiddle" class="mr20">middle</label>
+                    <input type="radio" id="radioTop" value="top" name="radiovt">
+                    <label class="radio" for="radioTop"></label><label for="radioTop">top</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out" data-form="null" data-callback="doRemoveForm">
+	<div class="content only-header">
+		<div class="tc">
+            <h2>看清本质，对症下药</h2>
+            <div class="main">
+                <pre>vertical-align: baseline; line-height: <span id="lhValue">1.5</span>; font-size: <span id="ftValue">24px;</span></pre>
+                <p id="lhChangeX" class="bge0"><img src="img/mm1.jpg" width="300"><span class="showline">&nbsp;</span></p>
+                <p>3. 改变line-height</p>
+                <p id="radioFT">
+                	<input type="radio" id="radioLh0" value="lineHeight" name="radiolh">
+                    <label class="radio" for="radioLh0"></label><label for="radioLh0" class="mr20">line-height: 0</label>
+                	<input type="radio" id="radioFt0" value="fontSize" name="radiolh">
+                    <label class="radio" for="radioFt0"></label><label for="radioFt0">font-size: 0</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header tc">
+        <h1 class="mt10">基本现象衍生：(近似)垂直居中</h1>
+        <div class="main">
+        	<pre class="mt10">vertical-align: <span id="baseToMiddle">baseline</span>; line-height: 36px;</pre>
+       		<p class="bge0"><img src="img/mm1.jpg" width="300"><span class="showline">&nbsp;</span></p>
+            <p><a href="javascript:" id="lhLarge" class="btn btn-blue">行高250像素</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h1 class="tc">兼容性</h1>
+        <div class="main">
+        	<p class="tc" style="word-spacing: -1.5em;">
+                <img src="img/chrome.png" width="200">
+                <img src="img/firefox.png" width="200">
+                <img src="img/opera.png" width="200">
+                <img src="img/safari.png" width="200">
+                <img src="img/ie.png" width="200"><span class="ie-v-mark red fade out">IE7+</span>
+        	</p>
+            <pre class="fade out"><del>&lt;p>&lt;img src="mm1.jpg">&lt;/p></del></pre>
+            <pre class="fade out">&lt;p>&lt;img src="mm1.jpg"><span class="green">&lt;!-- 这里要折行或空格 --&gt;</span>
+&lt;/p></pre>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <h2 class="tc">通过简单现象看复杂现象</h2>
+        <div class="main">
+            <p class="tc">text-align:justify任意数目列表两端对齐效果</p>
+            <pre class="f20">.justify-fix { display: inline-block; width: 250px; }</pre>
+            <pre class="f20">&lt;p style="text-align: justify;">
+    &lt;img src="img/mm1.jpg" width="250">
+    &lt;img src="img/mm1.jpg" width="250">
+    &lt;img src="img/mm1.jpg" width="250">
+    &lt;img src="img/mm1.jpg" width="250">
+    <span class="red">&lt;i class="justify-fix">&lt;/i>
+    &lt;i class="justify-fix">&lt;/i>
+    &lt;i class="justify-fix">&lt;/i></span>
+&lt;/p></pre>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="tc">
+            <h2>通过简单现象看复杂现象</h2>
+            <div class="main">
+                <p class="tj" onClick="if (this.className == 'tj') { this.classList.add('bge0'); } else { this.classList.add('outline'); }">
+                	<img src="img/mm1.jpg" width="250">
+                    <img src="img/mm1.jpg" width="250">
+                    <img src="img/mm1.jpg" width="250">
+                    <img src="img/mm1.jpg" width="250">
+                    <i class="justify-fix"></i>
+                    <i class="justify-fix"></i>
+                    <i class="justify-fix"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center">
+        	<h1 class="mt-20"><img src="img/ask.gif" width="100" class="vt mr20">为什么呢？</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="tc pt30">
+            <h1 class="pb30">不同的现象，相同的始作俑者</h1>
+            <h2 class="dib p5 pl20 pr20" style="outline: 2px solid red;">vertical-align &amp; line-height</h2>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="main tc">
+            <p id="justifyFix">
+                <input type="checkbox" id="checkboxJustifyLh" value="lh" name="justifyH">
+                <label class="checkbox" for="checkboxJustifyLh"></label><label for="checkboxJustifyLh">容器line-height: 0;</label>
+            </p>
+            <p id="justifyX" class="tj bge0 outline rel">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <span class="what-this fade out">这是什么鬼？</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="main">
+    		<h1 class="center mt-20">规范和文档</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<p>CSS2的可视化格式模型文档：</p>
+        <blockquote>The <span class="red">baseline</span> of an <span class="red">'inline-block'</span> is the baseline of its last line box in the normal flow, unless it has either no in-flow line boxes or if its 'overflow' property has a computed value other than 'visible', in which case the baseline is the bottom margin edge.</blockquote>
+        <blockquote><span class="red">'inline-block'</span>的<span class="red">基线</span>是正常流中最后一个line box的基线, 除非，这个line box里面既没有line boxes或者本身'overflow'属性的计算值而不是'visible', 这种情况下基线是margin底边缘。</blockquote>
+        <h2 class="tc"><img src="img/ask.gif" width="100" class="vm mr20">什么意思呢？</h2>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<img src="img/3/lizi.gif" width="200" class="center">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+        	<pre class="f20 mt10 mb10">.dib-baseline {
+  display: inline-block; width: 150px; height: 150px;
+  border: 1px solid #cad5eb; background-color: #f0f3f9;
+}</pre>
+			<pre class="f20 mt10">&lt;span class="dib-baseline">&lt;/span>
+&lt;span class="dib-baseline">x-baseline&lt;/span></pre>
+       		<p class="tc">
+            	<span class="dib-baseline"></span>
+                <span class="dib-baseline" onClick="this.innerHTML=this.innerHTML? '': 'x-baseline'">x-baseline</span>
+            </p>
+            <a href="javascript:" id="btn2Lh2" class="btn btn-blue btn-lh0 fade out">行高变0</a>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="main tc">
+            <p id="justifyFix2">
+            	<input type="checkbox" id="c2JustifyLh" value="lh" checked>
+                <label class="checkbox" for="c2JustifyLh"></label><label for="c2JustifyLh" class="mr30">容器line-height: 0;</label>
+                <input type="checkbox" id="c2JustifyVt" value="vt">
+                <label class="checkbox" for="c2JustifyVt"></label><label for="c2JustifyVt">元素vertical-align:top;</label>
+            </p>
+            <p id="justifyX2" class="tj bge0 outline rel" style="line-height:0;">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <img src="img/mm1.jpg" width="250">
+                <i class="justify-fix"></i>
+                <i class="justify-fix"></i>
+                <i class="justify-fix"><span id="x2" class="dn">x</span></i><span class="dib-baseline fade out" style="height:auto;" data-display="inline-block" onClick="this.style.display='none';document.getElementById('x2').className=''">x</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main mt30 pt30">
+            <h2 class="mt30 pt30 pct90 auto">
+            	<img src="img/3/xiaoxin.jpg" width="100" class="l mr20 mt5">
+                <div class="ovh">已知：2个相似inline-block按钮，一个行高0，一个行高正常, 默认的基线对齐。<br><br>提问：两个按钮UI表现是？</div>
+            </h2>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="main">
+    		<h1 class="center mt-20">对齐 or 不对齐？</h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main pt30 mt30">
+       		<h1 class="tc pt30 last-btn">
+            	<a href="javascript:" class="btn btn-blue">行高0</a>
+                <a href="javascript:" class="btn btn-blue">行高正常</a>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：vertical-align线类属性值深入理解</h1>
+        <h2>——深入理解vertical-align底线、顶线、中线的行为表现</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+var doFromNull = function(page) {
+	page.setAttribute('data-form', 'null');
+};
+
+var doRemoveForm = function(page) {
+	page.removeAttribute('data-form');
+};
+
+var vtValue = document.getElementById('vtValue'), vtImage = document.getElementById('vtImage');
+$("#radioVT input").forEach(function(radio) {
+	radio.addEventListener("click", function() {
+		vtValue.classList.add('red');
+		vtValue.innerHTML = this.value;
+		vtImage.style.verticalAlign = this.value;
+	});
+});
+
+var lhValue = document.getElementById('lhValue'), ftValue = document.getElementById('ftValue'), lhChangeX = document.getElementById('lhChangeX');
+$("#radioFT input").forEach(function(radio) {
+	radio.addEventListener("click", function() {
+		lhValue.classList.remove('red');
+		lhValue.innerHTML = '1.5';
+		ftValue.classList.remove('red');
+		ftValue.innerHTML = "24px";
+		if (/lh/i.test(this.id)) {
+			lhValue.classList.add('red');
+			lhValue.innerHTML = "0";
+		} else {
+			ftValue.classList.add('red');
+			ftValue.innerHTML = "0";
+		}
+		lhChangeX.style.lineHeight = lhValue.innerHTML;
+		lhChangeX.style.fontSize = ftValue.innerHTML;
+	});
+});
+
+var baseToMiddle = document.getElementById('baseToMiddle');
+baseToMiddle.addEventListener('click', function() {
+	this.classList.add('red');	
+	this.innerHTML = 'middle';
+	this.parentNode.parentNode.getElementsByTagName('img')[0].classList.add('vm');
+});
+
+document.getElementById('lhLarge').addEventListener('click', function() {
+	this.parentNode.parentNode.querySelector('p').style.lineHeight = this.innerHTML.replace(/\D/g, '') + 'px';
+});
+
+var justifyX = document.getElementById("justifyX");
+$("#justifyFix input").forEach(function(checkbox) {
+	checkbox.addEventListener("click", function() {
+		if (this.value == 'vt') {
+			justifyX.classList[this.checked? 'add': 'remove']('children-vt');
+		} else {
+			justifyX.style.lineHeight = this.checked? '0': '';
+		}
+	});
+});
+
+var justifyX2 = document.getElementById("justifyX2");
+$("#justifyFix2 input").forEach(function(checkbox) {
+	checkbox.addEventListener("click", function() {
+		if (this.value == 'vt') {
+			justifyX2.classList[this.checked? 'add': 'remove']('children-vt');
+		} else {
+			justifyX2.style.lineHeight = this.checked? '0': '';
+		}
+	});
+});
+
+$('#btn2Lh2')[0].onclick = function() {
+	var target = $('.dib-baseline')[1];
+	if (/0/.test(this.innerHTML)) {
+		target.style.lineHeight = '0px';
+		this.innerHTML = '行高还原';
+	} else {
+		target.style.lineHeight = '';
+		this.innerHTML = '行高0';
+	}
+	target.removeAttribute('onClick');
+};
+
+
+</script>
+</body>
+</html>

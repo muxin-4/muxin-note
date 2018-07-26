@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1109test</title>
+    <style>
+        .container{
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            line-height: 0;
+            font-size: 0;
+        }
+        .container div{
+            width: 100px;
+            height: 100px;
+            background-image: url("http://cdn.attach.qdfuns.com/notes/pics/201711/14/155033sauj7xrjahjxjpjd.png");
+            /*background-repeat: no-repeat;*/
+            display: inline-block;
+            position: relative;
+            top: 0;
+            left: 0;
+            transition: all 0.5s;
+        }
+        .container div:nth-of-type(3){
+
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+</div>
+<script>
+
+    var divs = [];
+    var container = document.getElementsByClassName("container");
+
+
+    for (var i = 0; i < 25; i ++) {
+        var num = Math.floor(Math.random()*200 - 100);
+        divs.push(document.createElement("div"));
+        divs[i].style.top = num + "px";
+        divs[i].style.left = num + "px";
+        divs[i].style.backgroundPosition = -i%5*100 + "px " + -Math.floor(i/5)*100 + "px";
+        console.log(divs[i].style.backgroundPosition);
+        container[0].appendChild(divs[i]);
+    }
+
+    container[0].onmouseenter = function () {
+        for (var i = 0; i < 25; i ++) {
+            divs[i].style.top = 0 + "px";
+            divs[i].style.left = 0 + "px";
+        }
+    };
+    container[0].onmouseleave = function () {
+        for (var i = 0; i < 25; i ++) {
+            var num = Math.floor(Math.random()*200 - 100);
+            divs[i].style.top = num + "px";
+            divs[i].style.left = num + "px";
+        }
+
+    }
+</script>
+</body>
+</html>

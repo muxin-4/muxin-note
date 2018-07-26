@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS深入理解之vertical-align</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="src/mobilebone.css">
+<link rel="stylesheet" href="src/mobilebone.animate.css">
+<link rel="stylesheet" href="src/quick-layout-min.css">
+<link rel="stylesheet" href="css/ppt.css">
+<link rel="stylesheet" href="css/vertical-align.css">
+</head>
+
+<body>
+<div class="page out">
+	<div class="content section-header">
+        <h1>第一回：vertical-align家族基本认识</h1>
+        <h2>——了解vertical-align支持的属性值以及组成</h2>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="center">
+       		<h2>inherit</h2>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main tc">
+       		<img src="img/1/four.jpg" width="400">
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20 liActive">
+            	<li><big>线类</big>
+                	<p class="slidedown-p trans"><span class="blue">baseline</span>, top, middle, bottom</p>
+                </li>
+                <li><big>文本类</big>
+                	<p class="slidedown-p trans">text-top, text-bottom</p>
+                </li>
+                <li><big>上标下标类</big>
+                	<p class="slidedown-p trans">sub, super</p>
+                </li>
+                <li><big>数值百分比类</big>
+                	<p class="slidedown-p trans">20px, 2em, 20%, ...</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<h1 id="innerTransWidth" class="center mt-20 nowrap">数值<span class="dib ovh max-width trans vt">类 + </span>百分比类</h1>
+        </div>
+    </div>
+</div>
+<div class="page out">
+	<div class="content only-header">
+        <div class="main tc">
+        	<img src="img/1/2.gif" class="rel zx1" width="50" style="margin:90px 0 0 -360px;">
+       		<img src="img/1/two.jpg" class="center" width="400">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20">
+            	<li class="big">共性</li>
+                <li class="big">五根指头不够用</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main">
+       		<ol class="center mt-20 liActive">
+            	<h1>共性</h1>
+            	<li class="big">都带数字
+                	<p class="slidedown-p trans f24"><span class="red">20</span>px, <span class="red">2</span>em, <span class="red">20</span>%, ...</p>
+                </li>
+                <li class="big">都支持负值
+                	<p class="slidedown-p trans f24"><span class="red">-</span>20px, <span class="red">-</span>2em, <span class="red">-</span>20%, ...</p>
+                </li>
+                <li class="big">行为表现一致</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center">
+            <h1 class="mt-20">行为表现机制</h1>
+            <div class="main">
+                <p class="b">一个文字和一个妹子：</p>
+                <p><span id="vValue">某妹子：</span><img src="img/mm1.jpg" style="vertical-align: baseline;" width="256"></p>
+                <p>请选择：<select id="vSelect" style="zoom: 2;">
+                    <option value="baseline">baseline</option>
+                    <option value="1px">1px</option>
+                    <option value="-1px">-1px</option>
+                    <option value="1em">1em</option>
+                    <option value="-1em">-1em</option>
+                </select></p>
+               <div class="h24" onClick="this.classList.add('active');"><p class="slidedown-p trans">在baseline对齐基础上上下偏移对应数值大小。</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center">
+            <h1 class="mt-20">百分比类的差异</h1>
+            <div class="main">
+                <p class="red nowrap">vertical-align的百分比值是相对于line-height计算的！</p>
+                <p class="b">一个文字和一个妹子 - again：</p>
+                <div class="fix">
+                	<div id="targetLH" class="l" style="line-height:0;">
+                    	<span id="vValue2">某妹子：</span><img src="img/mm1.jpg" style="vertical-align: 0%;" width="200">
+                    </div>
+                    <div class="cell pl30">
+                    	line-height[<span id="rangeValue1">0</span>px]: 
+                        <input type="range" id="range1" min="0" max="256" value="0">
+                        <p>
+                        	vertical-align[<span id="rangeValue2">0</span>%]:
+                            <input type="range" id="range2" min="-100" max="100" value="0">
+                        </p>
+                    </div>
+                </div>
+                <p class="fade out nowrap">IE6/IE7下vertical-align百分比值不支持小数line-height</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+    	<div class="center tc">
+        	<img src="img/1/bingmayong.png" width="300">
+            <p>vertical-align和line-height是一对好基友！</p>
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content only-header">
+        <div class="main tc">
+       		<img src="img/1/three.jpg" width="390">
+        </div>
+    </div>
+</div>
+
+<div class="page out">
+	<div class="content section-header">
+        <h1>下回预告：vertical-align起作用的前提</h1>
+        <h2>——探讨各种display值对vertical-align的影响</h2>
+    </div>
+</div>
+
+<script src="src/mobilebone.js"></script>
+<script src="src/mobilebone.ppt.js"></script>
+<script src="js/ppt.js"></script>
+<script src="js/vertical-align.js"></script>
+<script>
+$("#innerTransWidth")[0].addEventListener("click",function() {
+	this.querySelector('span').style.maxWidth = "150px";	
+});
+var vSelect = document.getElementById("vSelect"), vValue = document.getElementById("vValue");
+vSelect.onchange = function() {
+	vValue.style.verticalAlign = this.value;
+};
+
+var range1 = document.getElementById("range1"), range2 = document.getElementById("range2");
+var rangeValue1 = document.getElementById("rangeValue1"), rangeValue2 = document.getElementById("rangeValue2");
+var targetLH = document.getElementById("targetLH"), vValue2 = document.getElementById("vValue2");
+range1.onchange = function() {
+	rangeValue1.innerHTML = this.value;
+	targetLH.style.lineHeight = this.value + "px";
+};
+range2.onchange = function() {
+	rangeValue2.innerHTML = this.value;
+	vValue2.style.verticalAlign = this.value + "%";
+};
+
+</script>
+</body>
+</html>

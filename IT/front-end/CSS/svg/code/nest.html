@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>在网页中直接使用 SVG 标签</title>
+    </head>
+    <body>
+        <h1>Hello Nested SVG</h1>
+        <p>
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                width="200" height="200">
+                <!--Face-->
+                <circle cx="100" cy="100" r="90" fill="#39F" />
+                <!--Eyes-->
+                <circle cx="70" cy="80" r="20" fill="white" />
+                <circle cx="130" cy="80" r="20" fill="white" />
+                <circle cx="65" cy="75" r="10" fill="black" />
+                <circle cx="125" cy="75" r="10" fill="black"/>
+                <!--Smile-->
+                <path d="M 50 140 A 60 60 0 0 0 150 140" 
+                    stroke="white" stroke-width="3" fill="none" />
+            </svg>
+        </p>
+    </body>
+</html>

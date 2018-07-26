@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>分页页码--加入小图标</title>
+<style type="text/css">
+.page-icon{
+	margin:20px 0 0 0;
+	font-size:0;/*修复行内元素之间空隙间隔*/
+	text-align:center;
+}
+.page-icon a,.page-pre,.page-next{
+	border:1px solid #ccc;
+	border-radius:3px;
+	padding:4px 10px 5px;
+	font-size:14PX;/*修复行内元素之间空隙间隔*/
+	margin-right:10px;
+}
+.page-icon a{
+	text-decoration:none;
+	color:#005aa0;
+}
+.page-current{
+	color:#ff6600;
+	padding:4px 10px 5px;
+	font-size:14PX;/*修复行内元素之间空隙间隔*/
+}
+.page-pre{
+	color:#ccc;
+}
+.page-next i,.page-pre i{
+	cursor:pointer;
+	display:inline-block;
+	width:5px;
+	height:9px;
+	background:url(img/bg_hotsale.gif);
+}
+.page-pre i{
+	background-position:-80px -608px;
+	margin-right:3px;
+}
+
+.page-next i{
+	background-position:-62px -608px;
+	margin-left:3px;
+}
+.ellipsis{
+    font-size:14px;
+    border:none;
+    margin-left: 11px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="page-icon">
+	<span class="page-pre"><i></i>上一页</span>
+    <span class="page-current">1</span>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">7</a>
+    <span class="ellipsis">...</span>
+    <a href="#">199</a>
+    <a href="#">200</a>
+    <a class="page-next" href="#">下一页<i></i></a>
+</div>
+
+</body>

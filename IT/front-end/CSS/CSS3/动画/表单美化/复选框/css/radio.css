@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{font:12px/22px "微软雅黑";}
+a{text-decoration:none;color:#000000;}
+.type{width:340px;height:32px;border:1px solid #DFDFDF;margin:20px auto;}
+.type dl{height:32px;line-height:32px;padding-left:10px;}
+.type dl dt{font-weight:bold;float:left;} 
+.type dl dd{float:left;margin:0 10px 0 12px;position:relative;padding-left:20px;}
+.type dl dd a{display:block;}
+.type dl dd b{width:18px;height:18px;background:#666 url(../images/radiobutton.gif) no-repeat -14px -18px;display:block;position:absolute;left:0;top:6px;}
+.type dl dd a:hover{color:#CC0000;text-decoration:underline;}
+.type dl dd a:hover b{background-position:-14px -118px;}
+.type dl .selected b,.type dl .selected a:hover b{background-position:-14px -218px;}

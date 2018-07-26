@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test1 {
+            font-size: 36px;
+            line-height: 1px;
+            border: 1px solid #ccc;
+            background: #eee;
+        }
+        .test2 {
+            font-size: 0;
+            line-height: 36px;
+            border: 1px solid #ccc;
+            background: #eee;
+        }
+    </style>
+
+</head>
+<body>
+    <p>这是一行普通的文字，这里有个<em>em</em>标签。</p>
+    <p class="test1">这是一行普通的文字，这里有个<em>em</em>标签。</p>
+    <p class="test2">这是一行普通的文字，这里有个<em>em</em>标签。</p>
+
+
+    <script>
+        console.log(document.querySelector("p").clientHeight);
+        console.log(document.querySelector(".test1").clientHeight);
+        console.log(document.querySelector(".test2").clientHeight);
+    </script>
+</body>
+</html>

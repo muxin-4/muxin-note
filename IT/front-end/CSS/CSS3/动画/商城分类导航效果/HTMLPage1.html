@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			padding: 0;
+			font-size:10pt;
+			//兼容IE6
+			behavior:url(css/csshover.htc);
+		}
+		.topmenu{
+			display: block;
+			width: 220px;
+			border: 2px solid #e4393c;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.toptitle{
+			height: 40px;
+			line-height: 40px;
+			padding-left: 10px;
+			font-size: 11pt;
+			font-weight: bold;
+			text-align: left;
+			color:White;
+			background: #e4393c;
+			padding-left: 20px;
+		}
+
+		.topmenu li{
+			height: 30px;
+			line-height: 30px;
+			font-size: 11pt;
+			list-style-type: none;
+			text-align: left;
+			padding-left: 8px;
+			z-index: 3;
+			background: url(http://img.mukewang.com/5411027300014f0200220030.jpg)  center right no-repeat;
+		}
+
+		.topmenu li a{
+			text-decoration: none;
+			color: #313131;
+		}
+
+		.topmenu li a:hover{
+			text-decoration: underline;
+			font-weight: bold;
+			color:#e4393c;
+		}
+		
+		.topmenu li:hover{
+			border: 1px solid #DDD;
+			border-right: 0;
+			box-shadow:  0 0 8px #DDD;
+			-moz-box-shadow:  0 0 8px #DDD;
+			-webkit-box-shadow:  0 0 8px #DDD;
+			background-image: none;
+		}
+		.submenu{
+			display: none;
+			width: 715px;
+			left: 220px;
+			position: absolute;
+			top: 40px;
+			border: 1px solid #DDD;
+			z-index: 4;
+			background:white;
+			box-shadow:  0 0 8px #DDD;
+			-moz-box-shadow:  0 0 8px #DDD;
+			-webkit-box-shadow:  0 0 8px #DDD;
+		}
+
+		.leftdiv{
+			
+			float: left;
+			width: 490px;
+			margin: 5px;
+		}
+		.rightdiv{
+			background: white;
+			float: left;
+			width: 200px;
+			margin: 5px;
+
+		}
+		.topmenu li:hover .submenu{
+			 display: block;
+		}
+
+		.topmenu li:hover span{
+			background: white;
+			display: inline-block;
+			z-index: 20;
+			width: 20px;
+			height: 30px;
+			float: right;
+			position: relative;
+		}
+
+		.leftdiv dl{
+			display: block;
+			border-bottom: 1px solid #EEE;
+			padding-bottom: 6px;
+			overflow: hidden;
+		}
+		.leftdiv dl dt{
+			display: block;
+			float: left;
+			width: 60px;
+			text-align: right;
+			height: 22px;
+			line-height: 22px;
+			padding-right: 6px;
+		}
+		.left dl dt a{
+			color:#e4393c;
+			font-weight: bold;
+			text-decoration: underline;
+			font-size: 10pt;
+		}
+		.leftdiv dl dd{
+			display: block;
+			overflow: hidden;
+		}
+		.leftdiv dl dd a{
+			display: block;
+			float: left;
+			border-left: 1px solid #CCC;
+			color:#737373;
+			font-size: 9pt;
+			padding:0 8px;
+			height: 14px;
+			line-height: 14px;
+			margin: 4px 0;
+		}
+
+		.rightdiv dl dd{
+			margin: 3px 0;
+		}
+		.rightdiv dl dt{
+			color:#e4393c;
+			font-weight: bold;
+			font-size: 10pt;
+		}
+		.rightdiv dl dd a{
+			font-size: 9pt;
+			color:#737373;
+			line-height: 22px;
+		}
+
+		.rightdiv dl dd a:hover{
+			color:#737373;
+			font-weight: normal;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<ul class="topmenu">
+	    <div class="toptitle">
+	    	全部商品分类
+	    </div>
+		<li><a href="#">图书、音像、数字产品</a><span></span>
+			<div class="submenu">
+				<div class="leftdiv">
+					<dl>
+                        <dt><a href="#">电子书</a></dt>
+                        <dd>
+                            <a href="#">免费</a> <a href="#">小说</a> <a href="#">励志与成功</a> <a href="#">婚恋/两性</a>
+                            <a href="#">文学</a> <a href="#">经管</a> <a href="#">畅读VIP</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">数字音乐</a></dt>
+                        <dd>
+                            <a href="#">通俗流行</a> <a href="#">古典音乐</a> <a href="#">摇滚说唱</a> <a href="#">爵士蓝调</a>
+                            <a href="#">乡村民谣</a> <a href="#">有声读物</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">音像</a></dt>
+                        <dd>
+                            <a href="#">音乐</a> <a href="#">影视</a> <a href="#">教育音像</a> <a href="#">游戏</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">文艺</a></dt>
+                        <dd>
+                            <a href="#">小说</a> <a href="#">文学</a> <a href="#">青春文学</a> <a href="#">传记</a> <a
+                                href="#">艺术</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">人文社科</a></dt>
+                        <dd>
+                            <a href="#">历史</a> <a href="#">心理学</a> <a href="#">政治/军事</a> <a href="#">国学/古籍</a>
+                            <a href="#">哲学/宗教</a> <a href="#">社会科学</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">经管励志</a></dt>
+                        <dd>
+                            <a href="#">经济</a> <a href="#">金融与投资</a> <a href="#">管理</a> <a href="#">励志与成功</a>
+                        </dd>
+                    </dl>
+                    <dl class="fore7">
+                        <dt><a href="#">生活</a></dt>
+                        <dd>
+                            <a href="#">家教与育儿</a> <a href="#">旅游/地图</a> <a href="#">烹饪/美食</a> <a href="#">时尚/美妆</a>
+                            <a href="#">家居</a> <a href="#">婚恋与两性</a> <a href="#">娱乐/休闲</a> <a href="#">健身与保健</a>
+                            <a href="#">动漫/幽默</a> <a href="#">体育/运动</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">科技</a></dt>
+                        <dd>
+                            <a href="#">科普</a> <a href="#">IT</a> <a href="#">建筑</a> <a href="#">医学</a> <a href="#">
+                                工业技术</a> <a href="#">电子/通信</a> <a href="#">农林</a> <a href="#">科学与自然</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">少儿</a></dt>
+                        <dd>
+                            <a href="#">少儿</a> <a href="#">0-2岁</a> <a href="#">3-6岁</a> <a href="#">7-10岁</a>
+                            <a href="#">11-14岁</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">教育</a></dt>
+                        <dd>
+                            <a href="#">教材</a> <a href="#">中小学教辅</a> <a href="#">考试</a> <a href="#">外语学习</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">其它</a></dt>
+                        <dd>
+                            <a href="#">英文原版书</a> <a href="#">港台图书</a> <a href="#">工具书</a> <a href="#">套装书</a>
+                            <a href="#">杂志/期刊</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="rightdiv">
+                    <dl>
+                        <dd>
+                            <a href="http://sale.jd.com/act/1XDZ6ShE5M7tTrl.html">
+                                <img src="http://img30.360buyimg.com/erpVCAare/g16/M00/0B/1B/rBEbRlOCFcoIAAAAAAArMNB2tlkAACTlwDgVG8AACtI514.jpg"
+                                    width="194" height="70" title="\家电">
+                            </a>
+                        </dd>
+                        <dd>
+                            <a href="http://sale.jd.com/act/v8kJIaPmsMGuebpH.html">
+                                <img src="http://img30.360buyimg.com/erpVCAare/g16/M00/0B/19/rBEbRlOAiHUIAAAAAAAx8X2c6oIAACTCAP56A4AADIJ112.jpg"
+                                    width="194" height="70" title="小家电--三请聚宝盆">
+                            </a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>推荐品牌</dt>
+                        <dd>
+                            <a href="#">美的官方旗舰店</a>
+                        </dd>
+                        <dd>
+                            <a href="#">苏泊尔旗舰店</a>
+                        </dd>
+                        <dd>
+                            <a href="#">九阳旗舰店</a>
+                        </dd>
+                        <dd>
+                            <a href="#">东菱旗舰店</a>
+                        </dd>
+                        <dd>
+                            <a href="#">海尔统帅旗舰店</a>
+                        </dd>
+                        <dd>
+                            <a href="#">小熊旗舰店</a>
+                        </dd>
+                    </dl>
+				</div>
+				
+			</div>
+		</li>
+		<li><a href="#">家用电器</a></li>
+        <li><a href="#">手机、数码</a></li>
+        <li><a href="#">电脑、办公</a></li>
+        <li><a href="#">家居、家具、家装、厨具</a></li>
+        <li><a href="#">服饰内衣、珠宝首饰</a></li>
+        <li><a href="#">个护化妆</a></li>
+        <li><a href="#">鞋靴、箱包、钟表、奢侈品</a></li>
+        <li><a href="#">运动户外</a></li>
+        <li><a href="#">汽车用品</a></li>
+        <li><a href="#">母婴、玩具乐器</a></li>
+        <li><a href="#">食品饮料、酒类、生鲜</a></li>
+        <li><a href="#">营养保健</a></li>
+	</ul>
+</body>
+</html>

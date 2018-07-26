@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="GB2312">
+        <title>css3鼠标悬停效果</title>
+        <style>
+            .box li{float: left; margin: 3px;width: 394px; height: 255px; list-style: none;}
+            .box li a{display: block; width: 100%; height: 100%; position: relative; overflow: hidden;}
+            .box li a:before{content: '';display: block; position: absolute;  -webkit-transition: all .5s;-moz-transition: all .5s;-ms-transition: all .5s;-o-transition: all .5s;transition: all .5s;}
+            .box li a:after{content: '';display: block; position: absolute; -webkit-transition: all .5s;-moz-transition: all .5s;-ms-transition: all .5s;-o-transition: all .5s;transition: all .5s;}
+            .box li a .cu_imagtitle{width: 181px; height: 111px; border: 2px solid rgba(255,255,255,.8); background: rgba(0,0,0,.7); position: absolute;top: 50%;  left: 50%; margin-left: -92.5px; margin-top: -92.5px; z-index: 11; border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%; text-align: center; padding-top:70px;-webkit-transition: all .4s .1s;-moz-transition: all .4s .1s;-ms-transition: all .4s .1s;-o-transition: all .4s .1s;transition: all .4s .1s;}
+            
+            .box span,.cu_imagtitle b,.cu_imagtitle p{color: #fff;}
+            .box span{font-size: 18px;}
+            .box p{font-size: 16px; margin-top: 5px;-webkit-transition: all .2s;-moz-transition: all .2s;-ms-transition: all .2s;-o-transition: all .2s;transition: all .2s;}
+            .box b{font-size: 30px; font-weight: normal; margin-left: 10px;-webkit-transition: all .2s;-moz-transition: all .2s;-ms-transition: all .2s;-o-transition: all .2s;transition: all .2s;}
+            .box li a:hover .cu_imagtitle{-webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8); transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8); -webkit-animation: beat 0.5s .2s; animation: beat 0.5s .2s; background: rgba(17,106,188,.8);}
+            @keyframes beat {
+                from, to { -webkit-transform: scale(1, 1); transform: scale(1, 1); }            
+                25% { -webkit-transform: scale(0.9, 1.1); transform: scale(0.9, 1.1); }         
+                50% { -webkit-transform: scale(1.1, 0.9); transform: scale(1.1, 0.9); }         
+                75% { -webkit-transform: scale(0.95, 1.05); transform: scale(0.95, 1.05); }         
+                from, to { -webkit-transform: scale(1, 1); transform: scale(1, 1); }            
+                25% { -webkit-transform: scale(0.9, 1.1); transform: scale(0.9, 1.1); }         
+                50% { -webkit-transform: scale(1.1, 0.9); transform: scale(1.1, 0.9); }         
+                75% { -webkit-transform: scale(0.95, 1.05); transform: scale(0.95, 1.05); }
+            }
+            
+            @-webkit-keyframes beat {
+                from, to { -webkit-transform: scale(1, 1); transform: scale(1, 1); }            
+                25% { -webkit-transform: scale(0.9, 1.1); transform: scale(0.9, 1.1); }         
+                50% { -webkit-transform: scale(1.1, 0.9); transform: scale(1.1, 0.9); }         
+                75% { -webkit-transform: scale(0.95, 1.05); transform: scale(0.95, 1.05); }         
+                from, to { -webkit-transform: scale(1, 1); transform: scale(1, 1); }            
+                25% { -webkit-transform: scale(0.9, 1.1); transform: scale(0.9, 1.1); }         
+                50% { -webkit-transform: scale(1.1, 0.9); transform: scale(1.1, 0.9); }         
+                75% { -webkit-transform: scale(0.95, 1.05); transform: scale(0.95, 1.05); }
+            }
+            .box li a:hover .cu_imagtitle b{color: #fff000;}
+            .box li a:hover .cu_imagtitle p{color: #fff000;}
+            /*list_01*/
+            .box li.list_01 a:before{width: 50%; height: 100%; background: rgba(0,0,0,.5);top: 0; left: 0;}
+            .box li.list_01 a:after{width: 50%; height: 100%; background: rgba(0,0,0,.5);top: 0; right: 0;}
+            .box li.list_01 a:hover:before{left: -50%;}
+            .box li.list_01 a:hover:after{right: -50%;}         
+            /*list_02*/
+            .box li.list_02 a:before{width: 100%; height: 50%; background: rgba(0,0,0,.5);top: 0; left: 0;}
+            .box li.list_02 a:after{width: 100%; height: 50%; background: rgba(0,0,0,.5);bottom: 0; left: 0;}
+            .box li.list_02 a:hover:before{top: -50%;}
+            .box li.list_02 a:hover:after{bottom: -50%;}
+            
+            /*list_03*/
+            .box li.list_03 a:before{width: 100%; height: 100%; background: rgba(0,0,0,.25);top: 0; left: 0;}
+            .box li.list_03 a:after{width: 100%; height: 100%; background: rgba(0,0,0,.25);bottom: 0; right: 0;}
+            
+            .box li.list_03 a:hover:before{
+                transform: rotate(90deg);
+                transform-origin:right top;
+                
+                -ms-transform: rotate(90deg);       
+                -ms-transform-origin:right top;         
+                
+                -webkit-transform: rotate(90deg);   
+                -webkit-transform-origin:right top;
+                
+                -moz-transform: rotate(90deg);      
+                -moz-transform-origin:right top;        
+                
+                -o-transform: rotate(90deg);        
+                -o-transform-origin:right top;
+                }
+                .box li.list_03 a:hover:after{
+                transform: rotate(90deg);
+                transform-origin:left bottom;
+                
+                -ms-transform: rotate(90deg);       /* IE 9 */
+                -ms-transform-origin:left bottom;       /* IE 9 */
+                
+                -webkit-transform: rotate(90deg);   /* Safari 和 Chrome */
+                -webkit-transform-origin:left bottom;   /* Safari 和 Chrome */
+                
+                -moz-transform: rotate(90deg);      /* Firefox */
+                -moz-transform-origin:left bottom;      /* Firefox */
+                
+                -o-transform: rotate(90deg);        /* Opera */
+                -o-transform-origin:left bottom;
+                }
+                
+            /*list_04*/ 
+            .box li.list_04 a:before{width: 100%; height: 100%; background: rgba(0,0,0,.25);top: 0; left: 0;}
+            .box li.list_04 a:after{width: 100%; height: 100%; background: rgba(0,0,0,.25);bottom: 0; right: 0;}
+            .box li.list_04 a:hover:before{
+                transform:skew(90deg);
+                -ms-transform:skew(90deg); /* IE 9 */
+                -moz-transform:skew(90deg); /* Firefox */
+                -webkit-transform:skew(90deg); /* Safari and Chrome */
+                -o-transform:skew(90deg); /* Opera */
+                }
+            .box li.list_04 a:hover:after{
+                transform:skew(-90deg);
+                -ms-transform:skew(-90deg); /* IE 9 */
+                -moz-transform:skew(-90deg); /* Firefox */
+                -webkit-transform:skew(-90deg); /* Safari and Chrome */
+                -o-transform:skew(-90deg); /* Opera */
+                }
+            
+            /*list_05*/
+            .box li.list_05 a:before,.box li.list_05 a:after{width: 500px; height: 500px; background: rgba(0,0,0,.25);top: 50%; margin-top: -250px; left: 50%; margin-left: -250px; border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%;}
+            .box li.list_05 a:after{-webkit-transition: all .5s .1s;-moz-transition: all .5s .1s;-ms-transition: all .5s .1s;-o-transition: all .5s .1s;transition: all .5s .1s;}
+            .box li.list_05 a:hover:before{
+                transform: scale(0);
+                -ms-transform: scale(0);    
+                -webkit-transform: scale(0);
+                -o-transform: scale(0); 
+                -moz-transform: scale(0);
+                }
+            .box li.list_05 a:hover:after{
+                transform: scale(0);
+                -ms-transform: scale(0);    
+                -webkit-transform: scale(0);    
+                -o-transform: scale(0); 
+                -moz-transform: scale(0);
+                }
+            
+            /*list_06*/
+            .box li.list_06 a:before{width: 100%; height: 100%; background: rgba(0,0,0,.25);top: 0; left: 0;}
+            .box li.list_06 a:after{width: 100%; height: 100%; background: rgba(0,0,0,.25);bottom: 0; right: 0;}
+            .box li.list_06 a:hover:before{
+                transform: rotateY(90deg);
+                -webkit-transform: rotateY(90deg);  /* Safari 和 Chrome */
+                -moz-transform: rotateY(90deg);
+                }
+            .box li.list_06 a:hover:after{
+                transform: rotateX(-90deg);
+                -webkit-transform: rotateX(-90deg); /* Safari 和 Chrome */
+                -moz-transform: rotateX(-90deg);
+                }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li class="list_01">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list_02">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list_03">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list_04">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list_05">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list_06">
+                    <a href="#">
+                        <img src="images/wh_img1.jpg" />
+                        <div class="cu_imagtitle">
+                            <span>警营文化</span><b>摄影</b>
+                            <p>Photography</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

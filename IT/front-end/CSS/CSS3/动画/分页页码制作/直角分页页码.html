@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页页码</title>
+    <style>
+        .page-normal{
+            color:#ff6500;
+            text-align: center;
+            font-size:0;
+            margin-top:200px;
+        }
+        .page-normal a,.page-normal .page-current,.page-normal .page-prev{
+            padding:5px 7px;
+            font-size:14px;
+            margin-left:10px;
+        }
+        .page-normal a{
+            border:1px solid #ff9600;
+            color:#ff6500;
+            text-decoration:none;
+        }
+        .page-normal a:hover{
+            border:1px solid #ff6500;
+            background-color:#ffbe94;
+        }
+        .page-normal .page-current{
+            border:1px solid #ff6500;
+            color:#ff6500;
+            background-color:#ffbe94;
+        }
+        .page-normal .page-prev{
+            border:1px solid #ffe3c6;
+            color:#ffe3c6;
+        }
+        .ellipsis{
+            font-size:14px;
+            border:none;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-normal">
+        <span href="#" class="page-prev">&lt;</span>
+        <span href="#" class="page-current">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <span class="ellipsis">...</span>
+        <a href="#">200</a>
+        <a href="#">201</a>
+        <a href="#">&gt;</a>
+    </div>
+</body>
+</html>

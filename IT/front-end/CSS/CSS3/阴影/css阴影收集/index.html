@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+body{
+    font-family: Arial;
+    font-size: 20px;
+}
+body,ul{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+.wrap{
+    width: 70%;
+    height: 200px;
+    text-align: center;
+    margin: 50px auto;
+    background: #fff;
+}
+.wrap h1{
+    font-size: 25px;
+    line-height: 200px;
+}
+.effect{
+    box-shadow: 0px 1px 4px rgba(0,0,0,.2),0 0 40px rgba(0,0,0,.1) inset;
+    position: relative;
+}
+.effect:before,.effect:after{
+    content: '';
+    background: #fff;
+    position: absolute;
+    top:50%;
+    bottom: 0;
+    left: 30px;
+    right:30px;
+    box-shadow: 0 0 30px rgba(0,0,0,.8);
+    border-radius: 100px/10px;
+    z-index: -1;
+
+}
+.box{
+    width: 980px;
+    height: auto;
+    margin: 20px auto;
+}
+.box li{
+    width: 300px;
+    height: 210px;
+    float: left;
+    border:2px solid #efefef;
+    margin-right: 20px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0px 1px 4px rgba(0,0,0,.2),0 0 40px rgba(0,0,0,.1) inset;
+    
+}
+.box li img{
+    display: block;
+    width: 290px;
+    height: 200px;
+    margin: 5px;
+}
+.box li:before{
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    left: 20px;
+    bottom: 8px;
+    background: transparent;
+    box-shadow: 0 8px 20px rgba(0,0,0,.6);
+    transform: skew(-12deg) rotate(-4deg);
+    z-index: -1;
+}
+.box li:after{
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    left: 20px;
+    bottom: 8px;
+    background: transparent;
+    box-shadow: 0 8px 20px rgba(0,0,0,.6);
+    transform: skew(11deg) rotate(4deg) translateX(-8px);
+    z-index: -2;
+}
+</style>
+</head>
+<body>
+    <div class="wrap effect">
+        <h1>曲线阴影</h1>
+    </div>
+
+    <ul class="box">
+    <h2>翘边阴影：</h2>
+        <li><img src="images/photo1.jpg"></li>
+        <li><img src="images/photo2.jpg"></li>
+        <li><img src="images/photo3.jpg"></li>
+    </ul>
+</body>
+</html>

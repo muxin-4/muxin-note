@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>5种css3鼠标滑过动画效果</title>
+        <style type="text/css">
+                        
+            /*****全局样式*****/
+            *{padding:0;margin:0;font-family:"微软雅黑"}
+            h2{margin:15px 0;font-weight: 300;}
+            .content{margin: 0 auto;max-width:728px;margin-top:20px;text-align:center}
+            footer{margin: 10px 0;font-size: 14px;}
+            hr{margin: 20px 0;}
+            code{font-size: 12px;}
+            
+            /*****鼠标悬停图片变大文字消失*****/
+            .style1 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style1 ul li{ -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+            .style1 ul li img{width: 170px;height: 120px;border-radius: 2px;}
+            .style1 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s;}
+            .style1 ul li:hover {-webkit-transform: scale(1.1); -moz-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+            .style1 ul li:hover span{ opacity:0}
+            
+            /*****鼠标悬停文字消失*****/
+            .style2 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style2 ul li img{width: 170px;height: 120px;border-radius: 2px; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+            .style2 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s;}
+            .style2 ul li:hover span{ opacity:0}
+            
+            /*****鼠标悬停整体旋转*****/
+            .style3 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style3 ul li{ -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+            .style3 ul li img{width: 170px;height: 120px;border-radius: 2px;}
+            .style3 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;transition:All 0.4s ease-in-out;-webkit-transition:All 0.4s ease-in-out;-moz-transition:All 0.4s ease-in-out;-o-transition:All 0.4s ease-in-out;}
+            .style3 ul li:hover { transform:rotate(360deg);-webkit-transform:rotate(360deg); -moz-transform:rotate(360deg); -o-transform:rotate(360deg);  -ms-transform:rotate(360deg);}
+            
+            
+            /*****鼠标悬停整体旋转放大*****/
+            .style4 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style4 ul li{transition:All 0.4s ease-in-out;    -webkit-transition:All 0.4s ease-in-out;    -moz-transition:All 0.4s ease-in-out;    -o-transition:All 0.4s ease-in-out;}
+            .style4 ul li img{width: 170px;height: 120px;border-radius: 2px;}
+            .style4 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;transition:All 0.4s ease-in-out;-webkit-transition:All 0.4s ease-in-out;-moz-transition:All 0.4s ease-in-out;-o-transition:All 0.4s ease-in-out;}
+            .style4 ul li:hover {transform:rotate(360deg) scale(1.2);    -webkit-transform:rotate(360deg) scale(1.2);    -moz-transform:rotate(360deg) scale(1.2);    -o-transform:rotate(360deg) scale(1.2);    -ms-transform:rotate(360deg) scale(1.2);}
+            
+            
+            /*****鼠标悬停整体上升*****/
+            .style5 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style5 ul li{transition:All 0.4s ease-in-out;    -webkit-transition:All 0.4s ease-in-out;    -moz-transition:All 0.4s ease-in-out;    -o-transition:All 0.4s ease-in-out;}
+            .style5 ul li img{width: 170px;height: 120px;border-radius: 2px;}
+            .style5 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;transition:All 0.4s ease-in-out;-webkit-transition:All 0.4s ease-in-out;-moz-transition:All 0.4s ease-in-out;-o-transition:All 0.4s ease-in-out;}
+            .style5 ul li:hover {transform:translate(0,-10px);    -webkit-transform:translate(0,-10px);    -moz-transform:translate(0,-10px);    -o-transform:translate(0,-10px);    -ms-transform:translate(0,-10px);}
+
+            /*****鼠标悬停图片放大缩小动画*****/
+            @-webkit-keyframes play{
+              50% {
+                transform: scale(0.8);
+              }
+            
+              100% {
+                transform: scale(1);
+              }
+            }
+            .style6 ul li{float:left;margin:0 6px;position:relative;list-style:none}
+            .style6 ul li{transition:All 0.4s ease-in-out;    -webkit-transition:All 0.4s ease-in-out;    -moz-transition:All 0.4s ease-in-out;    -o-transition:All 0.4s ease-in-out;}
+            .style6 ul li img{width: 170px;height: 120px;border-radius: 2px;}
+            .style6 ul li span{background:rgba(0, 0, 0, 0.5);color:#fff;border-bottom-left-radius: 2px;border-bottom-right-radius: 2px;line-height: 23px;position:absolute;bottom: 3px;width: 170px;left:0;font-size:12px;transition:All 0.4s ease-in-out;-webkit-transition:All 0.4s ease-in-out;-moz-transition:All 0.4s ease-in-out;-o-transition:All 0.4s ease-in-out;}
+            .style6 ul li:first-child:hover{animation: play 0.3s 50 linear;}
+            .style6 ul li:last-child:hover{animation: play 0.3s 50 linear;position: relative;}
+            .style6 ul li:last-child h1{position: absolute;color: red;top: 50px;font-size: 40px;left: 96px;}
+            .style6 ul li:nth-child(2):hover {animation: play 0.3s 1 linear;}
+            .style6 ul li:nth-child(3):hover {animation: play 0.3s 2 linear;}
+        </style>
+    </head>
+    <body>
+<body class="content">
+
+<div class="style1 ">
+    <h2>1.鼠标悬停图片变大文字消失</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停图片变大文字消失</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停图片变大文字消失</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停图片变大文字消失</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><span>鼠标悬停图片变大文字消失</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+<div class="style2">
+    <h2>2.鼠标悬停文字消失</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停文字消失</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停文字消失</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停文字消失</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><span>鼠标悬停文字消失</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+<div class="style3">
+    <h2>3.鼠标悬停整体旋转</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+<div class="style4">
+    <h2>4.鼠标悬停整体旋转放大</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转放大</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转放大</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转放大</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><span>鼠标悬停整体旋转放大</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+<div class="style5">
+    <h2>5.鼠标悬停整体上升</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停整体上升</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停整体上升</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停整体上升</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><span>鼠标悬停整体上升</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+<div class="style6">
+    <h2>6.鼠标悬停心脏咔咔跳</h2>
+    <ul>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=21613208,949504543&fm=27&gp=0.jpg"><span>鼠标悬停心脏咔咔跳</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=45502308,3242233623&fm=27&gp=0.jpg"><span>鼠标悬停心脏跳一次</span></li>
+        <li><img src="http://img3.imgtn.bdimg.com/it/u=857079716,992824495&fm=27&gp=0.jpg"><span>鼠标悬停心脏跳两次</span></li>
+        <li><img src="http://img0.imgtn.bdimg.com/it/u=3889116886,1189219410&fm=27&gp=0.jpg"><h1>快~</h1><span>鼠标悬停心脏咔咔跳</span></li>
+    </ul>
+</div>
+<div style="clear:both"></div>
+
+    <footer>
+    <code>
+        放大 修改scale(放大的值)<br />
+        旋转放大 修改rotate(旋转度数) scale(放大值)<br />
+        上下左右移动 修改translate(x轴,y轴)
+    </code>
+    <br />
+    <hr />
+        不喜勿喷 - <a href="http://www.qdfuns.com/house/47654/note">http://www.qdfuns.com/house/47654/note</a>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.fs-34 {
+			font-size: 34px;
+		}
+
+		ul {
+			border: 1px solid red;
+			padding: 0;
+			list-style: none;
+			background-color: #e8e8e9;
+			width: 100%;
+			height: 500px;
+
+			display: flex;
+			/*flex-direction: row;//行（水平）从左到右 默认为row*/
+			/*flex-direction: column;//列（垂直）从上到下*/
+			/*flex-direction: row-reverse;//行（水平）从右到左*/
+			/*flex-direction: column-reverse;//列（垂直）从下到上*/
+
+			/*flex-wrap: nowrap; //Flex容器内的Flex项目不换行排列 该情况下flex子项可能会溢出容器 默认为nowrap*/
+			/*flex-wrap: wrap; //Flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行*/
+			/*flex-wrap: wrap-reverse;//反转 wrap 排列*/
+
+			/*速记属性 类似于border: 1px solid red*/
+			/*flex-flow: row nowrap;*/
+			/*flex-flow: row wrap;
+			flex-flow: column nowrap;
+			flex-flow: column wrap;*/
+
+			/*justify-content: flex-start;//让所有Flex项目靠Main-Axis开始边缘（左对齐）*/
+			/*justify-content: center;//让所有Flex项目靠Main-Axis开始边缘（居中对齐）。*/
+			/*justify-content: flex-end;//让所有Flex项目靠Main-Axis结束边缘（右对齐）*/
+			/*justify-content: space-between;//让除了第一个和最一个Flex项目的两者间间距相同（两端对齐）*/
+			/*justify-content: space-around;//让每个Flex项目具有相同的空间*/
+
+			/*align-items: stretch;//让所有的Flex项目高度和Flex容器高度一样 默认为stretch*/
+			/*align-items: flex-start;//让所有Flex项目靠Cross-Axis开始边缘（顶部对齐）*/
+			/*align-items: flex-end;//让所有Flex项目靠Cross-Axis结束边缘（底部对齐）;*/
+			/*align-items: center;//让Flex项目在Cross-Axis中间（居中对齐）*/
+			align-items: baseline;//让所有Flex项目在Cross-Axis上沿着他们自己的基线对齐
+
+
+
+
+		}
+		li {
+			width: 100px;
+			height: 100px;
+			background-color: #8cacea;
+			margin: 8px;
+			padding: 4px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>I am list 1</li>
+		<li class="fs-34">I am list 2</li>
+		<li class="fs-34">I am list 3</li>
+		<li class="fs-34">I am list 4</li>
+	</ul>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

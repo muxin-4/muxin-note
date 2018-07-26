@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iPhone4</title>
+  <style>
+    * {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    body {
+      height: 645px;
+      background: #929292;
+      cursor: pointer;
+    }
+
+
+    #scene3D {
+      -webkit-perspective: 1200px;
+      perspective: 1200px;
+    }
+    
+    #iphone {
+      width: 254px;
+      height: 500px;
+      position: absolute;
+      top: 66px;
+      left: 50%;
+      margin-left: -127px;
+      /*不让鼠标选中文字*/
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    .slab div {
+      position: absolute;
+      -webkit-transform-origin: 0 0 0;
+      transform-origin: 0 0 0;
+    }
+    
+    .slab .front, .slab .back {
+      width: 254px;
+      height: 500px;
+      background: #ffffff;
+      background: -moz-linear-gradient(top, #ffffff 0%, #f9f9f9 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f9f9f9));
+      background: -webkit-linear-gradient(top, #ffffff 0%, #f9f9f9 100%);
+      background: -o-linear-gradient(top, #ffffff 0%, #f9f9f9 100%);
+      background: -ms-linear-gradient(top, #ffffff 0%, #f9f9f9 100%);
+      background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f9f9f9', GradientType=0);
+      border-radius: 20px;
+    }
+    
+    .slab .back {
+      background: #a3a3a3;
+      background: -moz-linear-gradient(top, #a3a3a3 0%, #808080 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a3a3a3), color-stop(100%, #808080));
+      background: -webkit-linear-gradient(top, #a3a3a3 0%, #808080 100%);
+      background: -o-linear-gradient(top, #a3a3a3 0%, #808080 100%);
+      background: -ms-linear-gradient(top, #a3a3a3 0%, #808080 100%);
+      background: linear-gradient(to bottom, #a3a3a3 0%, #808080 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3a3a3', endColorstr='#808080', GradientType=0);
+      -webkit-transform: translate3D(0, 0, -30px);
+      transform: translate3D(0, 0, -30px);
+    }
+    
+    .slab .top, .slab .bottom {
+      width: 214px;
+      height: 30px;
+      background: #b6b6b6;
+      -webkit-transform: translate(20px) rotateX(-90deg);
+      transform: translate(20px) rotateX(-90deg);
+    }
+    
+    .slab .bottom {
+      background: #6f6f6f;
+      background: -moz-linear-gradient(left, #6f6f6f 0%, #636363 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #6f6f6f), color-stop(100%, #636363));
+      background: -webkit-linear-gradient(left, #6f6f6f 0%, #636363 100%);
+      background: -o-linear-gradient(left, #6f6f6f 0%, #636363 100%);
+      background: -ms-linear-gradient(left, #6f6f6f 0%, #636363 100%);
+      background: linear-gradient(to right, #6f6f6f 0%, #636363 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6f6f6f', endColorstr='#636363', GradientType=1);
+      box-shadow: inset 0 1px 0 #363636;
+      -webkit-transform: translate(20px, 500px) rotateX(-90deg);
+      transform: translate(20px, 500px) rotateX(-90deg);
+    }
+    
+    .slab .right, .slab .left {
+      width: 460px;
+      height: 30px;
+      background: #a3a3a3;
+      background: -moz-linear-gradient(left, #a3a3a3 0%, #d6d6d6 10%, #a3a3a3 15%, #808080 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #a3a3a3), color-stop(10%, #d6d6d6), color-stop(15%, #a3a3a3), color-stop(100%, #808080));
+      background: -webkit-linear-gradient(left, #a3a3a3 0%, #d6d6d6 10%, #a3a3a3 15%, #808080 100%);
+      background: -o-linear-gradient(left, #a3a3a3 0%, #d6d6d6 10%, #a3a3a3 15%, #808080 100%);
+      background: -ms-linear-gradient(left, #a3a3a3 0%, #d6d6d6 10%, #a3a3a3 15%, #808080 100%);
+      background: linear-gradient(to right, #a3a3a3 0%, #d6d6d6 10%, #a3a3a3 15%, #808080 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3a3a3', endColorstr='#808080', GradientType=1);
+      -webkit-transform: translate(254px, 20px) rotateY(-90deg) rotateZ(90deg);
+      transform: translate(254px, 20px) rotateY(-90deg) rotateZ(90deg);
+    }
+    
+    .slab .left {
+      background: #a3a3a3;
+      background: -moz-linear-gradient(left, #a3a3a3 0%, #808080 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #a3a3a3), color-stop(100%, #808080));
+      background: -webkit-linear-gradient(left, #a3a3a3 0%, #808080 100%);
+      background: -o-linear-gradient(left, #a3a3a3 0%, #808080 100%);
+      background: -ms-linear-gradient(left, #a3a3a3 0%, #808080 100%);
+      background: linear-gradient(to right, #a3a3a3 0%, #808080 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3a3a3', endColorstr='#808080', GradientType=1);
+      -webkit-transform: translate(0, 20px) rotateY(-90deg) rotateZ(90deg);
+      transform: translate(0, 20px) rotateY(-90deg) rotateZ(90deg);
+    }
+    
+    /**********************/
+    /*     SLAB angle     */
+    /**********************/
+    
+    .slab .top:before, .slab .top:after, .slab .right:before, .slab .right:after, .slab .bottom:before, .slab .bottom:after, .slab .left:before, .slab .left:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -15px;
+      width: 16px;
+      background: #a3a3a3;
+      background: -moz-linear-gradient(left, #a3a3a3 0%, #b6b6b6 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #a3a3a3), color-stop(100%, #b6b6b6));
+      background: -webkit-linear-gradient(left, #a3a3a3 0%, #b6b6b6 100%);
+      background: -o-linear-gradient(left, #a3a3a3 0%, #b6b6b6 100%);
+      background: -ms-linear-gradient(left, #a3a3a3 0%, #b6b6b6 100%);
+      background: linear-gradient(to right, #a3a3a3 0%, #b6b6b6 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3a3a3', endColorstr='#b6b6b6', GradientType=1);
+      -webkit-transform: translateZ(3px) rotateY(22.5deg);
+      transform: translateZ(3px) rotateY(22.5deg);
+    }
+    
+    .slab .top:after, .slab .right:before, .slab .bottom:before {
+      left: auto;
+      right: -15px;
+      background: #b6b6b6;
+      background: -moz-linear-gradient(left, #b6b6b6 0%, #a3a3a3 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b6b6b6), color-stop(100%, #a3a3a3));
+      background: -webkit-linear-gradient(left, #b6b6b6 0%, #a3a3a3 100%);
+      background: -o-linear-gradient(left, #b6b6b6 0%, #a3a3a3 100%);
+      background: -ms-linear-gradient(left, #b6b6b6 0%, #a3a3a3 100%);
+      background: linear-gradient(to right, #b6b6b6 0%, #a3a3a3 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b6b6b6', endColorstr='#a3a3a3', GradientType=1);
+      -webkit-transform: translateZ(3px) rotateY(-22.5deg);
+      transform: translateZ(3px) rotateY(-22.5deg);
+    }
+    
+    .slab .right:before {
+      background: #808080;
+      background: -moz-linear-gradient(left, #808080 0%, #636363 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #808080), color-stop(100%, #636363));
+      background: -webkit-linear-gradient(left, #808080 0%, #636363 100%);
+      background: -o-linear-gradient(left, #808080 0%, #636363 100%);
+      background: -ms-linear-gradient(left, #808080 0%, #636363 100%);
+      background: linear-gradient(to right, #808080 0%, #636363 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#636363', GradientType=1);
+    }
+    
+    .slab .right:after {
+      background: #a3a3a3;
+    }
+    
+    .slab .bottom:before, .slab .left:after {
+      background: #636363;
+      -webkit-transform: translateZ(-3px) rotateY(22.5deg);
+      transform: translateZ(-3px) rotateY(22.5deg);
+    }
+    
+    .slab .bottom:after, .slab .left:before {
+      background: #6f6f6f;
+      -webkit-transform: translateZ(-3px) rotateY(-22.5deg);
+      transform: translateZ(-3px) rotateY(-22.5deg);
+    }
+    
+    .slab .left:before {
+      background: #a3a3a3;
+    }
+    
+    .slab .left:after {
+      left: auto;
+      right: -15px;
+      background: #808080;
+      background: -moz-linear-gradient(left, #808080 0%, #6f6f6f 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #808080), color-stop(100%, #6f6f6f));
+      background: -webkit-linear-gradient(left, #808080 0%, #6f6f6f 100%);
+      background: -o-linear-gradient(left, #808080 0%, #6f6f6f 100%);
+      background: -ms-linear-gradient(left, #808080 0%, #6f6f6f 100%);
+      background: linear-gradient(to right, #808080 0%, #6f6f6f 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#808080', endColorstr='#6f6f6f', GradientType=1);
+    }
+    
+    /**********************/
+    /*  SLAB black front  */
+    /**********************/
+    
+    .black {
+      -webkit-transform-origin: 0 0 0;
+      transform-origin: 0 0 0;
+      -webkit-transform: translate3D(2.38px, 2.38px, 5.1px) scale3D(.98126, .99048, .167);
+      transform: translate3D(2.38px, 2.38px, 5.1px) scale3D(.98126, .99048, .167);
+    }
+    
+    .black .front {
+      border: 1px solid #454545;
+      background: #131313;
+      background: -moz-linear-gradient(left, #131313 0%, #2c2c2c 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #131313), color-stop(100%, #2c2c2c));
+      background: -webkit-linear-gradient(left, #131313 0%, #2c2c2c 100%);
+      background: -o-linear-gradient(left, #131313 0%, #2c2c2c 100%);
+      background: -ms-linear-gradient(left, #131313 0%, #2c2c2c 100%);
+      background: linear-gradient(to right, #131313 0%, #2c2c2c 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#131313', endColorstr='#2c2c2c', GradientType=1);
+      -webkit-transform: translate3D(2px, 2px, .5px) scale(.976, .988);
+      transform: translate3D(2px, 2px, .5px) scale(.976, .988);
+    }
+    
+    .black .thickness {
+      border: 1px solid #131313;
+      background: #232323;
+      -webkit-transform: translate3D(3px, 3px, 1px) scale(.968, .984);
+      transform: translate3D(3px, 3px, 1px) scale(.968, .984);
+    }
+    
+    .black .top, .black .back, .black .right, .black .bottom, .black .left, .black .top:before, .black .top:after, .black .right:before, .black .right:after, .black .bottom:before, .black .bottom:after, .black .left:before, .black .left:after {
+      background: #121212;
+    }
+    
+    /**********************/
+    /*   SLAB black back  */
+    /**********************/
+    
+    .black-back {
+      -webkit-transform: translate3D(2.38px, 2.38px, -30.1px) scale3D(.98126, .99048, .167);
+      transform: translate3D(2.38px, 2.38px, -30.1px) scale3D(.98126, .99048, .167);
+    }
+    
+    /**********************/
+    /*     SLAB join      */
+    /**********************/
+    
+    .slab .join {
+      width: 4px;
+      height: 32px;
+      background: #2c2c2c;
+      box-shadow: inset 2px 0 1px #000, -1px 0 1px #a3a3a3;
+      -webkit-transform: translate3D(418px, -1px, -.5px);
+      transform: translate3D(418px, -1px, -.5px);
+    }
+    
+    .slab .right .join:before, .slab .right .join:after, .slab .left .join:before, .slab .left .join:after, .slab .top .join:before, .slab .top .join:after {
+      content: "";
+      position: absolute;
+      top: -1.6px;
+      width: 4px;
+      height: 3px;
+      background: #2c2c2c;
+      box-shadow: inset 2px 0 1px #000, -1px 0 1px #a3a3a3;
+      -webkit-transform: translateZ(1.1px) rotateX(-90deg);
+      transform: translateZ(1.1px) rotateX(-90deg);
+    }
+    
+    .slab .right .join:after, .slab .left .join:after, .slab .top .join:after {
+      top: 30px;
+    }
+    
+    .slab .left .join {
+      -webkit-transform: translate3D(418px, -1px, .5px);
+      transform: translate3D(418px, -1px, .5px);
+    }
+    
+    .slab .left .join:before, .slab .left .join:after {
+      -webkit-transform: translateZ(-1.1px) rotateX(-90deg);
+      transform: translateZ(-1.1px) rotateX(-90deg);
+    }
+    
+    .slab .top .join {
+      -webkit-transform: translate3D(60px, -1px, -.5px);
+      transform: translate3D(60px, -1px, -.5px);
+    }
+    
+    /**********************/
+    /*   DOCK connector   */
+    /**********************/
+    
+    #dock {
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 11px;
+      margin: -5.5px 0 0 -40px;
+      background: #2c2c2c;
+      background: -moz-linear-gradient(left, #2c2c2c 0%, #141414 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #2c2c2c), color-stop(100%, #141414));
+      background: -webkit-linear-gradient(left, #2c2c2c 0%, #141414 100%);
+      background: -o-linear-gradient(left, #2c2c2c 0%, #141414 100%);
+      background: -ms-linear-gradient(left, #2c2c2c 0%, #141414 100%);
+      background: linear-gradient(to right, #2c2c2c 0%, #141414 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2c2c2c', endColorstr='#141414', GradientType=1);
+      border-radius: 4px;
+      box-shadow: inset 1px -3px 3px #000, 0 0 2px #a3a3a3;
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    #connector {
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 2px;
+      margin: -1px 0 0 -35px;
+      background: #333;
+      box-shadow: inset 0 1px 0 #000;
+    }
+    
+    /**********************/
+    /*    DOCK screws     */
+    /**********************/
+    
+    .screws {
+      top: 50%;
+      left: 50px;
+      width: 8px;
+      height: 8px;
+      margin-top: -5px;
+      border: 1px solid #575757;
+      background: #747474;
+      text-align: center;
+      font: bold 6px/8px Verdana, sans-serif;
+      color: #909090;
+      border-radius: 8px;
+      box-shadow: 0 0 1px #a3a3a3;
+      text-shadow: 0px 1px 0px rgba(0, 0, 0, .4);
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    .screws-right {
+      left: auto;
+      right: 50px;
+    }
+    
+    /**********************/
+    /*      SPEAKER       */
+    /**********************/
+    
+    .speaker {
+      top: 50%;
+      left: 15px;
+      overflow: hidden;
+      width: 28px;
+      height: 9px;
+      margin-top: -4.5px;
+      background: #717274;
+      background: -moz-linear-gradient(left, #717274 0%, #b0b1b3 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #717274), color-stop(100%, #b0b1b3));
+      background: -webkit-linear-gradient(left, #717274 0%, #b0b1b3 100%);
+      background: -o-linear-gradient(left, #717274 0%, #b0b1b3 100%);
+      background: -ms-linear-gradient(left, #717274 0%, #b0b1b3 100%);
+      background: linear-gradient(to right, #717274 0%, #b0b1b3 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#717274', endColorstr='#b0b1b3', GradientType=1);
+      border-radius: 9px;
+      box-shadow: inset 1px -4px 2px rgba(0, 0, 0, .5), 0 1px 2px #a3a3a3;
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    .speaker-right {
+      left: auto;
+      right: 15px;
+    }
+    
+    .speaker .dot, #speaker-front .dot {
+      position: static;
+      float: left;
+      width: 1px;
+      height: 1px;
+      margin: .5px;
+      background: #353638;
+    }
+    
+    #speaker-front {
+      top: 40px;
+      left: 50%;
+      width: 48px;
+      height: 6px;
+      margin-left: -24px;
+      overflow: hidden;
+      border-top: 3px solid #3c3c3c;
+      background: #b0b1b3;
+      background: -moz-linear-gradient(top, #b0b1b3 0%, #717274 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b0b1b3), color-stop(100%, #717274));
+      background: -webkit-linear-gradient(top, #b0b1b3 0%, #717274 100%);
+      background: -o-linear-gradient(top, #b0b1b3 0%, #717274 100%);
+      background: -ms-linear-gradient(top, #b0b1b3 0%, #717274 100%);
+      background: linear-gradient(to bottom, #b0b1b3 0%, #717274 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b0b1b3', endColorstr='#717274', GradientType=0);
+      border-radius: 50px;
+      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .9), inset 1px 3px 1px rgba(255, 255, 255, .6), inset 1px -2px 1px rgba(255, 255, 255, .6);
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    /**********************/
+    /*      SIM card      */
+    /**********************/
+    
+    #sim {
+      top: 50%;
+      left: 205px;
+      width: 74px;
+      height: 8px;
+      margin-top: -5px;
+      border: 1px solid #727272;
+      background: #969696;
+      border-radius: 8px;
+      box-shadow: inset 0 0 2px rgba(255, 255, 255, .4), 0 0 1px rgba(255, 255, 255, .7);
+    }
+    
+    #hole {
+      top: 50%;
+      right: 2.5px;
+      width: 4px;
+      height: 4px;
+      margin-top: -2px;
+      background: #2c2c2c;
+      border-radius: 4px;
+      box-shadow: inset -1px 0 0 #000, 0 0 2px #a3a3a3;
+    }
+    
+    /**********************/
+    /*     HOME button    */
+    /**********************/
+    
+    #home-button {
+      top: 433.2px;
+      left: 50%;
+      width: 46.8px;
+      height: 46.8px;
+      margin-left: -24.4px;
+      border: 1px solid #303030;
+      background: #4d4d4d;
+      background: -moz-linear-gradient(left, #4d4d4d 0%, #0d0d0d 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #4d4d4d), color-stop(100%, #0d0d0d));
+      background: -webkit-linear-gradient(left, #4d4d4d 0%, #0d0d0d 100%);
+      background: -o-linear-gradient(left, #4d4d4d 0%, #0d0d0d 100%);
+      background: -ms-linear-gradient(left, #4d4d4d 0%, #0d0d0d 100%);
+      background: linear-gradient(to right, #4d4d4d 0%, #0d0d0d 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4d4d4d', endColorstr='#0d0d0d', GradientType=1);
+      border-radius: 50px;
+      box-shadow: inset 0 0 2px #000;
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    #square {
+      top: 50%;
+      left: 50%;
+      width: 13.2px;
+      height: 13.2px;
+      margin: -8.6px 0 0 -8.6px;
+      border: 2px solid #eee;
+      border-radius: 4px;
+    }
+    
+    /**********************/
+    /*   SCREEN display   */
+    /**********************/
+    
+    #screen {
+      top: 86.7px;
+      left: 50%;
+      width: 218px;
+      height: 328.2px;
+      margin-left: -109px;
+      background: #000;
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    #screen:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 5px;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, .9);
+      -webkit-transform: translateZ(1px);
+      transform: translateZ(1px);
+    }
+    
+    /**********************/
+    /*       WEBCAM       */
+    /**********************/
+    
+    #webcam {
+      top: 40px;
+      left: 76px;
+      width: 10px;
+      height: 10px;
+      background: #0d0d0d;
+      background: -moz-linear-gradient(left, #0d0d0d 0%, #4d4d4d 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #0d0d0d), color-stop(100%, #4d4d4d));
+      background: -webkit-linear-gradient(left, #0d0d0d 0%, #4d4d4d 100%);
+      background: -o-linear-gradient(left, #0d0d0d 0%, #4d4d4d 100%);
+      background: -ms-linear-gradient(left, #0d0d0d 0%, #4d4d4d 100%);
+      background: linear-gradient(to right, #0d0d0d 0%, #4d4d4d 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0d0d0d', endColorstr='#4d4d4d', GradientType=1);
+      box-shadow: inset 0 0 2px #000;
+      border-radius: 9px;
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    #flash {
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      margin: -2px 0 0 -2px;
+      background: #3558a9;
+      background: -moz-linear-gradient(45deg, #3558a9 0%, #5b81d2 100%);
+      background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #3558a9), color-stop(100%, #5b81d2));
+      background: -webkit-linear-gradient(45deg, #3558a9 0%, #5b81d2 100%);
+      background: -o-linear-gradient(45deg, #3558a9 0%, #5b81d2 100%);
+      background: -ms-linear-gradient(45deg, #3558a9 0%, #5b81d2 100%);
+      background: linear-gradient(45deg, #3558a9 0%, #5b81d2 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3558a9', endColorstr='#5b81d2', GradientType=1);
+      border-radius: 4px;
+    }
+    
+    /**********************/
+    /*   VOLUME buttons   */
+    /**********************/
+    
+    .volume {
+      top: 50%;
+      left: 79px;
+      width: 22px;
+      height: 22px;
+      margin-top: -11px;
+      background: #a8a8a8;
+      color: #d0d0d0;
+      text-align: center;
+      border-radius: 22px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .9), inset 0 0 3px rgba(255, 255, 255, .5), inset 0 0 1px #fff, 0px 2px 2px rgba(0, 0, 0, .3);
+      text-shadow: -1px -1px rgba(0, 0, 0, .3);
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    .volume-1, .volume-2, .volume-3, .volume-4, .volume-5 {
+      left: 0;
+      box-shadow: inset 0 0 3px rgba(255, 255, 255, .2), inset 0 0 1px #fff, 0px 2px 2px rgba(0, 0, 0, .1);
+    }
+    
+    .volume-1 {
+      -webkit-transform: translateZ(1px);
+      transform: translateZ(1px);
+    }
+    
+    .volume-2 {
+      -webkit-transform: translateZ(1.5px);
+      transform: translateZ(1.5px);
+    }
+    
+    .volume-3 {
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    .volume-4 {
+      -webkit-transform: translateZ(2.5px);
+      transform: translateZ(2.5px);
+    }
+    
+    .volume-5 {
+      font: normal 27px/24px "Times New Roman", serif;
+      -webkit-transform: translateZ(3px);
+      transform: translateZ(3px);
+    }
+    
+    .volume-less {
+      left: 127px;
+    }
+    
+    .volume-less .volume-5 {
+      font: bold 16px/21px "Times New Roman", serif;
+    }
+    
+    /**********************/
+    /*   RINGTONE lock    */
+    /**********************/
+    
+    #ringtone {
+      top: 50%;
+      left: 19px;
+      margin-top: -8px;
+      width: 33px;
+      height: 16px;
+      background: #999;
+      border-radius: 8px/10px;
+      box-shadow: inset 0px -1px 2px rgba(0, 0, 0, .2), 0 0 1px rgba(255, 255, 255, .5);
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    .lock {
+      left: 50%;
+      width: 31px;
+      height: 8px;
+      margin-left: -15.5px;
+      background: #a8a8a8;
+      border-radius: 8px/5px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, .4), inset 0 0 4px rgba(255, 255, 255, .5), inset 0 0 1px #fff, 0px 2px 2px rgba(0, 0, 0, .3);
+      -webkit-transform: translateZ(.5px);
+      transform: translateZ(.5px);
+    }
+    
+    .lock-1, .lock-2, .lock-3, .lock-4, .lock-5 {
+      box-shadow: inset 0 0 4px rgba(255, 255, 255, .2), inset 0 0 1px rgba(255, 255, 255, .7);
+    }
+    
+    .lock-1 {
+      -webkit-transform: translateZ(1px);
+      transform: translateZ(1px);
+    }
+    
+    .lock-2 {
+      -webkit-transform: translateZ(1.5px);
+      transform: translateZ(1.5px);
+    }
+    
+    .lock-3 {
+      -webkit-transform: translateZ(2px);
+      transform: translateZ(2px);
+    }
+    
+    .lock-4 {
+      -webkit-transform: translateZ(2.5px);
+      transform: translateZ(2.5px);
+    }
+    
+    .lock-5 {
+      -webkit-transform: translateZ(3px);
+      transform: translateZ(3px);
+    }
+    
+    /**********************/
+    /*      EARPHONE      */
+    /**********************/
+    
+    #earphone {
+      top: 50%;
+      left: 10px;
+      width: 22px;
+      height: 22px;
+      margin-top: -12px;
+      border: 1px solid #2c2c2c;
+      background: #333;
+      background: -moz-linear-gradient(left, #333 0%, #141414 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #333), color-stop(100%, #141414));
+      background: -webkit-linear-gradient(left, #333 0%, #141414 100%);
+      background: -o-linear-gradient(left, #333 0%, #141414 100%);
+      background: -ms-linear-gradient(left, #333 0%, #141414 100%);
+      background: linear-gradient(to right, #333 0%, #141414 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#141414', GradientType=1);
+      border-radius: 24px;
+      box-shadow: inset 0 0 0 2.5px #c5c5c5, 0 0 0 1px #cecece, inset 0 -6px 3px #000, 0 0 1px 1px rgba(255, 255, 255, .2);
+      -webkit-transform: translateZ(-.8px);
+      transform: translateZ(-.8px);
+    }
+    
+    /**********************/
+    /*       CLICK        */
+    /**********************/
+    
+    #click {
+      top: 50%;
+      left: 45px;
+      width: 4px;
+      height: 4px;
+      margin-top: -2px;
+      background: #2c2c2c;
+      border-radius: 4px;
+      box-shadow: inset -1px 0 0 #000, 0 0 2px rgba(255, 255, 255, .9);
+      -webkit-transform: translateZ(-.5px);
+      transform: translateZ(-.5px);
+    }
+    
+    /**********************/
+    /*    ON/OFF button   */
+    /**********************/
+    
+    .on-off {
+      top: 50%;
+      right: 24.5px;
+      width: 41px;
+      height: 10px;
+      margin-top: -5px;
+      background: #d6d6d6;
+      background: -moz-linear-gradient(top, #d6d6d6 0%, #b6b6b6 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d6d6d6), color-stop(100%, #b6b6b6));
+      background: -webkit-linear-gradient(top, #d6d6d6 0%, #b6b6b6 100%);
+      background: -o-linear-gradient(top, #d6d6d6 0%, #b6b6b6 100%);
+      background: -ms-linear-gradient(top, #d6d6d6 0%, #b6b6b6 100%);
+      background: linear-gradient(to bottom, #d6d6d6 0%, #b6b6b6 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#b6b6b6', GradientType=0);
+      border-radius: 10px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, .4), inset 0 0 4px rgba(255, 255, 255, .5), inset 0 0 1px #fff, 0px 2px 2px rgba(0, 0, 0, .3);
+      -webkit-transform: translateZ(-1px);
+      transform: translateZ(-1px);
+    }
+    
+    .on-off-1, .on-off-2, .on-off-3, .on-off-4 {
+      right: 0;
+      box-shadow: inset 0 0 4px rgba(255, 255, 255, .2), inset 0 0 1px rgba(255, 255, 255, .7);
+    }
+    
+    .on-off-1 {
+      -webkit-transform: translateZ(-1.5px);
+      transform: translateZ(-1.5px);
+    }
+    
+    .on-off-2 {
+      -webkit-transform: translateZ(-2px);
+      transform: translateZ(-2px);
+    }
+    
+    .on-off-3 {
+      -webkit-transform: translateZ(-2.5px);
+      transform: translateZ(-2.5px);
+    }
+    
+    .on-off-4 {
+      -webkit-transform: translateZ(-3px);
+      transform: translateZ(-3px);
+    }
+    .appear{
+      width: 400px;
+      height: 660px;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      margin-left: -200px;
+      background: #989898;
+      /*background: white;*/
+      opacity: 0.1;
+      /*不让鼠标选中文字*/
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transform: translateZ(7px);
+      
+    }
+    
+  
+  </style>
+</head>
+<body>
+
+<div class="appear">
+
+</div>
+
+
+<div id="scene3D">
+  <div id="iphone">
+    <div class="slab black">
+      <div class="top"></div>
+      <div class="right"></div>
+      <div class="bottom"></div>
+      <div class="left"></div>
+      <div id="webcam">
+        <div id="flash"></div>
+      </div>
+      <div id="speaker-front">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div id="screen">
+      </div>
+      <div id="home-button">
+        <div id="square"></div>
+      </div>
+      <div class="front thickness-end"></div>
+      <div class="front thickness"></div>
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
+    <div class="slab">
+      <div class="top">
+        <div class="join"></div>
+        <div class="on-off">
+          <div class="on-off on-off-1"></div>
+          <div class="on-off on-off-2"></div>
+          <div class="on-off on-off-3"></div>
+          <div class="on-off on-off-4"></div>
+        </div>
+        <div id="earphone"></div>
+        <div id="click"></div>
+      </div>
+      <div class="right">
+        <div class="join"></div>
+        <div id="sim">
+          <div id="hole"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="speaker">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="screws">X</div>
+        <div id="dock">
+          <div id="connector"></div>
+        </div>
+        <div class="screws screws-right">X</div>
+        <div class="speaker speaker-right">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <div class="left">
+        <div id="ringtone">
+          <div class="lock">
+            <div class="lock lock-1"></div>
+            <div class="lock lock-2"></div>
+            <div class="lock lock-3"></div>
+            <div class="lock lock-4"></div>
+            <div class="lock lock-5"></div>
+          </div>
+        </div>
+        <div class="volume">
+          <div class="volume volume-1"></div>
+          <div class="volume volume-2"></div>
+          <div class="volume volume-3"></div>
+          <div class="volume volume-4"></div>
+          <div class="volume volume-5">+</div>
+        </div>
+        <div class="volume volume-less">
+          <div class="volume volume-1"></div>
+          <div class="volume volume-2"></div>
+          <div class="volume volume-3"></div>
+          <div class="volume volume-4"></div>
+          <div class="volume volume-5">|</div>
+        </div>
+        <div class="join"></div>
+      </div>
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
+    <div class="slab black black-back">
+      <div class="top"></div>
+      <div class="right"></div>
+      <div class="bottom"></div>
+      <div class="left"></div>
+      <div class="front"></div>
+      <div class="back"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function () {
+
+
+    //角度初始化
+    var RotateY = 0;
+    var RotateX = 0;
+
+    $('#iphone').children().mouseenter(function () {   //box 的所有子元素
+      $(this).css({cursor: 'pointer'});
+    });
+
+    var flag = false;
+    var old_x = 0;
+    var old_y = 0;
+    document.onmousedown = function (e) {
+      flag = true;
+      old_x = e.pageX;
+      old_y = e.pageY;
+      //console.log(old_x, old_y);
+      /*原本所处的位置*/
+    }
+    document.onmouseup = function () {
+      flag = false;
+      //鼠标抬起时结束
+    };
+    document.onmousemove = function (e) {
+      if (flag) {
+        var _x = e.pageX - old_x;
+        var _y = e.pageY - old_y;
+        /*新位置减去老位置*/
+        console.log(_x, _y);
+        RotateY += _x / 70;
+        RotateX += -(_y / 70);
+        $('#iphone').css({
+          transition: 'linear',
+          transform: 'rotateX(' + RotateX + 'deg) rotateY(' + RotateY + 'deg)'
+        });
+      }
+    };
+
+  })
+</script>
+
+
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,ul {margin: 0;padding: 0;}
+        body {perspective: 1200px;overflow: hidden;}
+        ul {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            -webkit-transition: preserve-3d;
+            -moz-transition: preserve-3d;
+            -ms-transition: preserve-3d;
+            transition: 5s ease-out;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        ul li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            list-style: none;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            line-height: 200px;
+            border-radius: 10%;
+        }
+
+        li:nth-child(1) {
+            background: rgba(145, 41, 55, 0.9);
+            -webkit-transform: translateZ(100px);
+            -moz-transform: translateZ(100px);
+            -ms-transform: translateZ(100px);
+            -o-transform: translateZ(100px);
+            transform: translateZ(100px);
+        }
+
+        li:nth-child(2) {
+            background: rgba(54, 49, 46, 0.9);
+            -webkit-transform: rotateY(90deg) translateZ(100px);
+            -moz-transform: rotateY(90deg) translateZ(100px);
+            -ms-transform: rotateY(90deg) translateZ(100px);
+            -o-transform: rotateY(90deg) translateZ(100px);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        li:nth-child(3) {
+            background: rgba(149, 121, 123, 0.9);
+            -webkit-transform: translateZ(-100px);
+            -moz-transform: translateZ(-100px);
+            -ms-transform: translateZ(-100px);
+            -o-transform: translateZ(-100px);
+            transform: translateZ(-100px);
+        }
+
+        li:nth-child(4) {
+            background: rgba(102, 99, 79, 0.9);
+            -webkit-transform: rotateY(-90deg) translateZ(100px);
+            -moz-transform: rotateY(-90deg) translateZ(100px);
+            -ms-transform: rotateY(-90deg) translateZ(100px);
+            -o-transform: rotateY(-90deg) translateZ(100px);
+            transform: rotateY(-90deg) translateZ(100px);
+            
+        }
+
+        li:nth-child(5) {
+            background: rgba(197, 113, 84, 0.9);
+            -webkit-transform: rotateX(90deg) translateZ(100px);
+            -moz-transform: rotateX(90deg) translateZ(100px);
+            -ms-transform: rotateX(90deg) translateZ(100px);
+            -o-transform: rotateX(90deg) translateZ(100px);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        li:nth-child(6) {
+            background: rgba(219, 184, 143, 0.9);
+            -webkit-transform: rotateX(-90deg) translateZ(100px);
+            -moz-transform: rotateX(-90deg) translateZ(100px);
+            -ms-transform: rotateX(-90deg) translateZ(100px);
+            -o-transform: rotateX(-90deg) translateZ(100px);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li>IPhone</li>
+        <li>Sugar</li>
+        <li>Bill</li>
+        <li>Thanks</li>
+        <li>XBox</li>
+        <li>Doll</li>
+    </ul>
+    <script>
+        window.onload = function(){
+            wrap.style.cssText = "transform: rotateX(360deg) rotateY(360deg);transition: 1s ease-out;"
+        }
+
+        var wrap = document.getElementById('box');
+        var degArr = [-360,-270,-180,-90,0,90,180,270,360]; //各个面对应角度
+        
+        wrap.onclick = function(){
+            var round = 4 + Math.floor(Math.random()*9);    //旋转圈数
+            var randX = Math.floor(Math.random()*9);  //随机X
+            var randY = Math.floor(Math.random()*9);   //随机Y
+            var degX = round*360+degArr[randX];
+            var degY = round*360+degArr[randY];
+            wrap.style.cssText = "transform: rotateX("+degX+"deg) rotateY("+degY+"deg)";
+        }
+
+    </script>
+</body>
+
+</html>

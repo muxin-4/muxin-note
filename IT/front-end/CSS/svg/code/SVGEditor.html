@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SVG 编辑器</title>
+    <style>
+        #toolbox {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+            border-right: 1px solid #CCC;
+        }
+
+        #toolbox h2 {
+            margin: 0;
+            padding: 0;
+            background: #EEE;
+            font-size: 16px;
+            height: 24px;
+            line-height: 24px;
+            padding: 5px 10px;
+        }
+
+        #toolbox form {
+            padding: 10px;
+        }
+
+        #canvas {
+            position: absolute;
+            left: 260px;
+            top: 10px;
+            bottom: 10px;
+            right: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,.4);
+            border-radius: 5px;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="toolbox">
+        <h2>创建</h2>
+        <form id="create-shape">
+            <button type="button" create="rect">Rect</button>
+            <button type="button" create="circle">Circle</button>
+            <button type="button" create="ellipse">Ellipse</button>
+            <button type="button" create="line">Line</button>
+        </form>
+        <h2>形状</h2>
+        <form id="shape-attrs">
+            请先创建图形
+        </form>
+        <h2>外观和变换</h2>
+        <form id="look-and-transform" disabled="disabled">
+            <p>
+                <label style="display: inline;">填充</label>
+                <input id="fill" type="color" value="#ffffff" />
+            </p>
+            <p>
+                <label style="display: inline;">描边</label>
+                <input id="stroke" type="color" value="#ff0000" />
+                <input id="strokeWidth" type="range" value="1" />
+            </p>
+            <p>
+                <label>translateX</label>
+                <input id="translateX" type="range" min="-400" max="400" value="0" />
+
+                <label>translateY</label>
+                <input id="translateY" type="range" min="-400" max="400" value="0" />
+
+                <label>rotate</label>
+                <input id="rotate" type="range" min="-180" max="180" value="0" />
+
+                <label>scale</label>
+                <input id="scale" type="range" min="-1" max="2" step="0.01" value="1" />
+            </p>
+        </form>
+    </div>
+    <div id="canvas"></div>
+</body>
+<script>
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+
+    // 图形及对应默认属性
+    var shapeInfo = {
+        rect: 'x:10,y:10,width:200,height:100,rx:0,ry:0',
+        circle: 'cx:200,cy:200,r:50',
+        ellipse: 'cx:200,cy:200,rx:80,ry:30',
+        line: 'x1:10,y1:10,x2:100,y2:100'
+    };
+
+    // 默认公共属性
+    var defaultAttrs = {
+        fill: '#ffffff',
+        stroke: '#ff0000'
+    };
+
+    var createForm = document.getElementById('create-shape');
+    var attrForm = document.getElementById('shape-attrs');
+    var lookForm = document.getElementById('look-and-transform');
+
+    var svg = createSVG();
+    var selected = null;
+
+    createForm.addEventListener('click', function(e) {
+        if (e.target.tagName.toLowerCase() == 'button') {
+            create(e.target.getAttribute('create'));
+        }
+    });
+
+    attrForm.addEventListener('input', function(e) {
+        if (e.target.tagName.toLowerCase() != 'input') return;
+        var handle = e.target;
+        selected.setAttribute(handle.name, handle.value);
+    });
+
+    lookForm.addEventListener('input', function(e) {
+        if (e.target.tagName.toLowerCase() != 'input') return;
+        if (!selected) return;
+        selected.setAttribute('fill', fill.value);
+        selected.setAttribute('stroke', stroke.value);
+        selected.setAttribute('stroke-width', strokeWidth.value);
+        selected.setAttribute('transform', encodeTranform({
+            tx: translateX.value,
+            ty: translateY.value,
+            scale: scale.value,
+            rotate: rotate.value
+        }));
+    });
+
+    function createSVG() {
+        var svg = document.createElementNS(SVG_NS, 'svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        canvas.appendChild(svg);
+
+        svg.addEventListener('click', function(e) {
+            if (e.target.tagName.toLowerCase() in shapeInfo) {
+                select(e.target);
+            }
+        });
+        return svg;
+    }
+
+    function create(name) {
+        var shape = document.createElementNS(SVG_NS, name);
+        svg.appendChild(shape);
+        select(shape);
+    }
+
+    function select(shape) {
+        var attrs = shapeInfo[shape.tagName].split(',');
+        var attr, name, value;
+
+        attrForm.innerHTML = "";
+
+        while(attrs.length) {
+            attr = attrs.shift().split(':');
+            name = attr[0];
+            value = shape.getAttribute(name) || attr[1];
+            createHandle(shape, name, value);
+            shape.setAttribute(name, value);
+        }
+
+        for (name in defaultAttrs) {
+            value = shape.getAttribute(name) || defaultAttrs[name];
+            shape.setAttribute(name, value);
+        }
+        selected = shape;
+
+        updateLookHandle();
+    }
+
+    function createHandle(shape, name, value) {
+        
+
+        var label = document.createElement('label');
+        label.textContent = name;
+
+        var handle = document.createElement('input');
+        handle.setAttribute('name', name);
+        handle.setAttribute('type', 'range');
+        handle.setAttribute('value', value);
+        handle.setAttribute('min', 0);
+        handle.setAttribute('max', 800);
+
+        attrForm.appendChild(label);
+        attrForm.appendChild(handle);
+    }
+
+    function updateLookHandle() {
+        fill.value = selected.getAttribute('fill');
+        stroke.value = selected.getAttribute('stroke');
+        var t = decodeTransform(selected.getAttribute('transform'));
+        translateX.value = t ? t.tx : 0;
+        translateY.value = t ? t.ty : 0;
+        rotate.value = t ? t.rotate : 0;
+        scale.value = t ? t.scale : 1;
+    }
+
+    function decodeTransform(transString) {
+        var match = /translate\((\d+),(\d+)\)\srotate\((\d+)\)\sscale\((\d+)\)/.exec(transString);
+        return match ? {
+            tx: +match[1],
+            ty: +match[2],
+            rotate: +match[3],
+            scale: +match[4]
+        } : null;
+    }
+
+    function encodeTranform(transObject) {
+        return ['translate(', transObject.tx, ',', transObject.ty, ') ',
+            'rotate(', transObject.rotate, ') ',
+            'scale(', transObject.scale, ')'].join('');
+    }
+
+</script>
+</html>
