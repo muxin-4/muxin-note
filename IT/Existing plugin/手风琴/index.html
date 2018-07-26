@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pic</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		ul,li{
+			list-style:none;
+		}
+		body{
+			background:url(2.jpg) no-repeat top center;
+		}
+		#box{
+			width:1090px;
+			height:429px;
+			overflow:hidden;
+			position: relative;
+			left:127px;
+			top:162px;
+			}
+		.one{
+			background:url(1.jpg);	
+			}
+		.two{
+			background:url(3.jpg);	
+			}
+		.three{
+			background:url(4.jpg);	
+			}
+		.last{
+			background:url(5.jpg);
+			}
+		.list{
+			width:101px;
+			height:429px;
+			float: left;
+			position:relative;
+			overflow: hidden;
+			
+			}
+		#box ul li.last {
+			width: 789px;		
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		p{
+			width:101px;
+			height:429px;
+			background:rgba(0,0,0,.5);
+			}
+		p span{
+			display:block;
+			width:15px;
+			height:266px;
+			padding:0 43px;
+			background:rgba(0,0,0,.5);
+			color:#fff;
+			font:15px/18px "微软雅黑";
+			text-align: center;
+			}
+		
+	</style>
+	<script src="jquery-1.12.0.min.js"></script>
+	<script> 
+	$("document").ready(function(){
+		$("#box ul li").mouseover(function(){
+			$(this).stop().animate({"width":"789px"},300).siblings("li").stop().animate({"width":"101px"},300);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id = "box">
+		<ul>
+			<li class = "list one" name = "true">
+				<p class = "click_p"><span>我的个人拉萨之旅丨丨故事之城1</span></p>
+			</li>
+			<li class = "list two" name = "true">
+				<p class = "click_p"><span>我的个人拉萨之旅丨丨故事之城2</span></p>
+			</li>
+			<li class = "list three" name = "true">
+				<p class = "click_p"><span>我的个人拉萨之旅丨丨故事之城3</span></p>
+			</li>
+			<li class = "list last" name = "true">
+				<p class = "click_p"><span>我的个人拉萨之旅丨丨故事之城4</span></p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>展开与收起</title>
+	<style type="text/css">
+		body{
+			margin: 0 auto;
+			padding:0;
+		}
+		#pn {
+			background: #e8e8e8;
+			width: 590px;			
+			margin:0 auto;
+			padding:5px;
+			font-size: 9pt;
+			height: auto;
+		}
+		.slide {
+			margin:0 auto;
+			padding:0;
+			width: 600px;
+			border-top: 4px solid gray;
+		}
+		.btn-slide {
+			background: gray;
+			width: 120px;
+			height: 30px;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			color:#FFF;
+			padding:10px 0 0 0;
+			text-decoration: none;
+			border-radius: 0 0 10px 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function showDiv() {
+			document.getElementById('hpn').style.display = "block";
+			document.getElementById('strHref').innerHTML = "收起-";
+			document.getElementById('strHref').href = "javascript:hideDiv()";
+		}
+		function hideDiv(argument) {
+			document.getElementById('hpn').style.display = "none";
+			document.getElementById('strHref').innerHTML = "更多选项+";
+			document.getElementById('strHref').href = "javascript:showDiv()";
+		}
+		
+	</script>
+
+</head>
+<body>
+	<div id="pn">
+		<p>手机-商品筛选</p>
+		<p>网络：移动4G 联通4G 电信3G</p>
+		<div id="hpn" style="display:none">
+			<P>价格：5000以上 4000-4999 3000-3999</P>
+			<p>特点：JDPhone计划 "0"元购机 防水 长待机 1080P全高清屏</p>		
+		</div>	
+	</div>
+	
+	<p class="slide">
+		<a href="javascript:showDiv();" id="strHref" class="btn-slide">更多选项+</a>
+	</p>
+
+</body>
+</html>

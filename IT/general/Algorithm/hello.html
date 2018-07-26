@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Binary Tree</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function BinaryTree() { //二叉树类
+			var Node = function(key) {
+				this.key = key;
+				this.left = null;
+				this.right = null;
+			};
+
+			var root = null; //根节点
+
+			//加入新节点
+			var insertNode = function(node, newNode) {
+				if(newNode.key < node.key) { //如果新节点的值比老节点的值小
+					if(node.left === null) { //如果老节点的左孩子为空
+						node.left = newNode;
+					}else {
+						insertNode(node.left, newNode);
+					}
+				}
+			}
+
+			this.insert = function(key) { //向树中插入一个新的键
+				var newNode = new Node(key);
+
+				if(root === null) { //如果根节点为空，插入根节点
+					root = newNode;
+				}else {				//否则插入到非根节点的其他位置
+					insertNode(root, newNode);
+				}
+			}
+		}
+	</script>
+	
+</body>
+</html>

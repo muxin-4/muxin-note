@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+
+function sort(elements) {
+    for(i = 0; i < elements.length - 1; i++) {//外层循环
+        for(j = 0; j < elements.length - 1 - i; j++) {//内层循环
+            if(elements[j] > elements[j+1]){
+                var swap = elements[j];
+                elements[j] = elements[j + 1];
+                elements[j + 1] = swap;
+            }
+        }
+    }
+    return elements;
+}
+
+var elements = [5, 3, 1, 2, 4];
+console.log('before:' + elements);
+sort(elements);
+console.log('after:' + elements);
+
+//为什么for循环两次?
+//    外层循环的意思是比较几轮
+//    内层循环的意思是每轮比较几次
+//为什么外层for循环为数组的所有元素个数length-1？
+//   外层循环每循环一轮找到一个最大值，循环length-1次,找到length-1个最大值，剩余一个值，排除法，剩余的值一定是最小值。
+//为什么内层循环为数组的所有元素个数-1-i？
+//   -i原因：外层循环每循环一轮找到一个最大值，也就是可以减去一个要比较的数字，同理，每循环i轮找到i个最大值，也就是可以减去i个要比较的数字。
+//   -1原因：比较5个数，只需要4次就可以比较成功
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

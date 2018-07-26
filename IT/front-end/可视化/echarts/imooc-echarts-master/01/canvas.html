@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvas</title>
+</head>
+<body>
+
+<!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+<canvas id="myCanvas" width="400px" height="300px">
+您的浏览器不支持canvas标签。
+</canvas>
+
+<script type="text/javascript">
+//获取Canvas对象(画布)
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");  
+//开始一个新的绘制路径
+ctx.beginPath();
+//设置弧线的颜色为蓝色
+ctx.strokeStyle = "blue";
+var circle = {
+    x : 100,    //圆心的x轴坐标值
+    y : 100,    //圆心的y轴坐标值
+    r : 50      //圆的半径
+};
+//沿着坐标点(100,100)为圆心、半径为50px的圆的顺时针方向绘制弧线
+ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, false);    
+//按照指定的路径绘制弧线
+ctx.stroke();
+
+</script>
+</body>
+</html>

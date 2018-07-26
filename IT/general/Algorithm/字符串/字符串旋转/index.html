@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            width: 48%;
+            float: left;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .r {
+            font-size: 12px;
+            color: #ec0000;
+        }
+    </style>
+</head>
+
+<body>
+<h1>1.给定一个字符串，要求将字符串排列顺序颠倒。</h1>
+<p>例如，将字符串"abcdef"颠倒，那么原字符串将变成"fedcba"。请写一个函数实现此功能。</p>
+
+<h1>2.给定一个字符串，要求将字符串前面的若干个字符移到字符串的尾部。</h1>
+<p>例如，将字符串"abcdef"的前3个字符'a','b','c'移到字符串的尾部，那么原字符串将变成"defabc"。请写一个函数实现此功能。</p>
+
+<!-- 加载 Babel -->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--<script type="text/babel">-->
+<script>
+
+
+	//	String.prototype.split()
+	//	Array.prototype.reverse()
+	//	Array.prototype.join()
+
+	//	split()方法将一个字符串对象的每个字符拆出来，并且将每个字符串当成数组的每个元素
+	//	reverse()方法用来改变数组，将数组中的元素倒个序排列，第一个数组元素成为最后一个，最后一个变成第一个
+	//	join()方法将数组中的所有元素边接成一个字符串
+
+    // 翻转整个字符串
+	// 1.js内置函数法-翻转整个字符串
+	function reverseString1(str) {
+		// 第一步，使用split()方法，返回一个新数组
+		// 第二部，使用reverse() - 进行数组元素的反转
+		//将数组的每个元素按照一定的规则进行连接，使其成为一个新的字符串
+		return str.split("").reverse().join('');
+	}
+
+	// 2.for循环递减遍历-翻转整个字符串
+	function reverseString2(str) {
+		// 第一步：创建一个空的字符串来存储新创建的字符串
+		var newString = "";
+
+		// 第二步：
+		for (var i = str.length; i > 0; i--) {
+			newString += str[i -1];
+		}
+
+		// 第三步,返回反转的字符串
+		return newString;
+	}
+
+    // 3.while循环递减遍历-翻转整个字符串
+    function reverseString3(str) {
+        var newString = "";
+        var i = str.length;
+
+        while (i > 0) {
+            newString += str.substring(i - 1, i);
+            i--;
+        }
+
+        return newString;
+    }
+
+	// 旋转部分字符串
+	// 1.js内置函数法-删除拼接法
+	function stringReverse1(str, pos) {
+		// 第一步，使用split()方法，返回一个新数组
+		var arr = str.split("");
+		var newArr = arr.splice(0, pos); // 把需要反转的字符串从数组中删除，存储在newArr中
+		newArr = arr.concat(newArr); // 拼接两个数组，把需要反转的拼接在后面
+		newArr = newArr.join(''); //把数组转化成字符串
+		return newArr;
+	}
+
+	// 2.js内置函数法-提取拼接法
+	function stringReverse2(str, pos) {
+		var temp_str = str.substring(0, pos);
+		return str.substring(pos) + temp_str;
+	}
+
+
+//	// 3.for循环-蛮力移位法
+//	function leftShift(arrObj) {
+//		var temp = arrObj[0];
+//
+//		var i, len = arrObj.length;
+//		for (i = 1; i < len; i++) {
+//			arrObj[i - 1] = arrObj[i];
+//		}
+//		arrObj[len - 1] = temp;
+////		return arrObj;
+//		// after one step: ["a", "b", "c", "d", "e", "f"] => ["b", "c", "d", "e", "f","a"]
+//	}
+//
+//	function stringReverse3(arrObj, pos) {
+//		while (pos--) {
+//			leftShift(arrObj);
+//		}
+//	}
+//
+//	// 4.三步反转法
+	function reverseString4(arrObj, from, to) {
+		while (from < to) {
+			var t = arrObj[from];
+			arrObj[from++] = arrObj[to];
+			arrObj[to--] = t;
+		}
+	}
+
+	function leftRotateString4(arrObj, n, m) {
+		var len = arrObj.length;
+		m %= n;
+		reverseString4(arrObj, 0, m - 1);
+		reverseString4(arrObj, m, n - 1);
+		reverseString4(arrObj, 0, n - 1);
+	}
+
+	var str = "abcdef";
+	var strAll1 = reverseString1(str);
+	var strAll2 = reverseString2(str, 3);
+	var strAll3 = reverseString3(str);
+
+	var str1 = stringReverse1(str, 3);
+	var str2 = stringReverse2(str, 3);
+//	var str3 = stringReverse3(str, 3);
+	var str4 = leftRotateString4(str, 3);
+
+//	const es6Str1 = [...str].reverse().join('');
+//	const es6Str2 = [...str].reduceRight( (prev, curr) => prev + curr );
+
+
+//    1.翻转字符串数组
+    var str1 = "I am a student";
+    function overturn1(string) {
+        var strArray1 = string.split(" ");
+        var strArray2 = [];
+        for (var i = strArray1.length - 1; i >= 0;i-- ) {
+            strArray2.push(strArray1[i])
+        }
+        return strArray2;
+    }
+
+    var strArray1 = overturn1(str1);
+
+    //整个字符串
+	document.write('翻转整个字符串' + '<br>');
+	document.write('1.js内置函数法-翻转整个字符串' + strAll1 + '<br>');
+	document.write('2.for循环递减遍历-翻转整个字符串' + strAll2 + '<br>');
+	document.write('3.while循环递减遍历-翻转整个字符串' + strAll3 + '<br>');
+
+	//部分字符串
+	document.write('旋转部分字符串' + '<br>');
+	document.write('1.js内置函数法-删除拼接法' + str1 + '<br>');
+	document.write('2.js内置函数法-提取拼接法' + str2 + '<br>');
+//	document.write('3.for循环-蛮力移位法' + str3 + '<br>');
+	document.write('4.三步反转法' + str4 + '<br>');
+
+	//ES6
+//	document.write('1.ES6' + es6Str1 + '<br>');
+//	document.write('2.ES6' + es6Str2 + '<br>');
+
+
+    //翻转字符串数组
+	document.write('1.翻转字符串数组' + strArray1 + '<br>');
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

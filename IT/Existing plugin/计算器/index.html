@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>网页计算器</title>
+    <style>
+        body{
+	background:#EECFA1;
+	margin: 0;
+	padding: 0;
+}
+/*其他信息*/
+.news{
+	width:500px;
+	float: left;
+	text-align: center;
+}
+/*大标题*/
+.news h1{
+	margin-top: 300px;
+}
+/*视图*/
+#view{
+	min-width: 1000px;
+	width: 1000px;
+	margin: 0 auto;
+	font-size: 20px;
+}
+/*计算器*/
+#calculator{
+	width: 500px;
+	float: left;
+	width: 400px;
+	height: 630px;
+	margin-top: 20px;
+	background:#000;
+	padding:20px;
+	border-radius: 20px;
+	box-shadow: 20px 20px 20px rgba(0,0,0,0.3);
+}
+/*显示器*/
+#screen{
+	width: 350px;
+	height: 80px;
+	margin: 30px auto; 
+	padding: 10px;
+	background: #dcdfa8;
+	border-radius: 10px;
+}
+/*两行显示区*/
+.print{
+	display: block;
+	line-height:30px;
+	width: 320px;
+	height: 40px;
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+	background: #dcdfa8;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: right;
+}
+/*按钮区域*/
+#button{
+	padding: 15px;
+	height: 420px;
+	width: 350px;
+	background: #f3f8f0;
+	margin: 0 auto;
+	border-radius: 10px;
+}
+/*一行按钮*/
+ul{
+	display:block;
+	width: 350px;
+	height: 80px;
+	margin: 5px auto;
+	padding: 0;
+}
+/*按钮单列*/
+li{
+	display: inline-block;
+}
+/*普通按钮样式*/
+.btn{
+	display:inline-block;
+	outline:none;
+	float: left;
+	width: 60px;
+	height: 60px;
+	background: #fc6422;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	color: #fff;
+}
+/*数字按钮*/
+.bt_number{
+	background-color: #000;
+}
+/*占两格的按钮*/
+.bt_double{
+	width: 128px;
+}
+/*清除按钮*/
+.bt_clear{
+	background: #f00;
+}
+    </style>
+</head>
+
+<body>
+    <!--窗口-->
+    <div id="view">
+        <!--about me-->
+        <div class="news">
+            <h1><b>Calculator by 鹿宛儿</b></h1>
+            <h3>♥发现bug--请给我留言♥</h3>
+        </div>
+        <!--end about me-->
+        <!--计算器-->
+        <div id="calculator">
+            <!--显示屏-->
+            <div id="screen">
+                <p id="expression" class="print"></p>
+                <p id="answer" class="print"></p>
+            </div>
+            <!--end显示屏-->
+            <!--按钮-->
+            <div id="button">
+                <!--第一行--><!--double为双目运算符，one为单目运算符-->
+                <ul class="row">
+                    <li class="col">
+                        <input type="button" name="clear" class="btn bt_clear" value="C">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="one" class="btn" value="sin">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="one" class="btn" value="cos">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="one" class="btn" value="√">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="one" class="btn" value="1/">
+                    </li>
+                </ul>
+                <!--第二行-->
+                <ul class="row">
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="7">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="8">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="9">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn " value="*">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn" value="%">
+                    </li>
+                </ul>
+                <!--第三行-->
+                <ul class="row">
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="4">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="5">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="6">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn" value="+">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn" value="÷">
+                    </li>
+                </ul>
+                <!--第四行-->
+                <ul class="row">
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="1">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="2">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number" value="3">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn" value="-">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="double" class="btn" value="^">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col">
+                        <input type="button" name="number" class="btn bt_number bt_double" value="0">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="point" class="btn bt_number" value=".">
+                    </li>
+                    <li class="col">
+                        <input type="button" name="is" class="btn bt_double" value="=">
+                    </li>
+                </ul>
+            </div>
+            <!--end按钮-->
+        </div>
+        <!--end计算器-->
+    </div>
+    <!--end窗口-->
+<script>
+    var calculate = {
+
+    input: "", //表达式
+    answer: "", //结果
+    num1: "", //操作数1
+    num2: "", //操作数2
+    operator: "", //操作符
+    str: "", //当前按钮获取的
+
+    /*开始函数*/
+    init: function() {
+        calculate.getExpression();
+    },
+    /*获取表达式，根据点击按钮调用其他函数*/
+    getExpression: function() {
+        var get = document.getElementById("button");
+        get.addEventListener('click', function(e) { //
+
+            calculate.str = e.target; //str是从按钮获得的值
+
+            //根据按钮显示
+            switch (true) {
+
+                //点击空，无反应
+                case calculate.str.value == null:
+                    break;
+
+                    //点击数字
+                case calculate.str.name == "number":
+                    if (calculate.num1.length == 0) {
+                        calculate.num1 = calculate.str.value;
+                        calculate.input = calculate.num1;
+                    } else if (calculate.num1 == "0" || calculate.num2 == "0") { //数字不能以0开头
+                        break;
+                    } else if (calculate.operator.length == 0 || calculate.num1 == "-") { //如果num1为空或负号，记录数字到num1
+                        calculate.num1 = calculate.num1 + calculate.str.value;
+                        calculate.input = calculate.num1;
+                    } else if (calculate.operator.length != 0) { //如果操作符不为空，记录数字到num2
+                        calculate.num2 = calculate.num2 + calculate.str.value;
+                        calculate.input = calculate.num1 + calculate.operator + calculate.num2;
+                    }
+
+                    calculate.showExpression();
+                    break;
+
+                    //点击小数点
+                case calculate.str.name == "point":
+                    if (calculate.num1.length == 0) { //如果数字为空，显示"0."
+                        calculate.num1 = "0.";
+                        calculate.input = calculate.num1;
+                    } else if (calculate.operator.length == 0) { //第一个数未记录完
+                        if (parseInt(calculate.num1) == calculate.num1 && calculate.num1[calculate.num1.length - 1] != ".") { //且之前是整数，就显示小数点
+                            calculate.num1 = calculate.num1 + calculate.str.value;
+                            calculate.input = calculate.num1;
+                        }
+                    } else if (calculate.operator.length != 0 && calculate.num2.length == 0) { //第二个操作数为空
+                        calculate.num2 = "0.";
+                        calculate.input = calculate.num1 + calculate.operator + calculate.num2;
+                    } else if (calculate.num2.length != 0) { //第二个操作数不为空
+                        if (parseInt(calculate.num2) == calculate.num2 && calculate.num2[calculate.num2.length - 1] != ".") { //且之前是整数，就显示小数点
+                            calculate.num2 = calculate.num2 + calculate.str.value;
+                            calculate.input = calculate.num1 + calculate.operator + calculate.num2;
+                        }
+                    }
+                    calculate.showExpression();
+                    break;
+
+                    //点击单目运算符
+                case calculate.str.name == "one":
+                    if (!isNaN(calculate.answer) && (calculate.answer.length != 0)) { //上次运算结果存在,answer不为空且是数字
+                        calculate.num1 = calculate.answer;
+                        calculate.operator = calculate.str.value;
+                        calculate.input = calculate.operator + calculate.num1 + "=";
+                        calculate.answer = "";
+                    } else if (calculate.num1.length == 0) { //num1为空,默认为0
+                        calculate.num1 = "0";
+                        calculate.operator = calculate.str.value;
+                        calculate.input = calculate.operator + calculate.num1;
+                        alert(calculate.input);
+                    } else {
+                        if (!isNaN(calculate.num1)) { //如果num1是数字
+                            calculate.operator = calculate.str.value;
+                            calculate.input = calculate.operator + calculate.num1 + "=";
+                        }
+                    }
+                    calculate.showExpression();
+                    calculate.getAnswer();
+
+                    break;
+
+                    //点击双目运算符
+                case calculate.str.name == "double":
+                    if (!isNaN(calculate.answer) && (calculate.answer.length != 0)) { //上次运算结果存在,answer不为空且是数字
+                        calculate.num1 = calculate.answer;
+                        calculate.operator = calculate.str.value;
+                        calculate.num2 = "";
+                        calculate.answer = "";
+                        calculate.input = calculate.num1 + calculate.operator;
+                    } else {
+                        if (calculate.num1.length != 0 && calculate.num2.length == 0) { //如果num1不为空,num2为空
+                            calculate.operator = calculate.str.value;
+                            calculate.input = calculate.num1 + calculate.operator;
+                        } else if (!isNaN(calculate.num1) && !isNaN(calculate.num2) && calculate.operator.length != 0) { //当做等号使用
+                            calculate.input = calculate.num1 + calculate.operator + calculate.num2 + "=";
+                            calculate.getAnswer();
+                            calculate.num1 = calculate.answer;
+                            calculate.operator = calculate.str.value;
+                            calculate.num2 = "";
+                            calculate.answer = "";
+                            calculate.input = calculate.num1 + calculate.operator;
+                        }
+                    }
+                    calculate.showExpression();
+                    calculate.showAnswer();
+                    break;
+
+                    //点击等号时才计算
+                case calculate.str.name == "is":
+                    if (!isNaN(calculate.num1) && !isNaN(calculate.num1) && calculate.operator != null) { //各个部分合法
+                        calculate.input = calculate.num1 + calculate.operator + calculate.num2 + "=";
+                        calculate.getAnswer();
+                    }
+                    calculate.showExpression();
+                    break;
+
+                    //点击清除按钮
+                case calculate.str.name == "clear":
+                    calculate.clearScreen();
+                    break;
+
+                    //其他情况
+                default:
+                    calculate.clearScreen();
+                    break;
+            }
+        });
+    },
+
+    /*单目运算函数*/
+    _OperatorOne: function() {
+        //alert(num+operator);
+        if (isNaN(calculate.num1)) { //如果num不是数字
+            calculate.answer = "ERROR!";
+        } else {
+            switch (calculate.operator) {
+                case "sin":
+                    calculate.answer = Math.sin(calculate.num1);
+                    break;
+                case "cos":
+                    calculate.answer = Math.cos(calculate.num1);
+                    break;
+                case "√":
+                    if (calculate.num1 >= 0) {
+                        calculate.answer = Math.sqrt(calculate.num1);
+                    } else {
+                        calculate.answer = "负数不能开平方根！";
+                    }
+                    break;
+            }
+        }
+    },
+    /*双目运算函数*/
+    _OperatorDouble: function() {
+        //alert(num1+operator+num2);
+        if (isNaN(calculate.num1) || isNaN(calculate.num1)) { //如果num不是数字
+            calculate.answer = "ERROR!";
+        } else {
+            switch (calculate.operator) {
+                case "+":
+                    calculate.answer = Number(calculate.num1) + Number(calculate.num2);
+                    break;
+                case "-":
+                    calculate.answer = Number(calculate.num1) - Number(calculate.num2);
+                    break;
+                case "*":
+                    calculate.answer = calculate.num1 * calculate.num2;
+                    break;
+                case "÷":
+                case "/":
+                    if (calculate.num2 == 0) {
+                        calculate.answer = "除数不能为0";
+                        //alert(calculate.answer);
+                        break;
+                    } else {
+                        calculate.answer = calculate.num1 / calculate.num2;
+                    }
+                    break;
+                case "%":
+                    calculate.answer = calculate.num1 % calculate.num2;
+                    break;
+                case "^":
+                    calculate.answer = Math.pow(calculate.num1, calculate.num2);
+                    break;
+            }
+        }
+    },
+    /*计算总函数*/
+    getAnswer: function() {
+        //alert(calculate.operator);
+        calculate.input = calculate.input.substring(0, calculate.input.length - 1); //去掉等于号的表达式
+
+        if (!isNaN(calculate.input)) { //如果input是数字直接显示答案
+            calculate.answer = calculate.input;
+        } else {
+            switch (calculate.operator) {
+                case "sin":
+                case "cos":
+                case "√":
+                    calculate._OperatorOne(); //调用单目运算函数
+                    break;
+                case "1/":
+                    calculate.num2 = calculate.num1;
+                    calculate.num1 = 1;
+                    calculate.operator = "/";
+                case "+":
+                case "-":
+                case "%":
+                case "÷":
+                case "^":
+                case "*":
+                    if (calculate.num2.length == 0) { //如果num2为空，默认为0
+                        calculate.num2 = "0";
+                        calculate.input = calculate.num1 + calculate.operator + calculate.num2;
+                        calculate.showExpression();
+                    }
+                    calculate._OperatorDouble();
+                    break;
+            }
+        }
+        calculate.showAnswer(); //显示答案
+    },
+
+    /*显示表达式*/
+    showExpression: function() {
+        if (calculate.input.length >= 25) { //如果长度溢出
+            calculate.input = "长度溢出 请按C清除！";
+        }
+        var screen = document.getElementById("expression"); //显示结果
+        screen.innerHTML = calculate.input;
+
+    },
+
+    /*显示结果*/
+    showAnswer: function() {
+        if (calculate.answer.length >= 25) { //如果长度溢出
+            calculate.answer = "长度溢出 请按C清除！";
+        } else if (!isNaN(calculate.answer) && calculate.answer.length != 0) { //结果为数字,且不为空
+            if (parseInt(calculate.answer) != calculate.answer) { //如果是小数
+                calculate.answer = Number(calculate.answer).toFixed(5); //精确2位
+                calculate.answer = parseFloat(calculate.answer);
+            }
+        }
+        var screen = document.getElementById("answer"); //显示结果
+        screen.innerHTML = calculate.answer;
+    },
+    /*清屏*/
+    clearScreen: function() {
+        calculate.input = "";
+        calculate.answer = "";
+        calculate.num1 = "";
+        calculate.num2 = "";
+        calculate.operator = "";
+        calculate.showAnswer();
+        calculate.showExpression();
+    }
+};
+/*自运行*/
+calculate.init();
+
+    </script>
+</body>
+
+</html>

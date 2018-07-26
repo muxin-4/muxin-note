@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../bootstrap.min.css">
+  <style>
+    body{
+      padding-top:80px;
+    }
+    #add-btn{
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+      <form class="form-horizontal">
+        <input id="place-input" type="text" class="form-control" value="" placeholder="请输入地址">
+        <button type="button" id="add-btn" class="btn btn-success">
+          查询
+        </button>
+      </form>
+
+    </div>
+    <div class="col-md-6">
+      <div id="main" style="height:500px;"></div>
+    </div>
+  </div>
+</div>  
+
+
+
+<script src='../jquery.min.js'></script>
+<script src='../echarts.min.js'></script>
+<script src='../china.js'></script>
+</body>
+</html>

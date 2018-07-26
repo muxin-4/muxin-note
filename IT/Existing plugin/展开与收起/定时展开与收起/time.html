@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>定时展开与收起</title>
+	<style type="text/css">
+
+		body {
+			margin:0 auto;
+			padding:0;
+		}
+		#pn {
+			background:#E8E8E8;
+			width: 950px;
+			display: block;
+			margin: 0 auto;
+			padding:5px;
+			height: auto;
+			text-align: center;
+		}
+		.content {
+			margin: 0 auto;
+			padding:10px;
+			width: 950px;
+			background:gray;
+			text-align: center;
+			height: 40px;
+			color:#fff;
+
+		}
+	</style>
+	<script type="text/javascript">
+		var h = 0;
+		function addH() {
+			if (h < 300) {
+				h += 5;
+				document.getElementById('pn').style.height = h + "px";
+			}else{
+				return;
+			}
+			setTimeout("addH()",30);
+		}
+
+		function subH() {
+			if (h > 0) {
+				h -= 5;
+				document.getElementById('pn').style.height = h + "px";
+			}else{
+				document.getElementById('pn').style.display = "none";
+				return;
+			}
+			setTimeout("subH()",30);
+		}
+
+
+
+		window.onload = function showAds() {
+			addH();
+			setTimeout("subH()",5000);
+		}
+	</script>
+</head>
+<body>
+	<div id="pn">
+		<h1>欢迎来到慕课网</h1>
+		<h2>大幅广告</h2>	
+	</div>
+	<div class="content">
+		慕课网欢迎你。
+		<br>
+		正文
+	</div>
+
+</body>
+</html>

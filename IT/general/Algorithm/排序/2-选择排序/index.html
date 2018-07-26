@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script>
+function selectionSort(arr) {
+    var len = arr.length;
+    console.time('选择排序耗时');
+    for(var i = 0; i < len - 1; i++) {//重复（元素个数-1）次
+        console.log('i=' + i);
+        var minIndex = i;    //把第一个没有排序过的元素设置为最小值
+        for(var j = i + 1; j < len; j++) { //遍历每个没有排序过的元素
+            if(arr[j] < arr[minIndex]) { //如果元素 < 现在的最小值
+                minIndex = j; //将此元素设置成为新的最小值
+            }
+        }
+        var temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;//将最小值和第一个没有排序过的位置交换
+    }
+    console.timeEnd('选择排序耗时');
+    return arr;
+}
+var arr = [3, 44, 38];
+//        var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+console.log(selectionSort(arr));
+</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

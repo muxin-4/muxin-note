@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li { width: 48%; float: left; }
+        span { font-weight: bold; }
+        p { font-size: 14px; }
+        .r { font-size: 12px; color: #ec0000; }
+    </style>
+</head>
+
+<body>
+<h1>截取字符串的各种操作</h1>
+<ul>
+    <li>
+        <span>substring</span>
+        <p class="r">
+            substring 方法用于提取字符串中介于两个指定下标之间的字符<br>
+            <br>
+            stringObject.substring(start,stop)<br>
+            start 必需。一个非负的整数，规定要提取的子串的第一个字符在 stringObject 中的位置。 <br>
+            stop 可选。一个非负的整数，比要提取的子串的最后一个字符在 stringObject 中的位置多 1。<br>
+            如果省略该参数，那么返回的子串会一直到字符串的结尾。 <br>
+            <br>
+            返回值 <br>
+            一个新的字符串，该字符串值包含 stringObject 的一个子字符串，<br>
+            其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。 <br>
+            <br>
+            说明 <br>
+            substring 方法返回的子串包括 start 处的字符，但不包括 end 处的字符。 <br>
+            如果 start 与 end 相等，那么该方法返回的就是一个空串（即长度为 0 的字符串）。 <br>
+            如果 start 比 end 大，那么该方法在提取子串之前会先交换这两个参数。 <br>
+            如果 start 或 end 为负数，那么它将被替换为 0。 <br>
+        </p>
+        <p>
+            let str = '0123456789'<br>
+            str.substring(0)    // 0123456789<br>
+            str.substring(5)    // 56789<br>
+            str.substring(10)    // ""<br>
+            str.substring(12)    // ""<br>
+            str.substring(-5)    // 0123456789<br>
+            str.substring(-10)    // 0123456789<br>
+            str.substring(-12)    // 0123456789<br>
+            str.substring(0, 5)    // 01234<br>
+            str.substring(0, 10)    // 0123456789<br>
+            str.substring(0, 12)    // 0123456789<br>
+            str.substring(2, 0)    // 01<br>
+            str.substring(2, 2)    // ""<br>
+            str.substring(2, 5)    // 234<br>
+            str.substring(2, 12)    // 23456789<br>
+            str.substring(2, -2)    // 01<br>
+            str.substring(-1, 5)    // 01234<br>
+            str.substring(-1, -5)    // ""<br>
+        </p>
+    </li>
+    <li>
+        <span>substr</span>
+        <p class="r">
+            substr 方法用于返回一个从指定位置开始的指定长度的子字符串<br>
+            <br>
+            stringObject.substr(start [, length ])<br>
+            start 必需。所需的子字符串的起始位置。字符串中的第一个字符的索引为 0。 <br>
+            length 可选。在返回的子字符串中应包括的字符个数。<br>
+            <br>
+            说明 <br>
+            如果 length 为 0 或负数，将返回一个空字符串。 <br>
+            如果没有指定该参数，则子字符串将延续到stringObject的最后。 <br>
+        </p>
+        <p>
+            let str = '0123456789'<br>
+            str.substr(0)    // 0123456789<br>
+            str.substr(5)    // 56789<br>
+            str.substr(10)    // ""<br>
+            str.substr(12)    // ""<br>
+            str.substr(-5)    // 56789<br>
+            str.substr(-10)    // 0123456789<br>
+            str.substr(-12)    // 0123456789<br>
+            str.substr(0, 5)     // 01234<br>
+            str.substr(0, 10)     // 0123456789<br>
+            str.substr(0, 12)     // 0123456789<br>
+            str.substr(2, 0)     // ""<br>
+            str.substr(2, 2)     // 23<br>
+            str.substr(2, 5)     // 23456<br>
+            str.substr(2, 12)     // 23456789<br>
+            str.substr(2, -2)     // ""<br>
+            str.substr(-1, 5)     // 9<br>
+            str.substr(-1, -5)     // ""<br>
+        </p>
+    </li>
+    <li>
+        <span>split 字符串转数组</span>
+        <p>
+            let str = '0,1,2,3'<br>
+            str = str.split(",")     // ["0", "1", "2", "3"]<br>
+        </p>
+    </li>
+    <li>
+        <span>join 数组转字符串</span>
+        <p>
+            let str = ["0", "1", "2", "3"]<br>
+            str = str.join(",")     // '0,1,2,3'<br>
+        </p>
+    </li>
+    <li>
+        <span>indexOf</span>
+        <p>
+            let str = 'JavaScript' <br>
+            str.indexOf('v')     // 2 <br>
+            str.indexOf('S')     // 4 <br>
+            str.indexOf('Script')     // 4 <br>
+            str.indexOf('key')     // -1<br>
+        </p>
+    </li>
+</ul>
+</body>
+</html>
