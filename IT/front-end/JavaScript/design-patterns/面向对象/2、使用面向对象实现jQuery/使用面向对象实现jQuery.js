@@ -20,6 +20,8 @@ class jQuery {
 	}
 	// 此处省略n个API
 }
+
+// 工厂模式
 window.$ = function(selector) {
 	// 工厂模式
 	return new jQuery(selector)

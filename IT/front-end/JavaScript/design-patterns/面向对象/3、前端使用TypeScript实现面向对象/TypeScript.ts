@@ -35,4 +35,4 @@ class Student extends People {
 
 let xiaoming = new Student('xiaoming', 10, 'A1')
 xiaoming.getWeight()
-alert(xiaoming.girlfriend)
+alert(xiaoming.girlfriend) // 属性“girlfriend”为私有属性，只能在类“Student”中访问。

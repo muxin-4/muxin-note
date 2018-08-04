@@ -1,30 +1,27 @@
-// 异步加载图片
-function loadImg(src) {
-	var promise = new Promise(function (resolve, reject) {
-		var img = document.createElement('img');
-		img.onload = function () {
-			resolve(img);
-		}
-		img.onerror = function () {
-			reject('图片加载失败');
-		}
-		img.src = src;
-	})
-	return promise;
+class Product {
+	constructor(name) {
+		this.name  = name
+	}
+	init() {
+		alert('init')
+	}
+	fun1() {
+		alert('fun1')
+	}
+	fun2() {
+		alert('fun2')
+	}
 }
 
-var src = 'https://ws3.sinaimg.cn/large/006tNc79gy1ftkt7nrezpj30oa0g00vu.jpg';
-var result = loadImg(src);
+// 工厂
+class Creator {
+	create(name) {
+		return new Product(name)
+	}
+}
 
-result.then(function (img) {
-	console.log('img', img);
-	console.log('img.width', img.width);
-	return img;
-}).then(function (img) {
-	console.log('img.height', img);
-	console.log('img.height', img.height);
-	return img;
-}).catch(function (err) {
-	// 捕获异常
-	console.log(err);
-})
+// 测试
+let creator = new Creator()
+let p = creator.create('p1')
+p.init()
+p.fun1()
