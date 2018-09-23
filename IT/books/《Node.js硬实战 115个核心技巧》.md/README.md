@@ -1,4 +1,4 @@
-#Node.js 实战 115个核心技巧  结构笔记
+#Node.js 硬实战 115个核心技巧  结构笔记
 
 > [美]Alex Young Marc Harter  著
 
@@ -12,5 +12,5 @@
 
 #### 3.作者是借着怎样的整体架构，来发展他的观点或陈述他对这个主题的理解？
 
-![Node.js 实战  整体架构](https://ws3.sinaimg.cn/large/006tKfTcgy1fqyl04i1zoj31kw0sz48v.jpg)
+
 
