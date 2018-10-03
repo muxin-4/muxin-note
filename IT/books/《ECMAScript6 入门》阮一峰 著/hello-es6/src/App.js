@@ -11,6 +11,10 @@ import { foo } from "./utils/module/profile";
 // import { area, circumference } from './utils/module/circle';
 import * as circle  from './utils/module/circle';
 
+// let a = 1;
+// let [a, b, c] = [1, 2, 3];
+// let [a, [[b], c]] = [1, [[2], 3]];
+
 class App extends Component {
   constructor() {
     super();
@@ -42,7 +46,10 @@ class App extends Component {
           </h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+		  {/* To get started, edit <code>src/App.js</code> and save to reload. */}
+		  {a}<br/>
+		  {b}<br/>
+		  {c}<br/>
         </p>
       </div>
     );
