@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>hello world</title>
+	<!-- 引入本地vue -->
+	<!-- <script src="./vue.js"></script> -->
+	<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- 生产环境版本，优化了尺寸和速度 -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+
+<body>
+	<!-- 原生js写法 -->
+	<!-- <div id="app"></div> -->
+
+	<!-- vue.js写法 -->
+	<div id="app">{{ content }}</div>
+
+	<!-- 在Vue示例的根DOM元素外，使用“Mustache”语法 (双大括号) 的文本插值，无效 -->
+	<!-- <div>{{content}}</div> -->
+
+	<script>
+		// // 原生js写法
+		// window.onload = function () {
+		// 	var dom = document.getElementById('app');
+		// 	dom.innerHTML = 'hello world'
+		// 	setTimeout(function () {
+		// 		dom.innerHTML = 'bye world'
+		// 	}, 2000)
+		// }
+
+		// vue.js写法
+		var app = new Vue({
+			el: '#app', // Vue 实例使用的根 DOM 元素
+			data: { // Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象属性的访问。
+				content: 'hello world'
+			}
+		})
+
+		setTimeout(function() {
+			console.log('app', app)
+			console.log('this', this)
+			app.$data.content = 'bye world'
+		}, 2000)
+	</script>
+</body>
+
+</html>
