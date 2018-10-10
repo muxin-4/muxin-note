@@ -44,8 +44,9 @@
 
 		setTimeout(function() {
 			console.log('app', app)
+			console.log('app._data', app._data)
 			console.log('this', this)
-			app.$data.content = 'bye world'
+			app._data.content = 'bye world'
 		}, 2000)
 	</script>
 </body>
