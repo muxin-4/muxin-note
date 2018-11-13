@@ -1,0 +1,1 @@
+查看CentOS版本方法  `lsb_release -a`

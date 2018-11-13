@@ -1,0 +1,1 @@
+mac 本地公钥：`cat ~/.ssh/id_rsa.pub`
