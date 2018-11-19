@@ -79,6 +79,8 @@ Legacy version - 历史版本
 
 
 
+[nginx 下载地址](https://nginx.org/en/download.html)
+
 [nginx: Linux 安装](https://nginx.org/en/linux_packages.html#stable)
 
 1. `vim /etc/yum.repos.d/nginx.repo`
@@ -92,7 +94,9 @@ baseurl=http://nginx.org/packages/centos/7/$basearch/
 gpgcheck=0
 enabled=1
 ```
-
+```
+!wq
+```
 ```
 yum list |grep nginx
 ```
@@ -100,7 +104,9 @@ yum list |grep nginx
 ```
 yum install nginx
 ```
-
+```
+y
+```
 ```
 nginx -v // 查看nginx版本
 ```
@@ -151,15 +157,100 @@ Nginx基本配置语法
 | `/var/cache/nginx` | 目录 |Nginx的缓存目录|
 | `/var/log/nginx` | 目录 |Nginx的日志目录|
 
-2.安装编译参数
+2. Nginx编译配置参数
 
 命令：`nginx -V`
 
+3. 默认配置语法
+
+`vim /etc/nginx/nginx.conf`
+
+nginx会先读取 `/etc/nginx/nginx.conf`文件，再读取nginx.conf 里的 `include /etc/nginx/conf.d/*.conf`
+
+ 
+
+`/etc/nginx/nginx.conf`
+
+| 路径                           | 作用                                       |
+| ------------------------| ------------------------------------------ |
+| `user`    | 设置nginx服务的系统使用用户 |
+| `worker_processes`    | 工作进程数                         |
+| `error_log`    | nginx的错误日志 |
+| `pid`             | nginx服务启动时候pid                  |
+| `events    woker_connections` | 每个进程允许最大连接数(一般一万个左右，满足大部分企业要求) |
+| `events    use` | 工作进程数              |
+
+```bash
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+// 访问一个网站，访问http
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+```
+
+```bash
+http {
+	... ...
+    server {
+    	listen         80;
+    	server_name    localhost;
+    	
+    	location / {   // 控制网站访问路径
+            root   /usr/share/nginx/html;
+            index  index.html index.html;
+    	}
+    	
+    	error_page 500 502 503 504  /50x.html
+    	location = /50x.html {
+            root   /usr/share/nginx/html
+    	}
+	}
+	server {
+        ... ...
+	}
+}
+```
 
 
 
+浏览器访问，网卡的inet的ip地址: `ip a`
 
 
+
+node application nginx vhost setup: [Setting up multiple nodejs applications using nginx vitual hosts](https://www.digitalocean.com/community/questions/setting-up-multiple-nodejs-applications-using-nginx-vitual-hosts)
+
+4. 默认配置与默认站点启动
+
+#### 
+
+#### 2、Nginx日志类型
+
+error.log access.log
 
 
 
