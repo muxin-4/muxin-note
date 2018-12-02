@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>From Data to UI!</title>
+	<style>
+		#container {
+			padding: 50px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+		var destination = document.querySelector("#container");
+		var Circle = React.createClass({
+			render: function() {
+				var circleStyle = {
+					padding: 10,
+					margin: 20,
+					display: "inline-block",
+					background-color: this.props.bgcolor,
+					borderRadius: "50%",
+					width: 100,
+					height: 100
+				};
+				return (
+					<div style={circleStyle}>
+					</div>
+				)
+			}
+		})
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# JavaScript: The Hard Parts
+
+Dive deep into JavaScript to solve complex coding challenges by learning critical concepts that most JavaScript engineers don’t even understand. Learn what you need to know to become a sought-after, versatile, problem-solving developer. Combining mental models of JavaScript’s inner workings and hands-on programming challenges, this course will give you a solid understanding of callbacks and higher order functions, closure, asynchronous JavaScript, and object-oriented JavaScript! This course is for developers with a basic to intermediate knowledge of JavaScript who want to deepen their understanding to take it to the next level.
+
+深入学习JavaScript，通过学习大多数JavaScript工程师甚至不了解的关键概念来解决复杂的编码难题。学习你需要知道的成为一个受欢迎的，多才多艺的，解决问题的开发者。结合JavaScript内部工作和实际编程挑战的心理模型，本课程将让您对回调和高阶函数、闭包、异步JavaScript和面向对象JavaScript有一个坚实的了解!这门课程是为那些对JavaScript有基本或中级知识的开发人员开设的，他们想要加深他们对JavaScript的理解，使其进入下一个阶段。
