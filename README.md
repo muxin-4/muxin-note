@@ -1,2 +1,2 @@
-# 读书笔记
+# Learning notes
 
