@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.flex-container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.flex-item:nth-child(1),
+		.flex-item:nth-child(3) {
+			flex: 0 0 auto;
+			background-color: #ababab;
+		}
+
+		.flex-item:nth-child(2) {
+			flex: 1 1 auto;
+			background-color: #000;
+			overflow-y: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="flex-container">
+		<div class="flex-item">
+			<div style="height: 100px;line-height: 100px;">top</div>
+		</div>
+		<div class="flex-item">
+			<div style="height: 800px;color: #fff;">1</div>
+		</div>
+		<div class="flex-item">
+			<div style="height: 100px;line-height: 100px;">bottom</div>
+		</div>
+	</div>
+</body>
+
+</html>
