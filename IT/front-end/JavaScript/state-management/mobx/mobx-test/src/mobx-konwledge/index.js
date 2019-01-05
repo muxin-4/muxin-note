@@ -35,32 +35,32 @@ class Store {
 
 // computed
 var store = new Store();
-// var foo = computed(function() {
-//   return store.string + '/' + store.number;
-// });
+var foo = computed(function() {
+  return store.string + '/' + store.number;
+});
 
-// foo.observe(function(change) {
-//   console.log(change);
-// });
+foo.observe(function(change) {
+  console.log(change);
+});
 
-// store.string = 'world';
-// store.number = 30;
+store.string = 'world';
+store.number = 30;
 
-// autorun
-//
-// autorun(() => {
-//   console.log(store.string + '/' + store.number);
-// });
+autorun
 
-// autorun(() => {
-//   console.log(store.mixed);
-// });
+autorun(() => {
+  console.log(store.string + '/' + store.number);
+});
 
-// when
-// console.log('before');
-// when(()=> store.bool, ()=> console.log("it's true"));
-// // store.bool = true;
-// console.log('after');
+autorun(() => {
+  console.log(store.mixed);
+});
+
+when
+console.log('before');
+when(()=> store.bool, ()=> console.log("it's true"));
+// store.bool = true;
+console.log('after');
 
 // reaction
 reaction(
