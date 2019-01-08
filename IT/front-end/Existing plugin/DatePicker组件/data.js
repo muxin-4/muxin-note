@@ -48,6 +48,8 @@
 				showDate: showDate
 			});
 		}
+
+		console.log('days', ret);
 		return {
 			year: year,
 			month: month,
