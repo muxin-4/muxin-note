@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id='panel' style="background:red;width:200px;height:200px"></div>
+	<script>
+		function throttle(fn, threshhold) {
+			var timeout
+			var start = new Date;
+			var threshhold = threshhold || 1600
+			return function () {
+
+				var context = this, args = arguments, curr = new Date() - 0
+
+				clearTimeout(timeout)// 总是干掉事件回调
+				if (curr - start >= threshhold) {
+					console.log("now", curr, curr - start)// 注意这里相减的结果，都差不多是160左右
+					fn.apply(context, args) // 只执行一部分方法，这些方法是在某个时间段内执行一次
+					start = curr
+				} else {
+					// 让方法在脱离事件后也能执行一次
+					timeout = setTimeout(function () {
+						fn.apply(context, args)
+					}, threshhold);
+				}
+			}
+		}
+		var mousemove = throttle(function (e) {
+			console.log(e.pageX, e.pageY)
+		});
+
+		// 绑定监听
+		document.querySelector("#panel").addEventListener('mousemove', mousemove);
+	</script>
+</body>
+
+</html>

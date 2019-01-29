@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>函数节流</title>
+</head>
+
+<body>
+	<script>
+		// 节流基本形式
+		// var processor = {
+		// 	timeoutId: null,
+
+		// 	// 实际进行处理的方法
+		// 	performProcessing: function () {
+		// 		// 实际执行的代码
+		// 		console.log('实际执行的代码');
+		// 	},
+
+		// 	// 初始处理调用的方法
+		// 	process: function () {
+		// 		clearTimeout(this.timeoutId);
+
+		// 		var that = this;
+		// 		this.timeoutId = setTimeout(function () {
+		// 			that.performProcessing();
+		// 		}, 2000);
+		// 	}
+		// };
+
+		// // 尝试开始执行
+		// processor.process();
+
+
+		// throttle()函数简化节流
+		function throttle(method, context) {
+			clearTimeout(method.tId);
+			method.tId = setTimeout(function () {
+				method.call(context);
+			}, 500);
+		}
+
+		function resizeDiv() {
+			var div = document.getElementById('myDiv');
+			div.style.height = div.offsetWidth + "px";
+			console.log('div.style.height', div.style.height);
+		}
+
+		window.onresize = function () {
+			throttle(resizeDiv);
+		}
+	</script>
+
+	<div id="myDiv"></div>
+</body>
+
+</html>
