@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var array = [{
+			hour: 6,
+			value: ["val11"],
+			value1: ["val11"]
+		}, {
+			hour: 6,
+			value: ["val2", "val3"],
+			value1: ["val2", "val3"]
+		}, {
+			hour: 8,
+			value: ["val4"]
+		}];
+
+		var output = [];
+
+		array.forEach(function (item) {
+			var existing = output.filter(function (v, i) {
+				return v.hour == item.hour;
+			});
+			if (existing.length) {
+				var existingIndex = output.indexOf(existing[0]);
+				output[existingIndex].value = [output[existingIndex].value].concat([item.value]);
+			} else {
+				console.log('item', item);
+				output.push(item);
+			}
+		});
+
+		console.dir(output);
+	</script>
+</body>
+
+</html>

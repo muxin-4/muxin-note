@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		let a = [
+			{ id: "abdc4051", date: ["2017-01-24"] },
+			{ id: "abdc4052", date: ["2017-01-22"] }
+		];
+		let b = [
+			{ id: "abdc4052", name: ["abc"] }
+		];
+		let c = [];
+		a.forEach((item, index) => {
+			console.log('item', item);
+			console.log('b[index]', b[index]);
+			c.push(Object.assign({}, item, b[index]));
+		});
+		console.log(c); // you will get the merged array.
+	</script>
+</body>
+
+</html>
