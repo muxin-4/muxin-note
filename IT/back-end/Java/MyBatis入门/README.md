@@ -74,13 +74,57 @@ orm 模型传统方式下是通过 JDBC 程序来实现的
 - 更加关注 SQL 优化的项目
 - 需求频繁更新改动的项目
 
+## 二、MyBatis 开发环境搭建
+
+#### 本节大纲
+
+- MyBatis 的下载
+- 项目中引入 MyBatis 支持
+- 入门程序
+- 了解 MyBatis 的工作原理
+
+#### 1. MyBatis 的下载
+
+**获取 MyBatis**
+
+- 官方网站：http://www.mybatis.org/mybatis-3/
+- 下载离线项目包：https://github.com/mybatis/mybatis-3/releases
+- maven 仓库获取 mybatis 依赖：
+
+**传统项目中使用 MyBatis**
+
+- 下载地址：https://github.com/mybatis/mybatis-3/releases
+- 项目中引入
+  - 作为 classpath 依赖路径引入
+  - 作为依赖项目引入
+
+maven 方式引入
+
+- 查询配置
+  -  https://mvnrepository.com/ 查询 maven 依赖配置
+  - maven 项目的 pom.xml 中添加配置
+  - 查看项目依赖
+  - 了解 maven 本地仓库
+
+**入门程序**
+
+- 开发环境
+
+  mac + jdk1.8 + IntelliJ idea + MySQL
+
+- 需求：完成一个数据的查询流程
+
+- 目的：了解 mybatis 核心 api 的操作流程
+
+- 扩展：了解 mybatis 的工作流程
 
 
 
+maven 配置 jar 包：https://mvnrepository.com/
 
-
-
-
+1. orm，搜索关键字 mybatis ，找到 [org.mybatis](https://mvnrepository.com/artifact/org.mybatis) » [mybatis](https://mvnrepository.com/artifact/org.mybatis/mybatis)
+2. mysql 连接 驱动 jar包，搜索关键字 mysql，找到 [mysql](https://mvnrepository.com/artifact/mysql) » [mysql-connector-java](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
+   - 一般在项目中，用 5 版本比较多
 
 
 
