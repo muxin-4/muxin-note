@@ -1,3 +1,0 @@
-# TED
-Ideas worth spreading
-
