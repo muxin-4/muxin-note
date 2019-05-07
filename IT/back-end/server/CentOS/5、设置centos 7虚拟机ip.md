@@ -43,3 +43,10 @@ ZONE=public
 5. 查看ip地址
 `ip addr`
 ![](https://ws1.sinaimg.cn/large/006tNbRwgy1fxgr9sglbwj30kv07h75q.jpg)
+
+centos 连接 wifi
+`# yum install NetworkManager-tui`
+`# nmtui`
+
+选择 Activate a connection,输入 wifi 密码
+`ping www.baidu.com`
