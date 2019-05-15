@@ -44,6 +44,12 @@ ZONE=public
 `ip addr`
 ![](https://ws1.sinaimg.cn/large/006tNbRwgy1fxgr9sglbwj30kv07h75q.jpg)
 
+FQ:
+1.mac终端连接阿里云服务器报错WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+```bash
+ssh-keygen -R +输入服务器的IP
+```
+
 centos 连接 wifi
 `# yum install NetworkManager-tui`
 `# nmtui`
