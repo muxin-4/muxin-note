@@ -1,5 +1,0 @@
-class SingleObject {
-	login() {
-		
-	}
-}
