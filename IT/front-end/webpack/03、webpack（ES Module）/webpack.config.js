@@ -20,9 +20,15 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.scss$/, use: [
+				test: /\.scss$/,
+				use: [
 					'style-loader',
-					'css-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2 // 当 scss 文件引用 scss 文件时，sass-loader 和 postcss-loader 生效
+						}
+					},
 					'sass-loader',
 					'postcss-loader'
 				]
