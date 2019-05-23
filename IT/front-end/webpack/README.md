@@ -20,3 +20,7 @@ ExtractTextWebpackPlugin  不同的 bundle, or bundles，比如css，提取成�
 HtmlWebpackReplacementPlugin
 HotModuleReplacementPlugin
 CopyWebpackPlugin     打包时候，引用第三方资源，第三方资源不需要打包
+
+常用打包命令
+npx webpack index.js
+npx webpack --config 配置文件名
