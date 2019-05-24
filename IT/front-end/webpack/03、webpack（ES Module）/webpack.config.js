@@ -5,7 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
-		main: './src/typeface.js'
+		main: './src/index.js',
+		sub: './src/typeface.js'
 	},
 	module: {
 		rules: [
@@ -40,7 +41,8 @@ module.exports = {
 		]
 	},
 	output: {
-		filename: 'bundle.js',
+		publicPath: 'http://cdn.com.cn',
+		filename: '[name].[chunkhash:8].js',
 		path: path.resolve(__dirname, 'dist')
 	},
 	plugins: [
