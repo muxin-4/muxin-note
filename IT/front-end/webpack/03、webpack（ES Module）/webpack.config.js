@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
 	mode: 'development',
 	entry: {
-		main: './src/index.js'
+		main: './src/typeface.js'
 	},
 	module: {
 		rules: [
@@ -19,6 +19,7 @@ module.exports = {
 					}
 				]
 			},
+			{ test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader'] },
 			{
 				test: /\.scss$/,
 				use: [
@@ -27,7 +28,7 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							importLoaders: 2, // 当 scss 文件引用 scss 文件时，sass-loader 和 postcss-loader 生效
-							modules: true // 开启 css 模块化打包
+							// modules: true // 开启 css 模块化打包
 						}
 					},
 					'sass-loader',
