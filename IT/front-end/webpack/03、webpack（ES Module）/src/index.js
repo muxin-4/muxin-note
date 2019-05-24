@@ -1,9 +1,12 @@
 import avatar from './avatar.jpg';
-import './index.scss';
+import styles from './index.scss';
+import CreateAvatar from './createAvatar';
 
 var img = new Image();
 img.src = avatar;
-img.classList.add('avatar', 'test');
+img.classList.add(styles.avatar);
 
 var root = document.getElementById('root');
 root.append(img);
+
+CreateAvatar();
