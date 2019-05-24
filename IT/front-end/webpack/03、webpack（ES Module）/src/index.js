@@ -11,4 +11,4 @@ root.append(img);
 
 CreateAvatar();
 
-consosle.log('hello world');
+console.log('hello world 12212321312');
