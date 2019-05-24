@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
+	devtool: 'source-map',
 	entry: {
 		main: './src/index.js',
 		sub: './src/typeface.js'
@@ -41,7 +42,7 @@ module.exports = {
 		]
 	},
 	output: {
-		publicPath: 'http://cdn.com.cn',
+		publicPath: '',
 		filename: '[name].[chunkhash:8].js',
 		path: path.resolve(__dirname, 'dist')
 	},

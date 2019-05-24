@@ -10,3 +10,5 @@ var root = document.getElementById('root');
 root.append(img);
 
 CreateAvatar();
+
+consosle.log('hello world');
