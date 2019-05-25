@@ -1,12 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 	mode: 'development',
 	devtool: 'source-map',
 	devServer: {
-		contentBase: './dist'
+		contentBase: './dist',
+		hot: true,
+		hotOnly: true
 	},
 	entry: {
 		main: './src/index.js',
@@ -44,12 +47,20 @@ module.exports = {
 					'sass-loader',
 					'postcss-loader'
 				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					'postcss-loader'
+				]
 			}
 		]
 	},
 	output: {
-		publicPath: '',
-		filename: '[name].[chunkhash:8].js',
+		publicPath: '/',
+		filename: '[name].[hash:8].js',
 		path: path.resolve(__dirname, 'dist')
 	},
 	plugins: [
@@ -57,6 +68,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: 'src/index.html'
 		}),
-		new CleanWebpackPlugin(['dist'])
+		new CleanWebpackPlugin(['dist']),
+		new webpack.HotModuleReplacementPlugin()
 	]
 }
