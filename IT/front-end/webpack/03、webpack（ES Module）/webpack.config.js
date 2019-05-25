@@ -15,9 +15,6 @@ module.exports = {
 		main: './src/index.js',
 		sub: './src/typeface.js'
 	},
-	devServer: {
-		contentBase: './dist'
-	},
 	module: {
 		rules: [
 			{
