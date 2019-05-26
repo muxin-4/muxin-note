@@ -1,48 +1,49 @@
-import avatar from './avatar.jpg';
-import styles from './index.scss';
-import CreateAvatar from './createAvatar';
-import './style.css';
+// import avatar from './avatar.jpg';
+// import styles from './index.scss';
+// import CreateAvatar from './createAvatar';
+// import './style.css';
 
-var img = new Image();
-img.src = avatar;
-img.classList.add(styles.avatar);
+// var img = new Image();
+// img.src = avatar;
+// img.classList.add(styles.avatar);
 
-var root = document.getElementById('root');
-root.append(img);
+// var root = document.getElementById('root');
+// root.append(img);
 
-CreateAvatar();
+// CreateAvatar();
 
-console.log('hello world 12212321312');
+// console.log('hello world 12212321312');
 
-var btn = document.createElement('button');
-btn.innerHTML = '新增';
-document.body.appendChild(btn);
+// var btn = document.createElement('button');
+// btn.innerHTML = '新增';
+// document.body.appendChild(btn);
 
-btn.onclick = function () {
-	var div = document.createElement('div');
-	div.innerHTML = 'item';
-	document.body.appendChild(div);
-}
+// btn.onclick = function () {
+// 	var div = document.createElement('div');
+// 	div.innerHTML = 'item';
+// 	document.body.appendChild(div);
+// }
 
+// import counter from './counter';
+// import number from './number';
 
-// const arr = [
-// 	new Promise(() => {}),
-// 	new Promise(() => {}),
-// ];
+// counter();
+// number();
 
-// arr.map(item => {
-// 	console.log(item);
-// });
+// if (module.hot) {
+// 	module.hot.accept('./number', () => {
+// 		document.body.removeChild(document.getElementById('number'));
+// 		number();
+// 	});
+// }
 
-import counter from './counter';
-import number from './number';
+import "@babel/polyfill";
 
-counter();
-number();
+const arr = [
+	new Promise(() => {}),
+	new Promise(() => {}),
+];
 
-if (module.hot) {
-	module.hot.accept('./number', () => {
-		document.body.removeChild(document.getElementById('number'));
-		number();
-	});
-  }
+arr.map(item => {
+	console.log(item);
+});
