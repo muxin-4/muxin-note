@@ -20,7 +20,7 @@ const webpack = require('webpack');
 // }
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	devtool: 'source-map',
 	devServer: {
 		contentBase: './dist',
@@ -75,11 +75,6 @@ module.exports = {
 			}
 		]
 	},
-	output: {
-		publicPath: '/',
-		filename: '[name].[hash:8].js',
-		path: path.resolve(__dirname, 'dist')
-	},
 	plugins: [
 		// htmlWebpackPlugin 会在打包结束后，自动生成一个 html 文件，并把打包生成的 js 自动引入到这个 html  文件中
 		new HtmlWebpackPlugin({
@@ -87,5 +82,13 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin(['dist']),
 		new webpack.HotModuleReplacementPlugin()
-	]
+	],
+	optimization: {
+		usedExports: true
+	},
+	output: {
+		publicPath: '',
+		filename: '[name].[hash:8].js',
+		path: path.resolve(__dirname, 'dist')
+	}
 }
