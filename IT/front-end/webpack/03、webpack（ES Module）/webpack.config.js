@@ -3,12 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
-// presets: [["@babel/preset-env", {
-// 	targets: {
-// 		chrome: "67",
-// 	},
-// 	useBuiltIns: 'usage'
-// }]]
+// babel 库
+// {
+// 	"plugins": [
+// 		[
+// 			"@babel/plugin-transform-runtime",
+// 			{
+// 				"absoluteRuntime": false,
+// 				"corejs": 2,
+// 				"helpers": true,
+// 				"regenerator": true,
+// 				"useESModules": false
+// 			}
+// 		]
+// 	]
+// }
 
 module.exports = {
 	mode: 'development',
@@ -20,7 +29,6 @@ module.exports = {
 	},
 	entry: {
 		main: './src/index.js',
-		sub: './src/typeface.js'
 	},
 	module: {
 		rules: [

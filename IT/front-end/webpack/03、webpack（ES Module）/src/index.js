@@ -37,13 +37,24 @@
 // 	});
 // }
 
-// import "@babel/polyfill";
 
-const arr = [
-	new Promise(() => {}),
-	new Promise(() => {}),
-];
+// const arr = [
+// 	new Promise(() => {}),
+// 	new Promise(() => {}),
+// ];
 
-arr.map(item => {
-	console.log(item);
-});
+// arr.map(item => {
+// 	console.log(item);
+// });
+
+import "@babel/polyfill";
+import React, { Component } from 'react';
+import ReactDom	from 'react-dom';
+
+class App extends Component {
+	render() {
+		return <div>Hello World</div>
+	}
+}
+
+ReactDom.render(<App />, document.getElementById('root'));
