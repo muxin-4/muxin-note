@@ -3,6 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
+// presets: [["@babel/preset-env", {
+// 	targets: {
+// 		chrome: "67",
+// 	},
+// 	useBuiltIns: 'usage'
+// }]]
+
 module.exports = {
 	mode: 'development',
 	devtool: 'source-map',
@@ -21,11 +28,6 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: "babel-loader",
-				options: {
-					presets: [["@babel/preset-env", {
-						useBuiltIns: 'usage'
-					}]]
-				}
 			},
 			{
 				test: /\.(png|svg|jpe?g|gif|webp)$/i, use: [
