@@ -1,32 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
-
-// babel 库
-// {
-// 	"plugins": [
-// 		[
-// 			"@babel/plugin-transform-runtime",
-// 			{
-// 				"absoluteRuntime": false,
-// 				"corejs": 2,
-// 				"helpers": true,
-// 				"regenerator": true,
-// 				"useESModules": false
-// 			}
-// 		]
-// 	]
-// }
+const rootPath = path.resolve(__dirname, '..');
+const distPath = path.join(rootPath, 'dist');
 
 module.exports = {
-	mode: 'production',
-	devtool: 'source-map',
-	devServer: {
-		contentBase: './dist',
-		hot: true,
-		hotOnly: true
-	},
 	entry: {
 		main: './src/index.js',
 	},
@@ -81,14 +59,10 @@ module.exports = {
 			template: 'src/index.html'
 		}),
 		new CleanWebpackPlugin(['dist']),
-		new webpack.HotModuleReplacementPlugin()
 	],
-	optimization: {
-		usedExports: true
-	},
 	output: {
-		publicPath: '',
+		publicPath: "/",
 		filename: '[name].[hash:8].js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.join(distPath, 'static'),
 	}
 }
