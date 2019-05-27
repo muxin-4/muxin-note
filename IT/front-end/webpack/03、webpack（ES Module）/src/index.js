@@ -58,6 +58,11 @@
 
 // ReactDom.render(<App />, document.getElementById('root'));
 
-import { add } from './math';
+// import { add } from './math';
 
-add(1, 7);
+// add(1, 7);
+
+console.log(_.join(['a', 'b', 'c'], '***'));
+
+
+console.log(_.join(['a', 'b', 'c'], '***'));

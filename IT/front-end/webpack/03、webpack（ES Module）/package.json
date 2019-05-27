@@ -6,6 +6,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "webpack-dev-server --config ./scripts/webpack.dev.js --open",
+		"dev-build": "webpack --config ./scripts/webpack.dev.js",
 		"server": "node server.js",
 		"build": "webpack --config ./scripts/webpack.prod.js",
 		"watch": "webpack --watch",
@@ -40,6 +41,7 @@
 		"@babel/runtime": "^7.4.5",
 		"@babel/runtime-corejs2": "^7.4.5",
 		"autoprefixer": "^9.5.1",
+		"lodash": "^4.17.11",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6"
 	}

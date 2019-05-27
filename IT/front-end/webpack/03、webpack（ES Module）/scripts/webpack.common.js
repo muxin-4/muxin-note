@@ -6,7 +6,8 @@ const distPath = path.join(rootPath, 'dist');
 
 module.exports = {
 	entry: {
-		main: './src/index.js',
+		lodash: './src/lodash.js',
+		main: './src/index.js'
 	},
 	module: {
 		rules: [
@@ -58,11 +59,13 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: 'src/index.html'
 		}),
-		new CleanWebpackPlugin(['dist']),
+		new CleanWebpackPlugin(['dist'], {
+			root: path.resolve(__dirname, '../')
+		}),
 	],
 	output: {
-		publicPath: "/",
+		// publicPath: "/",
 		filename: '[name].[hash:8].js',
-		path: path.join(distPath, 'static'),
+		path: path.resolve(__dirname, '../dist'),
 	}
 }
