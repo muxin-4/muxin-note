@@ -6,7 +6,6 @@ const distPath = path.join(rootPath, 'dist');
 
 module.exports = {
 	entry: {
-		lodash: './src/lodash.js',
 		main: './src/index.js'
 	},
 	module: {
@@ -63,6 +62,11 @@ module.exports = {
 			root: path.resolve(__dirname, '../')
 		}),
 	],
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		}
+	},
 	output: {
 		// publicPath: "/",
 		filename: '[name].[hash:8].js',
