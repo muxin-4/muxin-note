@@ -62,7 +62,10 @@
 
 // add(1, 7);
 
-import _ from 'lodash';
+// import _ from 'lodash';
 
-console.log(_.join(['a', 'b', 'c'], '***'));
-console.log(_.join(['a', 'b', 'c'], '***'));
+// console.log(_.join(['a', 'b', 'c'], '***'));
+// console.log(_.join(['a', 'b', 'c'], '***'));
+
+import './style.css';
+console.log('hello world');
