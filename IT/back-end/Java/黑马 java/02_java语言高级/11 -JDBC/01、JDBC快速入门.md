@@ -1,4 +1,4 @@
-## JDBC
+## 01、JDBC快速入门
 
 1. 概念： Java DataBase Connectivity （Java 数据库连接）
 
@@ -23,3 +23,28 @@ Person 接口  Worker 类  Person p = new Worker();
    6. 执行 sql，接受返回结果
    7. 处理结果
    8. 释放资源
+
+3. 代码实现
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
