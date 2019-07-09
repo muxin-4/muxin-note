@@ -45,10 +45,10 @@ public class DemoVariable {
 		short num5 = 50;
 		System.out.println(num5); // 50
 
-		float num6 = 300000000L;
+		long num6 = 300000000L;
 		System.out.println(num6); // 300000000
 
-		long num7 = 2.5F;
+		float num7 = 2.5F;
 		System.out.println(num7); // 2.5
 
 		double num8 = 1.2;
