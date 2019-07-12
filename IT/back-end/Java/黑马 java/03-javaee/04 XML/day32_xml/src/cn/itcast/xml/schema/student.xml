@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+	1.填写xml文档的根元素
+	2.引入xsi前缀.  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	3.引入xsd文件命名空间.  xsi:schemaLocation="http://www.itcast.cn/xml  student.xsd"
+	4.为每一个xsd约束声明一个前缀,作为标识  xmlns="http://www.itcast.cn/xml" 
+ -->
+<students   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns="http://www.itcast.cn/xml"
+			xsi:schemaLocation="http://www.itcast.cn/xml  student.xsd"
+>
+	<student number="heima_0001">
+		<name>tom</name>
+		<age>18</age>
+		<sex>male</sex>
+	</student>
+
+</students>

@@ -1,0 +1,19 @@
+<?xml version='1.0' ?>
+<users>
+	<user id='1'>
+		<name>zhangsan</name>
+		<age>23</age>
+		<gender>male</gender>
+	</user>
+	<user id='2'>
+		<name>lisi</name>
+		<age>24</age>
+		<gender>female</gender>
+
+		<code>
+			<![CDATA[
+				if(a < b ** a > c){}
+			]]>
+		</code>
+	</user>
+</users>
