@@ -113,7 +113,9 @@ Tomcat web项目根目录 /webapps/ROOT
 
 
 
+#### Tomcat 集成到 IDEA 中
 
+- 将 Tomcat 集成到 IDEA 中，并且创建 JavaEE 的项目，部署项目。
 
 
 
