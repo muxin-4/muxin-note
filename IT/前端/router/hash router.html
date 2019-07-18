@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>hash router</title>
+</head>
+
+<body>
+	<ul>
+		<li><a href="#/">turn yellow</a></li>
+		<li><a href="#/blue">turn blue</a></li>
+		<li><a href="#/green">turn green</a></li>
+	</ul>
+	<button id="backButton">back</button>
+	<button id="forwardButton">foward</button>
+	<script>
+		class Routers {
+			constructor() {
+				// 储存hash与callback键值对
+				this.routes = {};
+				// 当前hash
+				this.currentUrl = '';
+				// 记录出现过的hash
+				this.history = [];
+				// 作为指针,默认指向this.history的末尾,根据后退前进指向history中不同的hash
+				this.currentIndex = this.history.length - 1;
+				this.refresh = this.refresh.bind(this);
+				this.backOff = this.backOff.bind(this);
+				this.goForward = this.goForward.bind(this);
+				// 默认不是后退操作
+				this.isBack = false;
+				// 默认不是前进操作
+				this.isForward = false;
+				window.addEventListener('load', this.refresh, false);
+				window.addEventListener('hashchange', this.refresh, false);
+			}
+
+			// 将path路径与对应的callback函数储存
+			route(path, callback) {
+				this.routes[path] = callback || function () { };
+			}
+
+			refresh() {
+				this.currentUrl = location.hash.slice(1) || '/';
+				if (!this.isBack && !this.isForward) {
+					this.history.push(this.currentUrl);
+					this.currentIndex++;
+				}
+				this.routes[this.currentUrl]();
+				console.log('指针:', this.currentIndex, 'history:', this.history);
+
+				if (this.isBack) this.isBack = false;
+				if (this.isForward) this.isForward = false;
+			}
+
+			// 后退功能
+			backOff() {
+				// 后退操作设置为true
+				this.isBack = true;
+				this.currentIndex <= 0
+					? (this.currentIndex = 0)
+					: (this.currentIndex = this.currentIndex - 1);
+				location.hash = `#${this.history[this.currentIndex]}`;
+			}
+
+			// 前进功能
+			goForward() {
+				this.isForward = true;
+				this.currentIndex >= this.history.length - 1
+					? (this.currentIndex = this.history.length - 1)
+					: (this.currentIndex = this.currentIndex + 1);
+				location.hash = `#${this.history[this.currentIndex]}`;
+
+			}
+		}
+
+		window.Router = new Routers();
+		const content = document.querySelector('body');
+		const backButton = document.getElementById('backButton');
+		const forwardButton = document.getElementById('forwardButton');
+
+		function changeBgColor(color) {
+			content.style.backgroundColor = color;
+		}
+
+		Router.route('/', function () {
+			changeBgColor('yellow');
+		});
+		Router.route('/blue', function () {
+			changeBgColor('blue');
+		});
+		Router.route('/green', function () {
+			changeBgColor('green');
+		});
+
+		backButton.addEventListener('click', Router.backOff, false);
+		forwardButton.addEventListener('click', Router.goForward, false);
+
+	</script>
+</body>
+
+</html>
