@@ -18,13 +18,13 @@
 	<script>
 		class Routers {
 			constructor() {
-				// 储存hash与callback键值对
+				// 储存 hash 与 callback 键值对
 				this.routes = {};
-				// 当前hash
+				// 当前 hash
 				this.currentUrl = '';
-				// 记录出现过的hash
+				// 记录出现过的 hash
 				this.history = [];
-				// 作为指针,默认指向this.history的末尾,根据后退前进指向history中不同的hash
+				// 作为指针,默认指向 this.history 的末尾,根据后退前进指向 history 中不同的 hash
 				this.currentIndex = this.history.length - 1;
 				this.refresh = this.refresh.bind(this);
 				this.backOff = this.backOff.bind(this);
@@ -37,7 +37,7 @@
 				window.addEventListener('hashchange', this.refresh, false);
 			}
 
-			// 将path路径与对应的callback函数储存
+			// 将 path 路径与对应的 callback 函数储存
 			route(path, callback) {
 				this.routes[path] = callback || function () { };
 			}
@@ -49,7 +49,7 @@
 					this.currentIndex++;
 				}
 				this.routes[this.currentUrl]();
-				console.log('指针:', this.currentIndex, 'history:', this.history);
+				console.log('指针:', this.currentIndex, 'history:', this.history, 'routes', this.routes);
 
 				if (this.isBack) this.isBack = false;
 				if (this.isForward) this.isForward = false;
