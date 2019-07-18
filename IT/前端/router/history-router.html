@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>h5 router</title>
+</head>
+
+<body>
+	<ul>
+		<li><a href="/">turn yellow</a></li>
+		<li><a href="/blue">turn blue</a></li>
+		<li><a href="/green">turn green</a></li>
+	</ul>
+	<script>
+		class Routers {
+			constructor() {
+				this.routes = {}; // 储存 hash 与 callback 键值对
+				this._bindPopState(); // 在初始化时监听 popstate 事件
+			}
+
+			// 初始化路由
+			init(path) {
+				history.replaceState({ path: path }, "", path); // replaceState 按指定的数据，名称和URL(如果提供该参数)，更新历史栈上最新的入口,同样不触发跳转。
+				this.routes[path] && this.routes[path]();
+			}
+
+			// 将路径和对应回调函数加入 hashMap 储存
+			route(path, callback) {
+				this.routes[path] = callback || function () { };
+			}
+
+			// 触发路由对应回调
+			go(path) {
+				console.log('go1', path);
+				console.log('go2', this.route);
+				/**
+				 * 按指定的名称和 URL（如果提供该参数）将数据 push 进会话历史栈
+				 */
+				history.pushState({ path: path }, "", path);
+				this.routes[path] && this.routes[path]();
+			}
+
+			// 监听 popstate 事件
+			_bindPopState() {
+				// popstate 事件,每当同一个文档的浏览历史（即 history 对象）出现变化时，就会触发 popstate 事件。
+				window.addEventListener('popstate', e => {
+					console.log('popstate', e);
+					const path = e.state && e.state.path;
+					this.routes[path] && this.routes[path]();
+				});
+			}
+		}
+
+		window.Router = new Routers();
+		Router.init(location.pathname);
+
+		const content = document.querySelector('body');
+		const ul = document.querySelector('ul');
+
+		function changeBgColor(color) {
+			content.style.backgroundColor = color;
+		}
+
+		Router.route('/', function () {
+			changeBgColor('yellow');
+		});
+		Router.route('/blue', function () {
+			changeBgColor('blue');
+		});
+		Router.route('/green', function () {
+			changeBgColor('green');
+		});
+
+		ul.addEventListener('click', e => {
+			console.log('tagName', e.target.tagName);
+			console.log('e.target.getAttribute', e.target.getAttribute('href'));
+			if (e.target.tagName === 'A') {
+				e.preventDefault();
+				Router.go(e.target.getAttribute('href'));
+			}
+		});
+	</script>
+</body>
+
+</html>
