@@ -1,1 +1,0 @@
-# 第 8 章、迭代器（iterator）和生成器（Generator）

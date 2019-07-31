@@ -1,1 +1,0 @@
-# 第 6 章、Symbol 和 Symbol 属性
