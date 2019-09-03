@@ -1,0 +1,6 @@
+var person = {};
+person['firstname'] = 'Mario';
+person['lastname'] = 'Rossi';
+
+console.log(person.firstname);  // Mario
+console.log(person['lastname']); // Rossi

@@ -1,0 +1,42 @@
+/* ============================================================
+   样式重置
+   ============================================================ */
+
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,blockquote,address,pre{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;vertical-align:middle;}
+ul,dl,ol{list-style:none;}
+img,fieldset{border:none;}
+img{display:inline-block;overflow:hidden;vertical-align:top;}
+em,address{font-style:normal;}
+sup,sub{vertical-align:baseline;}
+table{border-collapse:collapse;border-spacing:0;}
+q:before{content:"";}
+q:after{content:"";}
+button{cursor:pointer;}
+textarea{word-wrap:break-word;resize:none;}
+
+/* ============================================================
+   页面
+   ============================================================ */
+
+
+.charector{
+position: absolute;
+width: 180px;
+height: 300px;
+background: url(../img/charector.png) 0 0 no-repeat;
+-webkit-animation-name: charector-1;/* 动画名称 */
+-webkit-animation-iteration-count: infinite;/* 动画无限播放 */
+-webkit-animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */
+-webkit-animation-duration: 950ms;/* 动画运行的时间 */
+}
+@-webkit-keyframes charector-1{
+    0% {background-position: 0 0;}
+    14.3% {background-position: -180px 0;}
+    28.6% {background-position: -360px 0;}
+    42.9% {background-position: -540px 0;}
+    57.2% {background-position: -720px 0;}
+    71.5% {background-position: -900px 0;}
+    85.8% {background-position: -1080px 0;}
+    100% {background-position: 0 0;}
+}

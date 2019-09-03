@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2、this - 作为普通函数调用 - 01 - window 对象下的普通函数</title>
+</head>
+
+<body>
+
+	<script>
+		/**
+		 * this 永远指向最后调用 this  所在函数的对象，当没有指定调用者，在非严格模式下，this 就会自动指向 window 对象，严格模式，this 会输出 undefined。
+		 */
+
+		window.name = 'globalName';
+
+		var getName = function() {
+			console.log(this);
+			return this.name; 
+		}
+
+		console.log(getName()); // 非严格模式，没有指定调用者，this 自动指向了 window 对象,所以输出 'globalName'
+	</script>
+</body>
+
+</html>

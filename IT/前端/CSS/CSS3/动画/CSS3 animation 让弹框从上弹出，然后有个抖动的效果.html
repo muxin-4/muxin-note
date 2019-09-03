@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CSS特殊效果</title>
+	<style tpe="text/css">
+		/* ---------------------公共样式 -------------------*/
+		body {
+			background: #000;
+		}
+
+		.none {
+			display: none;
+		}
+
+		.layout-root {
+			position: fixed;
+			background: #E74C3C;
+			height: 100%;
+			width: 100%;
+			z-index: 1000;
+			top: 0;
+			left: 0;
+		}
+
+		.layout-content {
+			line-height: 34px;
+			font-weight: 300;
+			font-size: 1em;
+			color: #fff;
+			text-indent: 10px;
+			padding: 0 100px;
+		}
+
+		.layout-content .code {
+			line-height: 22px;
+			text-align: center;
+		}
+
+		p {
+			display: block;
+			-webkit-margin-before: 1em;
+			-webkit-margin-after: 1em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+		}
+
+		a,
+		button {
+			outline: none;
+		}
+
+		button {
+			border: none;
+			padding: 0.6em 1.2em;
+			background: #c0392b;
+			color: #fff;
+			font-size: 1em;
+			cursor: pointer;
+			display: block;
+			margin: 3px auto;
+			border-radius: 2px;
+		}
+
+		button:hover,
+		button:active,
+		button:focus {
+			border: none;
+		}
+
+		/* ---------------------弹窗样式 -------------------*/
+		.dialog-face {
+			position: fixed;
+			background: #A02418;
+			height: 100%;
+			width: 100%;
+			z-index: 1000;
+			top: 0;
+			left: 0;
+
+			animation-duration: 500ms;
+		}
+
+		.dialog-face.slipBottom[opacity="0"] {
+			display: none;
+		}
+
+		.dialog-face.slipUp {
+			opacity: 0.7;
+			animation-name: dialogFaceSlipToUp;
+		}
+
+		.dialog-face.slipBottom {
+			opacity: 0;
+			visibility: hidden;
+			animation-name: dialogFaceSlipToBottom;
+		}
+
+		.dialog-root {
+			position: fixed;
+			z-index: 2000;
+			left: 50%;
+
+			animation-duration: 500ms;
+			perspective: 1300px;
+		}
+
+		.dialog-root.slipUp {
+			top: 50%;
+			opacity: 1;
+			animation-name: dialogSlipToUp;
+			transform: translate(-50%, -50%);
+		}
+
+		.dialog-root.slipBottom {
+			top: 100%;
+			opacity: 0.3;
+			animation-duration: 500ms;
+			animation-name: dialogSlipToBottom;
+			transform: translate(-50%, 0);
+		}
+
+		.dialog-wrapper {
+			background: #E74C3C;
+			width: 635px;
+			height: 375px;
+			overflow: hidden;
+			border-radius: 5px;
+			animation-duration: 500ms;
+			transform-origin: 50% 100%;
+		}
+
+		.dialog-wrapper.slipUp {
+			transform: rotateX(0deg);
+			animation-name: contentSlipToUp;
+		}
+
+		.dialog-wrapper.slipBottom {
+			transform: rotateX(90deg);
+			animation-name: contentSlipToBottom;
+		}
+
+		.dialog-header {
+			height: 75px;
+			background: #d94839;
+			text-align: center;
+		}
+
+		.dialog-header span {
+			font-size: 28px;
+			line-height: 75px;
+			color: #F6CBC6;
+		}
+
+		.dialog-content {
+			font-weight: 300;
+			font-size: 1.15em;
+			color: #fff;
+			padding: 15px 40px 20px 40px;
+			margin: 0;
+		}
+
+
+		.dialog-content p {
+			margin: 0;
+			padding: 10px 0;
+		}
+
+		.dialog-footer {}
+
+		/* ---------------------动画关键帧 -------------------*/
+
+		@keyframes dialogFaceSlipToUp {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 0.7;
+			}
+		}
+
+		@keyframes dialogFaceSlipToBottom {
+			0% {
+				opacity: 0.7;
+				visibility: visible;
+			}
+
+			100% {
+				visibility: hidden;
+				opacity: 0;
+			}
+		}
+
+		@keyframes dialogSlipToUp {
+			0% {
+				top: 100%;
+				opacity: 0.3;
+			}
+
+			100% {
+				top: 50%;
+				opacity: 1;
+			}
+		}
+
+		@keyframes dialogSlipToBottom {
+			0% {
+				top: 50%;
+				opacity: 1;
+				transform: translate(-50%, -50%);
+			}
+
+			100% {
+				top: 100%;
+				opacity: 0.3;
+				transform: translate(-50%, 0);
+			}
+		}
+
+		@keyframes contentSlipToUp {
+			0% {
+				transform: rotateX(90deg);
+			}
+
+			100% {
+				transform: rotateX(0deg);
+			}
+		}
+
+		@keyframes contentSlipToBottom {
+			0% {
+				transform: rotateX(0deg);
+			}
+
+			60% {
+				transform: rotateX(60deg);
+			}
+
+			100% {
+				transform: rotateX(90deg);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="fixed layout-root">
+		<div>
+			<button onclick="toggleDialog(true)">显示弹出框</button>
+		</div>
+		<div class="layout-content">
+			<p>
+				CSS3为用户添加了三个特殊效果的处理方式：过渡、动画、变化。当用户和界面元素交互时，使用这些特殊样式可大大改善用户的体验效果。这些效果可以直接由浏览器引擎处理，还能节省开销。尽管如此，这些效果会耗费大量的处理能力，尤其是一些复杂的WEB页面上。即使是最基本的效果，也是如此。本篇的目的只是熟悉这三种CSS处理效果，不推荐在实际系统中大篇幅使用。
+				温馨提示：请谨慎大篇幅使用这些特殊效果。
+			</p>
+
+		</div>
+	</div>
+	<div id="dialog-face" class="none">
+	</div>
+	<div id="dialog" class="none">
+		<div id="dialog-wrapper">
+			<div class="dialog-header">
+				<span>弹窗效果</span>
+			</div>
+			<div class="dialog-content">
+				<p>This is a modal window. You can do the following things with it:</p>
+				<ul>
+					<li><strong>Read:</strong> modal windows will probably tell you something important so don't forget
+						to read what they say.</li>
+					<li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and
+						appreciate its presence.</li>
+					<li><strong>Close:</strong> click on the button below to close the modal.</li>
+				</ul>
+			</div>
+			<div class="dialog-footer">
+				<button onclick="toggleDialog(false)">关闭</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function toggleDialog(show) {
+			var animationClass = show ? "slipUp" : "slipBottom";
+			var animation = function () {
+				var ele = document.getElementById("dialog-face");
+				ele.className = "dialog-face " + animationClass;
+				ele = document.getElementById("dialog");
+				ele.className = "dialog-root " + animationClass;
+				ele = document.getElementById("dialog-wrapper");
+				ele.className = "dialog-wrapper " + animationClass;
+			};
+
+			setTimeout(animation, 100);
+		}
+	</script>
+</body>
+
+</html>

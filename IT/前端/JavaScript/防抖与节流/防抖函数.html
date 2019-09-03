@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>防抖函数</title>
+</head>
+
+<body>
+	<input type="text" id="debounce" />
+	<script>
+		//模拟一段ajax请求
+		function ajax(content) {
+			console.log('ajax request ' + content)
+		}
+
+		function debounce(fun, delay) {
+			let timeout = null; // 创建一个标记用来存放定时器的返回值
+			return function (args) {
+				let _args = args
+				clearTimeout(timeout) // 每当用户输入的时候把前一个 setTimeout clear 掉
+				// 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
+				timeout = setTimeout(function () {
+					fun.call(this, _args)
+				}.bind(this), delay)
+			}
+		}
+
+		let inputb = document.getElementById('debounce')
+
+		let debounceAjax = debounce(ajax, 500)
+
+		inputb.addEventListener('keyup', function (e) {
+			debounceAjax.apply(this, [...e.target.value]);
+		})
+
+	</script>
+
+</body>
+
+</html>

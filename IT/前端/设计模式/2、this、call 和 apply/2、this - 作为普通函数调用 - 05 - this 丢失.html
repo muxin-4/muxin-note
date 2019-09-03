@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2、this - 作为普通函数调用 - 05 - this 丢失</title>
+</head>
+
+<body>
+	<div id="div1">我是一个 div</div>
+	<script>
+		document.getElementById = (function (func) {
+			return function () {
+				return func.apply(document, arguments);
+			}
+		})(document.getElementById);
+
+		var getId = document.getElementById;
+		var div = getId('div1');
+
+		// var div = document.getElementById('div1');
+		console.log(div.id);
+
+	</script>
+</body>
+
+</html>

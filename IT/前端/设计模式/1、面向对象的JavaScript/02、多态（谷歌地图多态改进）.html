@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>04、多态（谷歌地图多态改进）</title>
+</head>
+
+<body>
+	<script>
+		/**
+		 * 对象的多态性提示我们，「做什么」和「怎么去做」是可以分开的
+		 * 
+		 * 这个例子假设谷歌地图和百度地图的地图方法名都是 show，实际开发中，方法名不同，可以借助适配器模式来解决问题。
+		 */
+		var renderMap = function (map) {
+			if (map.show instanceof Function) {
+				map.show();
+			}
+		}
+
+		var googleMap = {
+			show: function () {
+				console.log('开始渲染谷歌地图');
+			}
+		}
+
+		var baiduMap = {
+			show: function () {
+				console.log('开始渲染百度地图');
+			}
+		}
+		renderMap(googleMap); // 输出：开始渲染谷歌地图
+		renderMap(baiduMap); // 输出：开始选人百度地图
+	</script>
+</body>
+
+</html>

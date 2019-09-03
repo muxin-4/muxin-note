@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+
+	<script>
+		var nodes = document.getElementsByTagName('div');
+
+		/**
+		 * 测试这段代码就会发现，无论点击哪个 div，最后弹出的结果都是 5。
+		 * 这是因为 div 节点的 onclick 事件是异步触发的，当事件被触发的时候，for 循环早已结束，此时变量 i的值已经是 5，所以在 div 的 onclick 事件函数中顺着作用域链从内到外查找变量 i 时，查找到的值总是 5。
+		 * 输出：5, 5, 5, 5, 5
+		 */
+		// for (var i = 0, len = nodes.length; i < len; i++) {
+		// 	nodes[i].onclick = function () {
+		// 		console.log(i);
+		// 	}
+		// }
+
+
+		/**
+		 * 解决方法是在闭包的帮助下，把每次循环的 i 值都封闭起来。当在事件函数中顺着作用域链从内到外查找变量 i 时，会先找到被封闭在闭包环境中的 i，如果有 5 个 div，这里的 i 就分别是 0，1，2，3，4
+		 */
+		for (var i = 0, len = nodes.length; i < len; i++) {
+			(function (i) {
+				nodes[i].onclick = function () {
+					console.log(i);
+				}
+			})(i)
+		}
+
+	</script>
+
+</body>
+
+</html>

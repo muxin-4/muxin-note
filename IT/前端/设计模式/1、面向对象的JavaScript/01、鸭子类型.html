@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>01、鸭子类型</title>
+</head>
+
+<body>
+	<script>
+		var duck = {
+			duckSinging: function () {
+				console.log('嘎嘎嘎');
+			}
+		}
+
+		var chicken = {
+			duckSinging: function () {
+				console.log('嘎嘎嘎');
+			}
+		}
+
+		var choir = []; // 合唱团
+
+		var joinChoir = function (animal) {
+			if (animal && typeof animal.duckSinging === 'function') {
+				choir.push(animal);
+			}
+		}
+
+		joinChoir(duck);
+		joinChoir(chicken);
+		console.log('choir', choir);
+	</script>
+</body>
+
+</html>

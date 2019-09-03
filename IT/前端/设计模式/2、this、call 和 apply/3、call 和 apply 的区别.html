@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var funcApply = function (a, b, c) {
+			console.log('1', this);
+			console.log('2', [a, b, c]); // [1, 2, 3]
+		}
+
+		funcApply.apply(null, [1, 2, 3]);
+
+		var funcCall = function (a, b, c) {
+			console.log('3', this);
+			console.log('4', [a, b, c]);
+		}
+		funcCall(null, 1, 2, 3);
+	</script>
+
+</body>
+
+</html>

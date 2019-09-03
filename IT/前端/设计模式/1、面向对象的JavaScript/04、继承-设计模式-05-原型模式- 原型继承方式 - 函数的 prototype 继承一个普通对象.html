@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 10、设计模式-01-原型模式- 原型继承方式 - 函数的 prototype 继承一个普通对象</title>
+</head>
+
+<body>
+	<script>
+		/**
+		 * 首先，尝试遍历对象 a 的所有属性，找不到 name 属性
+		 * 查找 name 属性被委托给 b 的构造器的 原型，通过 b.__proto 记录着并且指向 B.prototype，而 B.prototype 被设置为通过 new A() 创建出来的对象
+		 * 在 new A() 创建出来的对象中依然没有找到 name 属性，于是请求被继续委托给 new A() 创建出来的对象的原型，A.prototype
+		 * 在 A.prototype 中找到了 name 属性，并返回它的值
+		 */
+		var A = function () { };
+		A.prototype = { name: 'sven' };
+
+		var B = function () { };
+		B.prototype = new A();
+
+		var b = new B();
+		console.log(b.name); // sven
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>无防抖函数</title>
+</head>
+
+<body>
+	<input type="text" id="unDebounce" />
+	<script>
+		//模拟一段ajax请求
+		function ajax(content) {
+			console.log('ajax request ' + content)
+		}
+
+		let inputa = document.getElementById('unDebounce')
+
+		inputa.addEventListener('keyup', function (e) {
+			ajax(e.target.value)
+		})
+
+	</script>
+
+</body>
+
+</html>

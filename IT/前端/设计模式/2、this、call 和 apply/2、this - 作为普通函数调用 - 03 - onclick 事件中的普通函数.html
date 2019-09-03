@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>2、this - 作为普通函数调用 - 03 - onclick 事件中的普通函数</title>
+</head>
+
+<body>
+	<div id="div1">我是一个 div</div>
+
+	<script>
+		window.id = '全局对象上的 id';
+		console.log('this', this);
+
+		document.getElementById('div1').onclick = function () {
+			console.log('1', this); // <div id="div1">我是一个 div</div>
+			var callback = function () {
+
+				/**
+				 * this 永远指向最后调用 this  所在函数的对象
+				 * 当没有指定调用者，在非严格模式下，this 就会自动指向 window 对象，严格模式，this 会输出 undefined
+				 */
+				console.log('2', this.id);
+			}
+
+			// 非严格模式，没有指定调用者，this 自动指向 window 对象，所以输出为 '全局对象上的 id'
+			console.log('3', window);
+			callback();
+
+			var a = {
+				id: 'a 对象上的 id',
+				callback
+			}
+
+			//  非严格模式，最后调用 this 所在函数的对象是 a 对象，所以输出为 'a 对象上的 id'
+			a.callback();
+		}
+	</script>
+</body>
+
+</html>

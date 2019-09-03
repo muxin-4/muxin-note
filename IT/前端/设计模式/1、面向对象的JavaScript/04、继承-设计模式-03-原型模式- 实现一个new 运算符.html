@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 08、设计模式-01-原型模式- 实现一个new 运算符</title>
+</head>
+
+<body>
+	<script>
+		// 构造器
+		function Person(name) {
+			this.name = name;
+		}
+
+		Person.prototype.getName = function () {
+			return this.name;
+		};
+
+		// var a = new Person('sven');
+		var objectFactory = function () {
+			var obj = new Object(); // 从 Object.prototype 上克隆一个空的对象
+
+			// todo 没动这句话 [].shift.call什么意思
+			Constructor = [].shift.call(arguments); // 取得外部传入的构造器，此例是 Person
+			obj.__proto__ = Constructor.prototype; // 空对象的 proto 指向构造器上的 prototype
+			var ret = Constructor.apply(obj, arguments); // 借用外部传入的构造器给 obj 设置属性
+
+			return typeof ret === 'object' ? ret : obj; // 确保构造器总会返回一个对象
+		}
+
+		var a = objectFactory(Person, 'sven');
+
+		console.log(a.name);
+		console.log(a.getName());
+		console.log(Object.getPrototypeOf(a)); // Object.getPrototypeOf() 方法返回指定对象的原型 ( 即, 内部[[Prototype]]属性）。
+		console.log(Object.getPrototypeOf(a) === Person.prototype);
+	</script>
+</body>
+
+</html>

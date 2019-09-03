@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>07、设计模式-01-原型模式- new 运算符从构造器得到一个对象</title>
+</head>
+
+<body>
+	<script>
+		function Person(name) {
+			this.name = name;
+		}
+
+		Person.prototype.getName = function() {
+			return this.name;
+		};
+
+		var a = new Person('sven');
+
+		console.log(a.name);
+		console.log(a.getName());
+		console.log(Object.getPrototypeOf(a)); // Object.getPrototypeOf() 方法返回指定对象的原型 ( 即, 内部[[Prototype]]属性）。
+		console.log(Object.getPrototypeOf(a) === Person.prototype);
+	</script>
+</body>
+
+</html>
